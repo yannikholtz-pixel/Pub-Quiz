@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🍻 Pub Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- Startbildschirm -->
+    <section id="screen-start" class="screen">
+      <h1>🍻 Pub Quiz</h1>
+      <p class="sub">Mehrere Teams, ein Sieger. Kein Spielleiter nötig.</p>
+
+      <div class="card">
+        <h2>Neuen Raum erstellen</h2>
+        <input id="create-name" placeholder="Teamname" maxlength="20" />
+        <button id="btn-create" class="big">🎤 Raum erstellen</button>
+        <p class="hint">Du bekommst einen Code, den du an die anderen Teams weitergibst.</p>
+      </div>
+
+      <div class="divider">oder</div>
+
+      <div class="card">
+        <h2>Bestehendem Raum beitreten</h2>
+        <input id="join-code" placeholder="Raumcode (z.B. AB12)" maxlength="4" autocapitalize="characters" />
+        <input id="join-name" placeholder="Teamname" maxlength="20" />
+        <button id="btn-join" class="big">🚀 Beitreten</button>
+      </div>
+
+      <p id="error" class="error"></p>
+    </section>
+
+    <!-- Lobby -->
+    <section id="screen-lobby" class="screen hidden">
+      <p class="sub">Raumcode</p>
+      <h1><span id="room-code" class="code"></span></h1>
+      <button id="btn-share" class="ghost">🔗 Link kopieren</button>
+
+      <div class="card">
+        <h2>Teams im Raum</h2>
+        <ul id="team-list" class="team-list"></ul>
+        <p id="lobby-status" class="hint">Mindestens 2 Teams werden gebraucht.</p>
+        <button id="btn-start" class="big" disabled>▶️ Quiz starten</button>
+      </div>
+    </section>
+
+    <!-- Frage -->
+    <section id="screen-question" class="screen hidden">
+      <div class="topbar">
+        <span class="progress">Frage <span id="q-idx"></span> / <span id="q-total"></span></span>
+        <span id="q-timer" class="timer">25</span>
+      </div>
+      <div class="timer-bar"><div id="timer-fill" class="timer-fill"></div></div>
+      <h1 id="q-text"></h1>
+      <ul id="q-options" class="options"></ul>
+      <p id="q-status" class="hint hidden">⏳ Antwort gespeichert. Warte auf die anderen…</p>
+      <p class="hint"><span id="q-answered">0</span> / <span id="q-total2">0</span> Teams haben geantwortet</p>
+    </section>
+
+    <!-- Auflösung -->
+    <section id="screen-reveal" class="screen hidden">
+      <h1 id="r-headline"></h1>
+      <img id="r-gif" class="gif" alt="" onerror="this.style.display='none'" />
+      <p id="r-correct" class="correct-line"></p>
+      <p id="r-explanation" class="explanation"></p>
+      <p class="score-line">Deine Punkte: <strong id="r-score">0</strong></p>
+
+      <div class="card">
+        <h2>Zwischenstand</h2>
+        <ol id="r-scores" class="scoreboard"></ol>
+      </div>
+
+      <p class="hint">Nächste Frage in <span id="r-countdown">7</span>…</p>
+    </section>
+
+    <!-- Endbildschirm -->
+    <section id="screen-final" class="screen hidden">
+      <h1>🏆 Endstand</h1>
+      <ol id="final-scores" class="scoreboard final"></ol>
+      <p id="final-comment" class="sub"></p>
+      <button id="btn-restart" class="big">Neues Spiel</button>
+    </section>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
