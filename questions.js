@@ -602,5 +602,302 @@ module.exports = [
     options: ["48", "56", "64", "Mehr, als ich Geduld habe"],
     correct: 2,
     explanation: "8 × 8 = 64 Felder, abwechselnd hell und dunkel."
+  },
+
+  // === SAUFEN ===
+  {
+    text: "Wie viel Alkohol enthält ein typisches deutsches Pils ungefähr?",
+    options: ["3,5 %", "4,8 %", "6,5 %", "Genug, sage ich mal"],
+    correct: 1,
+    explanation: "Ein klassisches Pils liegt bei rund 4,8 % Volumenprozent."
+  },
+  {
+    text: "Aus welcher Pflanze wird Tequila hergestellt?",
+    options: ["Kaktus", "Agave", "Aloe Vera", "Aus dem, was der Mexikaner findet"],
+    correct: 1,
+    explanation: "Aus der blauen Agave – Tequila darf sich nur nennen, was aus dieser Region stammt."
+  },
+  {
+    text: "Welche vier Zutaten erlaubt das deutsche Reinheitsgebot?",
+    options: ["Wasser, Hopfen, Malz, Hefe", "Wasser, Gerste, Zucker, Hefe", "Wasser, Wein, Honig, Hopfen", "Was die Bayern grad zur Hand hatten"],
+    correct: 0,
+    explanation: "Wasser, Hopfen, Malz und Hefe – seit 1516 (Hefe wurde später ergänzt)."
+  },
+  {
+    text: "Welches Land trinkt pro Kopf am meisten Bier?",
+    options: ["Deutschland", "Belgien", "Tschechien", "Bayern (gilt nicht als eigenes Land, schade)"],
+    correct: 2,
+    explanation: "Tschechien – über 130 Liter pro Kopf und Jahr. Trinken sich die Konkurrenz ins Aus."
+  },
+  {
+    text: "Welcher Cocktail enthält Rum, Limette, Minze, Zucker und Soda?",
+    options: ["Mai Tai", "Cuba Libre", "Mojito", "Caipirinha"],
+    correct: 2,
+    explanation: "Mojito – kubanischer Klassiker. Caipirinha hat keine Minze und keinen Soda."
+  },
+  {
+    text: "Welche Spirituose ist Hauptzutat eines klassischen Martini?",
+    options: ["Wodka", "Gin", "Rum", "Korn (Norddeutsch)"],
+    correct: 1,
+    explanation: "Gin + Wermut. Wodka-Martini ist eine Variante – James Bond lässt grüßen."
+  },
+  {
+    text: "Wie heißt James Bonds berühmtester Drink?",
+    options: ["Mojito", "Old Fashioned", "Wodka Martini, geschüttelt nicht gerührt", "Holsten Pilsener"],
+    correct: 2,
+    explanation: "„Shaken, not stirred“ – obwohl Barkeeper sagen, dass das den Geschmack ruiniert."
+  },
+  {
+    text: "Was ist „Met“?",
+    options: ["Apfelwein", "Honigwein", "Bierschnaps", "Eine Wikinger-Frisur"],
+    correct: 1,
+    explanation: "Honigwein – schon die Wikinger und Germanen wussten, was sie taten."
+  },
+  {
+    text: "Welcher griechische Gott steht für Wein und Rausch?",
+    options: ["Apollo", "Hephaistos", "Dionysos", "Zeus' bester Kumpel"],
+    correct: 2,
+    explanation: "Dionysos – sein römisches Pendant heißt Bacchus. Beide sehr beliebt."
+  },
+  {
+    text: "Wie viel Volumenprozent hat ein klassischer deutscher Korn?",
+    options: ["20 %", "32 %", "45 %", "So viel, dass man danach laut singt"],
+    correct: 1,
+    explanation: "Korn liegt bei 32 %, Doppelkorn bei 38 %."
+  },
+
+  // === Ü18 ===
+  {
+    text: "Wie nennt man die Wissenschaft des Küssens?",
+    options: ["Oskulologie", "Philematologie", "Kissomanie", "Schmusekunde, 5 ECTS"],
+    correct: 1,
+    explanation: "Philematologie – aus dem Griechischen „philema“ (Kuss)."
+  },
+  {
+    text: "Welches Lebensmittel galt im alten Rom als das Aphrodisiakum schlechthin?",
+    options: ["Spargel", "Schokolade", "Austern", "Currywurst-Pommes-Schranke"],
+    correct: 2,
+    explanation: "Austern – schon Casanova schwor angeblich darauf."
+  },
+  {
+    text: "In welchem Jahr wurde die Antibabypille in Deutschland zugelassen?",
+    options: ["1955", "1961", "1972", "1985"],
+    correct: 1,
+    explanation: "1961 – damals nur für verheiratete Frauen mit Kindern, nebenbei bemerkt."
+  },
+  {
+    text: "Wie heißt die meistgenutzte Dating-App weltweit?",
+    options: ["Bumble", "Tinder", "Hinge", "Mutters WhatsApp-Liste"],
+    correct: 1,
+    explanation: "Tinder – über 75 Millionen aktive Nutzer monatlich."
+  },
+  {
+    text: "An welchem Datum wird in China der „Singletag“ gefeiert?",
+    options: ["14.02.", "08.03.", "11.11.", "Jeder Sonntagabend"],
+    correct: 2,
+    explanation: "11.11. – die vier Einsen stehen für „allein“. Mittlerweile auch der größte Online-Shopping-Tag der Welt."
+  },
+  {
+    text: "Welche Frucht galt im alten China als Symbol der Fruchtbarkeit?",
+    options: ["Apfel", "Granatapfel", "Pfirsich", "Kiwi"],
+    correct: 1,
+    explanation: "Der Granatapfel – wegen der vielen Samen darin."
+  },
+  {
+    text: "Ab welchem Alter darf man in Deutschland ohne Genehmigung heiraten?",
+    options: ["16", "17", "18", "Wenn die Eltern aufgeben"],
+    correct: 2,
+    explanation: "18 – seit 2017 keine Ausnahmen mehr für Minderjährige."
+  },
+
+  // === SCHERZFRAGEN ===
+  {
+    text: "Welche Monate haben 28 Tage?",
+    options: ["Nur der Februar", "Februar und Schaltjahre", "Alle Monate", "Kommt drauf an, wer fragt"],
+    correct: 2,
+    explanation: "Alle Monate haben mindestens 28 Tage. Reingelegt!"
+  },
+  {
+    text: "Ein Bauer hat 17 Schafe. Alle bis auf 9 sterben. Wie viele bleiben übrig?",
+    options: ["8", "9", "17", "Tut mir leid für die Schafe"],
+    correct: 1,
+    explanation: "9 – „alle bis auf 9 sterben“ heißt: 9 überleben."
+  },
+  {
+    text: "Was wird nass, während es trocknet?",
+    options: ["Eine Wäscheleine", "Ein Handtuch", "Die Sonne", "Logik"],
+    correct: 1,
+    explanation: "Ein Handtuch – es saugt das Wasser auf, während es trocknet."
+  },
+  {
+    text: "Was hat einen Kopf und einen Schwanz, ist meist rund und hat keine Beine?",
+    options: ["Eine Münze", "Ein Hund ohne Beine", "Eine Schlange", "Mein Bruder nach 5 Bier"],
+    correct: 0,
+    explanation: "Eine Münze – Kopf und Zahl heißen auf Englisch „heads and tails“."
+  },
+  {
+    text: "Du läufst beim Marathon und überholst die zweite Person. Auf welchem Platz bist du?",
+    options: ["1.", "2.", "3.", "Schon eingelaufen, Hauptsache"],
+    correct: 1,
+    explanation: "Auf Platz 2 – du übernimmst den Platz der überholten Person, nicht den der ersten."
+  },
+  {
+    text: "Was geht ums Haus herum, ohne sich zu bewegen?",
+    options: ["Der Wind", "Der Garten", "Der Zaun", "Mein Streit mit der Nachbarin"],
+    correct: 2,
+    explanation: "Der Zaun – steht da und geht gedanklich trotzdem komplett ums Haus."
+  },
+  {
+    text: "Sieben Brüder haben jeweils eine Schwester. Wie viele Geschwister sind es insgesamt?",
+    options: ["7", "8", "14", "Genug, um WG zu gründen"],
+    correct: 1,
+    explanation: "8 – alle Brüder teilen sich dieselbe eine Schwester."
+  },
+  {
+    text: "Welches Wort wird im Duden falsch geschrieben?",
+    options: ["„Falsch“", "„Quietschen“", "Keines", "Alle, die ich nachschlage"],
+    correct: 2,
+    explanation: "Keines! Der Duden ist die Referenz – nichts darin ist falsch geschrieben."
+  },
+
+  // === VERWALTUNG ===
+  {
+    text: "Wofür steht die Abkürzung „BAföG“?",
+    options: [
+      "Bayerisches Förderungsgesetz",
+      "Bundesausbildungsförderungsgesetz",
+      "Bundesamt für Förderung Ostdeutscher Gemeinden",
+      "Bringt-Anstrengung-Frust-Ohne-Geld"
+    ],
+    correct: 1,
+    explanation: "Bundesausbildungsförderungsgesetz – seit 1971 in Kraft."
+  },
+  {
+    text: "Wie lange ist ein deutscher Personalausweis maximal gültig?",
+    options: ["5 Jahre", "6 Jahre", "10 Jahre", "Bis er sich auflöst"],
+    correct: 2,
+    explanation: "10 Jahre für Erwachsene, 6 Jahre für Personen unter 24."
+  },
+  {
+    text: "Wie viele Steuerklassen gibt es in Deutschland?",
+    options: ["4", "5", "6", "Eine zu viel"],
+    correct: 2,
+    explanation: "Sechs Steuerklassen (I bis VI) – die meisten kennen nur ihre eigene."
+  },
+  {
+    text: "Wofür steht „DIN“ in „DIN A4“?",
+    options: [
+      "Deutsches Institut für Normung",
+      "Druck-Industrie-Norm",
+      "Druckbar In Normalformat",
+      "Deutschland Ist Normiert"
+    ],
+    correct: 0,
+    explanation: "Deutsches Institut für Normung – legt seit 1917 deutsche Standards fest."
+  },
+  {
+    text: "Welches Format hat ein DIN-A4-Blatt?",
+    options: ["20 × 30 cm", "21 × 29,7 cm", "22 × 28 cm", "Größer als mein Drucker akzeptiert"],
+    correct: 1,
+    explanation: "21,0 × 29,7 cm – die Quadratwurzel aus 2 macht's möglich."
+  },
+  {
+    text: "Wofür steht die Abkürzung „GEMA“?",
+    options: [
+      "Gesellschaft für musikalische Aufführungs- und mechanische Vervielfältigungsrechte",
+      "Gemeinschaft Europäischer Musik-Anstalten",
+      "Gegen-Echte-Musik-Affinität",
+      "Gehe-Endlich-Musik-Aussuchen"
+    ],
+    correct: 0,
+    explanation: "Stimmt – der mit Abstand sperrigste Vereinsname Deutschlands."
+  },
+  {
+    text: "In welcher Stadt sitzt das Bundesverfassungsgericht?",
+    options: ["Berlin", "Karlsruhe", "München", "Wo es am ruhigsten ist"],
+    correct: 1,
+    explanation: "Karlsruhe – das „Hüter der Verfassung“ ist seit 1951 dort."
+  },
+  {
+    text: "Bis wann muss man (ohne Steuerberater) seine Steuererklärung normalerweise abgeben?",
+    options: ["31. Mai", "31. Juli", "31. Oktober", "Erste Mahnung = Erinnerung"],
+    correct: 1,
+    explanation: "Seit 2019: 31. Juli des Folgejahres. Mit Steuerberater: deutlich später."
+  },
+
+  // === SCHÄTZFRAGEN ===
+  {
+    text: "Wie groß ist der Mond ungefähr im Durchmesser?",
+    options: ["1.000 km", "3.500 km", "7.000 km", "So groß, wie ich ihn sehe"],
+    correct: 1,
+    explanation: "Etwa 3.474 km – ungefähr ein Viertel des Erddurchmessers."
+  },
+  {
+    text: "Wie hoch ist der Eiffelturm (mit Antenne)?",
+    options: ["220 m", "330 m", "440 m", "Höher als meine Karriere"],
+    correct: 1,
+    explanation: "330 m – ohne Antenne wären's 300 m. War 1889 das höchste Gebäude der Welt."
+  },
+  {
+    text: "Wie viele Bäume gibt es geschätzt auf der Erde?",
+    options: ["~100 Milliarden", "~1 Billion", "~3 Billionen", "Genug für deine ganzen Notizen"],
+    correct: 2,
+    explanation: "Etwa 3 Billionen – laut einer Yale-Studie von 2015."
+  },
+  {
+    text: "Wie schnell ist eine Brieftaube ungefähr unterwegs?",
+    options: ["30 km/h", "60 km/h", "90 km/h", "So schnell wie die Deutsche Post"],
+    correct: 2,
+    explanation: "Bis zu 90-100 km/h. Pakete trotzdem deutlich schneller als manche Lieferdienste."
+  },
+  {
+    text: "Wie viele Liter Bier wurden 2023 auf dem Oktoberfest ausgeschenkt?",
+    options: ["~2 Mio.", "~7 Mio.", "~15 Mio.", "Bis nichts mehr ging"],
+    correct: 1,
+    explanation: "Rund 7 Millionen Liter – beeindruckend, oder?"
+  },
+  {
+    text: "Wie viele Wörter spricht ein Mensch durchschnittlich pro Tag?",
+    options: ["~3.000", "~16.000", "~50.000", "Bei meiner Frau: das Doppelte"],
+    correct: 1,
+    explanation: "Ungefähr 16.000 Wörter – Männer und Frauen ähnlich, anders als der Mythos behauptet."
+  },
+  {
+    text: "Wie viele Sterne hat unsere Milchstraße schätzungsweise?",
+    options: ["~1 Million", "~100 Millionen", "100-400 Milliarden", "Mehr, als du nachzählen willst"],
+    correct: 2,
+    explanation: "Zwischen 100 und 400 Milliarden Sterne – plus mindestens genauso viele Planeten."
+  },
+
+  // === POP-KULTUR ===
+  {
+    text: "In welchem Disney-Film gibt es den singenden Schneemann „Olaf“?",
+    options: ["König der Löwen", "Die Eiskönigin", "Toy Story", "Bayrische Almlieder"],
+    correct: 1,
+    explanation: "„Die Eiskönigin – völlig unverfroren“ (2013). Olaf liebt warme Umarmungen."
+  },
+  {
+    text: "Wer singt den Megahit „Atemlos durch die Nacht“?",
+    options: ["Andrea Berg", "Helene Fischer", "Vanessa Mai", "Mein Vater im Auto"],
+    correct: 1,
+    explanation: "Helene Fischer – seit 2013 Standard auf jeder Hochzeitsfeier."
+  },
+  {
+    text: "Wer schrieb und sang den Hit „Bad Guy“ (2019)?",
+    options: ["Adele", "Billie Eilish", "Dua Lipa", "Mein Ex"],
+    correct: 1,
+    explanation: "Billie Eilish – damals 17 Jahre alt, 7-fache Grammy-Gewinnerin."
+  },
+  {
+    text: "Welche zwei Roboter sind die berühmtesten aus „Star Wars“?",
+    options: ["WALL-E und EVE", "R2-D2 und C-3PO", "Bender und HAL", "Saugroboter und Mähroboter"],
+    correct: 1,
+    explanation: "R2-D2 und C-3PO – seit Episode IV (1977) Dauergäste der Saga."
+  },
+  {
+    text: "In welcher Sprache wurde der Welthit „Macarena“ ursprünglich gesungen?",
+    options: ["Englisch", "Spanisch", "Italienisch", "Sächsisch (im Tanztempo)"],
+    correct: 1,
+    explanation: "Spanisch – Los del Río, 1993. Tanzfläche-Killer bis heute."
   }
 ];
