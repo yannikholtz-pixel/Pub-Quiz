@@ -1,6 +1,7 @@
 // GIF-URLs für die Auflösung. Werden nach Antwort zufällig gezogen.
 // Tipp: einfach neue Giphy-URLs in das passende Array einfügen.
 // Format: stabile Giphy-CDN-URLs (https://media.giphy.com/media/<id>/giphy.gif)
+// Alle URLs hier wurden geprüft (HTTP 200, weltweit erreichbar).
 
 module.exports = {
   CORRECT_GIFS: [
@@ -14,7 +15,6 @@ module.exports = {
     "https://media.giphy.com/media/dYZuqJLDVsCXm/giphy.gif",
     "https://media.giphy.com/media/3oz8xAFtqoOUUrsh7W/giphy.gif",
     "https://media.giphy.com/media/Zw3oBUuOlDJ3W/giphy.gif",
-    "https://media.giphy.com/media/ehhuGD0nByYxO/giphy.gif",
     "https://media.giphy.com/media/cMNtarVangsf6/giphy.gif",
     "https://media.giphy.com/media/3og0IPxMM0erATueVW/giphy.gif",
     "https://media.giphy.com/media/26gJzMcgzqfx2u8mc/giphy.gif",
@@ -23,14 +23,22 @@ module.exports = {
     "https://media.giphy.com/media/l3vR85PnGsBwu1PFK/giphy.gif",
     "https://media.giphy.com/media/3o6gE6LqxxtqJqnAru/giphy.gif",
     "https://media.giphy.com/media/3oFzm1pE1vQTrU0VRC/giphy.gif",
-    "https://media.giphy.com/media/13EjjLAEv4lKmI/giphy.gif"
+    "https://media.giphy.com/media/13EjjLAEv4lKmI/giphy.gif",
+    "https://media.giphy.com/media/11sBLVxNs7v6WA/giphy.gif",
+    "https://media.giphy.com/media/l4Ki4XGCSO33TpvMc/giphy.gif",
+    "https://media.giphy.com/media/9DfYUx2NQHoAhJVwoP/giphy.gif",
+    "https://media.giphy.com/media/RkPZTPNiLvep6/giphy.gif",
+    "https://media.giphy.com/media/c2YyNySJ1CbFC/giphy.gif",
+    "https://media.giphy.com/media/cI0sxPdsKxBwc/giphy.gif",
+    "https://media.giphy.com/media/JltOMwYmi0VrO/giphy.gif",
+    "https://media.giphy.com/media/12msLqxlVZjyfm/giphy.gif",
+    "https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif"
   ],
   WRONG_GIFS: [
     "https://media.giphy.com/media/3o7TKsQ8gqVrxZZUw0/giphy.gif",
     "https://media.giphy.com/media/l4FGuhL4U2WyjdkaY/giphy.gif",
     "https://media.giphy.com/media/26gsspfbuhqdpwxva/giphy.gif",
     "https://media.giphy.com/media/14ut8PhnIwzros/giphy.gif",
-    "https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif",
     "https://media.giphy.com/media/QMHoU66sBXqqLqYvGO/giphy.gif",
     "https://media.giphy.com/media/d10dMmzqCYqQ0/giphy.gif",
     "https://media.giphy.com/media/wXrHYKdIp8WUE/giphy.gif",
@@ -45,6 +53,17 @@ module.exports = {
     "https://media.giphy.com/media/3o6ZsXbpxTpyWgNzm0/giphy.gif",
     "https://media.giphy.com/media/3o6Zt6KHxJTbXCnSvu/giphy.gif",
     "https://media.giphy.com/media/3oz8xLd9DJq2l2VFtu/giphy.gif",
-    "https://media.giphy.com/media/QBd2kLB5qDmysEXre9/giphy.gif"
+    "https://media.giphy.com/media/QBd2kLB5qDmysEXre9/giphy.gif",
+    "https://media.giphy.com/media/26FPGwvShc0OqQUjK/giphy.gif",
+    "https://media.giphy.com/media/6uMqzcbWRhoT6/giphy.gif",
+    "https://media.giphy.com/media/3oz8xRD6cAa2t5dEo0/giphy.gif",
+    "https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif",
+    "https://media.giphy.com/media/3oEdv3Dj6j3VuwGDpu/giphy.gif",
+    "https://media.giphy.com/media/26FmRLBRZfpMNwWdy/giphy.gif",
+    "https://media.giphy.com/media/9Y5BbDSkSTiY8/giphy.gif",
+    "https://media.giphy.com/media/8vQSQ3cNXuDGo/giphy.gif",
+    "https://media.giphy.com/media/dpfeniRTZ9V20/giphy.gif",
+    "https://media.giphy.com/media/cKlMwGOcbmaJq/giphy.gif",
+    "https://media.giphy.com/media/zaqclXyLz3Uoo/giphy.gif"
   ]
 };

@@ -362,5 +362,245 @@ module.exports = [
     options: ["Dienstag", "Mittwoch", "Donnerstag", "Freitag, gefühlt am längsten"],
     correct: 2,
     explanation: "Donnerstag – 10 Buchstaben."
+  },
+  {
+    text: "Wer hat das Periodensystem der Elemente entwickelt?",
+    options: ["Albert Einstein", "Marie Curie", "Dmitri Mendelejew", "Walter White"],
+    correct: 2,
+    explanation: "Dmitri Mendelejew, 1869. Walter White hat's nur benutzt."
+  },
+  {
+    text: "Wie heißt der berühmte Detektiv von Arthur Conan Doyle?",
+    options: ["Hercule Poirot", "Sherlock Holmes", "Philip Marlowe", "Derrick"],
+    correct: 1,
+    explanation: "Sherlock Holmes – wohnt in der Baker Street 221B."
+  },
+  {
+    text: "In welcher Stadt steht der Big Ben?",
+    options: ["Edinburgh", "Manchester", "London", "Da, wo der Tee herkommt"],
+    correct: 2,
+    explanation: "London – am Palace of Westminster. Streng genommen ist „Big Ben“ aber nur die Glocke."
+  },
+  {
+    text: "Welches ist das einzige Säugetier, das aktiv fliegen kann?",
+    options: ["Fliegendes Eichhörnchen", "Fledermaus", "Kolibri (kein Säugetier!)", "Mein Hund, wenn ich rufe"],
+    correct: 1,
+    explanation: "Die Fledermaus. Eichhörnchen segeln nur."
+  },
+  {
+    text: "Wie viele Kontinente gibt es (klassische deutsche Zählung)?",
+    options: ["5", "7", "9", "Kommt drauf an, wer's malt"],
+    correct: 1,
+    explanation: "Sieben: Afrika, Antarktis, Asien, Australien, Europa, Nordamerika, Südamerika."
+  },
+  {
+    text: "Welcher berühmte Komponist wurde im Lauf seines Lebens taub?",
+    options: ["Mozart", "Beethoven", "Bach", "Helene Fischer (während ihrer Konzerte)"],
+    correct: 1,
+    explanation: "Beethoven. Komponiert hat er trotzdem weiter – Respekt."
+  },
+  {
+    text: "Welches Land hat aktuell die meisten Einwohner?",
+    options: ["China", "Indien", "USA", "WhatsApp-Familiengruppe"],
+    correct: 1,
+    explanation: "Indien hat 2023 China überholt – über 1,4 Milliarden."
+  },
+  {
+    text: "Wer schrieb die Erzählung „Die Verwandlung“ (mit dem Käfer)?",
+    options: ["Thomas Mann", "Franz Kafka", "Hermann Hesse", "Mein Biolehrer"],
+    correct: 1,
+    explanation: "Franz Kafka, 1915. Gregor Samsa wacht als Käfer auf – kafkaesk halt."
+  },
+  {
+    text: "Welcher Fluss fließt durch Wien?",
+    options: ["Donau", "Rhein", "Inn", "Kaffeefluss"],
+    correct: 0,
+    explanation: "Die Donau. „Wiener Donauwalzer“ kommt nicht von ungefähr."
+  },
+  {
+    text: "In welchem Jahr begann der Erste Weltkrieg?",
+    options: ["1912", "1914", "1918", "Vor langer, langer Zeit"],
+    correct: 1,
+    explanation: "1914 – ausgelöst durch das Attentat von Sarajevo."
+  },
+  {
+    text: "Wie heißt das größte Korallenriff der Welt?",
+    options: ["Maldiven-Riff", "Great Barrier Reef", "Bahamas-Riff", "Nemo-Riff"],
+    correct: 1,
+    explanation: "Great Barrier Reef vor Australien – über 2300 km lang."
+  },
+  {
+    text: "Welches chemische Element hat die Ordnungszahl 1?",
+    options: ["Helium", "Wasserstoff", "Sauerstoff", "Aluminium (klingt am leichtesten)"],
+    correct: 1,
+    explanation: "Wasserstoff (H) – das leichteste und häufigste Element im Universum."
+  },
+  {
+    text: "Wie groß ist Pi auf zwei Nachkommastellen?",
+    options: ["3,12", "3,14", "3,16", "Zu groß für meine Mathenoten damals"],
+    correct: 1,
+    explanation: "3,14… und dann ungefähr ewig weiter."
+  },
+  {
+    text: "In welchem Land wurde Schach erfunden?",
+    options: ["China", "Persien", "Indien", "Hogwarts"],
+    correct: 2,
+    explanation: "Indien – das Vorgängerspiel hieß „Chaturanga“."
+  },
+  {
+    text: "Wer hat die Allgemeine Relativitätstheorie entwickelt?",
+    options: ["Isaac Newton", "Albert Einstein", "Stephen Hawking", "Sheldon Cooper"],
+    correct: 1,
+    explanation: "Albert Einstein, 1915. Newton wäre stolz – und etwas überrascht."
+  },
+  {
+    text: "Welcher Vogel ist der Nationalvogel der USA?",
+    options: ["Truthahn", "Weißkopfseeadler", "Adler im Allgemeinen", "Twitter (R.I.P.)"],
+    correct: 1,
+    explanation: "Der Weißkopfseeadler – seit 1782 offizielles Wappentier."
+  },
+  {
+    text: "Wer war Deutschlands erste Bundeskanzlerin?",
+    options: ["Petra Kelly", "Angela Merkel", "Annalena Baerbock", "Heidi Klum"],
+    correct: 1,
+    explanation: "Angela Merkel, 2005–2021. 16 Jahre lang."
+  },
+  {
+    text: "Welche Sprache hat weltweit die meisten Muttersprachler?",
+    options: ["Englisch", "Spanisch", "Mandarin (Chinesisch)", "Bayerisch"],
+    correct: 2,
+    explanation: "Mandarin – über 900 Mio. Muttersprachler."
+  },
+  {
+    text: "Welcher US-Präsident hatte den Spitznamen „Ike“?",
+    options: ["Truman", "Eisenhower", "Kennedy", "Trump (kennt jemand „Ike“ Trump?)"],
+    correct: 1,
+    explanation: "Dwight D. Eisenhower – 34. US-Präsident."
+  },
+  {
+    text: "Was bedeutet die Abkürzung „GIF“?",
+    options: ["Graphics Interchange Format", "General Image File", "Giphy Internet Funny", "Gif (sprich „Dschiff“ oder „Giff“?)"],
+    correct: 0,
+    explanation: "Graphics Interchange Format – seit 1987 im Einsatz."
+  },
+  {
+    text: "Wer schrieb den dystopischen Roman „1984“?",
+    options: ["Aldous Huxley", "George Orwell", "Ray Bradbury", "Mein Geschichtslehrer"],
+    correct: 1,
+    explanation: "George Orwell, veröffentlicht 1949. Big Brother is watching."
+  },
+  {
+    text: "In welchem Land liegt Machu Picchu?",
+    options: ["Mexiko", "Peru", "Bolivien", "Auf einem Berg, irgendwo"],
+    correct: 1,
+    explanation: "Peru – die berühmte Inka-Stadt liegt auf 2430 m Höhe."
+  },
+  {
+    text: "Welcher Planet hat die meisten bekannten Monde?",
+    options: ["Jupiter", "Saturn", "Neptun", "Donald (so viele Anhänger…)"],
+    correct: 1,
+    explanation: "Saturn hat seit 2023 mit über 140 bekannten Monden Jupiter überholt."
+  },
+  {
+    text: "Welcher See ist der tiefste der Welt?",
+    options: ["Bodensee", "Baikalsee", "Toter See", "Pool im Hotel All-Inclusive"],
+    correct: 1,
+    explanation: "Baikalsee in Sibirien – über 1600 m tief."
+  },
+  {
+    text: "Wer war Bundestrainer beim deutschen WM-Sieg 2014?",
+    options: ["Jürgen Klinsmann", "Jogi Löw", "Hansi Flick", "Lothar Matthäus (der hätte's gewollt)"],
+    correct: 1,
+    explanation: "Joachim „Jogi“ Löw – das Mario-Götze-Tor in der Verlängerung gegen Argentinien."
+  },
+  {
+    text: "Wer schrieb den Roman „Der Steppenwolf“?",
+    options: ["Thomas Mann", "Hermann Hesse", "Heinrich Böll", "Karl May"],
+    correct: 1,
+    explanation: "Hermann Hesse, 1927. Hat auch die Band benannt."
+  },
+  {
+    text: "Welche Hauptstadt liegt am höchsten über dem Meeresspiegel?",
+    options: ["Mexiko-Stadt", "Quito (Ecuador)", "La Paz (Bolivien)", "Davos (oben am Berg halt)"],
+    correct: 2,
+    explanation: "La Paz – auf etwa 3640 m Höhe."
+  },
+  {
+    text: "Wie viele Sinne hat der Mensch klassisch?",
+    options: ["3", "5", "7", "Alle bis auf den gesunden Menschenverstand"],
+    correct: 1,
+    explanation: "Klassisch fünf: Sehen, Hören, Riechen, Schmecken, Tasten."
+  },
+  {
+    text: "Welches Tier galt im alten Ägypten als heilig?",
+    options: ["Hund", "Katze", "Falke", "Krokodil – wenn man Pech hatte"],
+    correct: 1,
+    explanation: "Die Katze – verehrt als Verkörperung der Göttin Bastet."
+  },
+  {
+    text: "In welchem Jahr ging das World Wide Web öffentlich online?",
+    options: ["1985", "1991", "1995", "Letztes Jahrhundert, mehr weiß ich nicht"],
+    correct: 1,
+    explanation: "1991 – Tim Berners-Lee am CERN."
+  },
+  {
+    text: "Wer ist der griechische Gott des Meeres?",
+    options: ["Zeus", "Poseidon", "Hades", "Aquaman (anderer Verein)"],
+    correct: 1,
+    explanation: "Poseidon. Sein römisches Pendant heißt Neptun."
+  },
+  {
+    text: "Welcher Promi heißt mit bürgerlichem Namen Stefani Germanotta?",
+    options: ["Lady Gaga", "Madonna", "Britney Spears", "Helene Fischer"],
+    correct: 0,
+    explanation: "Lady Gaga – Stefani Joanne Angelina Germanotta."
+  },
+  {
+    text: "Wie heißt der erste Buchstabe des griechischen Alphabets?",
+    options: ["Alpha", "Beta", "Omega", "A wie immer"],
+    correct: 0,
+    explanation: "Alpha. Omega ist der letzte – „das A und das O“."
+  },
+  {
+    text: "Was ist die kleinste Primzahl?",
+    options: ["0", "1", "2", "Negative Zahlen, weil minus minus plus"],
+    correct: 2,
+    explanation: "2 – und übrigens auch die einzige gerade Primzahl."
+  },
+  {
+    text: "Welcher Sport ist mit der „Tour de France“ verbunden?",
+    options: ["Marathon", "Schwimmen", "Radsport", "Croissant-Wettessen"],
+    correct: 2,
+    explanation: "Radsport – das wichtigste Etappenrennen der Welt."
+  },
+  {
+    text: "Wer schrieb die „Harry Potter“-Romane?",
+    options: ["Stephen King", "J.K. Rowling", "Cornelia Funke", "Voldemort"],
+    correct: 1,
+    explanation: "J.K. Rowling – die ersten Manuskripte wurden von vielen Verlagen abgelehnt."
+  },
+  {
+    text: "Was steht im Mittelpunkt des Berliner Pariser Platzes?",
+    options: ["Brandenburger Tor", "Reichstag", "Fernsehturm", "Eine Currywurstbude"],
+    correct: 0,
+    explanation: "Das Brandenburger Tor – seit 1791 das Wahrzeichen Berlins."
+  },
+  {
+    text: "Welche Tierart hat das größte Gehirn (absolut)?",
+    options: ["Elefant", "Pottwal", "Mensch", "Mein Goldfisch (laut ihm)"],
+    correct: 1,
+    explanation: "Der Pottwal – sein Hirn wiegt bis zu 9 kg."
+  },
+  {
+    text: "Wie heißt die Hauptstadt von Norwegen?",
+    options: ["Stockholm", "Oslo", "Helsinki", "Wo Olaf wohnt"],
+    correct: 1,
+    explanation: "Oslo. Stockholm ist Schweden, Helsinki Finnland."
+  },
+  {
+    text: "Wie viele Spielfelder hat ein Schachbrett insgesamt?",
+    options: ["48", "56", "64", "Mehr, als ich Geduld habe"],
+    correct: 2,
+    explanation: "8 × 8 = 64 Felder, abwechselnd hell und dunkel."
   }
 ];
