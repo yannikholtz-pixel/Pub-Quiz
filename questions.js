@@ -1926,5 +1926,670 @@ module.exports = [
     options: ["Ein Gemüse", "Eine Frucht (Beere)", "Eine Wurzel", "Mein Gesicht im Hochsommer"],
     correct: 1,
     explanation: "Botanisch eine Beerenfrucht – im Alltag aber ein Gemüse."
+  },
+
+  // === MYTHOLOGIE ===
+  {
+    text: "Welcher Gott ist im griechischen Olymp für Donner und Blitz zuständig?",
+    options: ["Hades", "Poseidon", "Apollon", "Zeus"],
+    correct: 3,
+    explanation: "Zeus – oberster Gott und mit dem Donnerkeil bewaffnet."
+  },
+  {
+    text: "Wer ist die griechische Göttin der Liebe?",
+    options: ["Aphrodite", "Athene", "Hera", "Artemis"],
+    correct: 0,
+    explanation: "Aphrodite. Bei den Römern hieß sie Venus."
+  },
+  {
+    text: "Wie heißt der einäugige Hauptgott der nordischen Mythologie?",
+    options: ["Thor", "Odin", "Loki", "Freyr"],
+    correct: 1,
+    explanation: "Odin – opferte ein Auge für die Weisheit."
+  },
+  {
+    text: "Welcher nordische Gott schwingt den Hammer Mjölnir?",
+    options: ["Loki", "Thor", "Heimdall", "Tyr"],
+    correct: 1,
+    explanation: "Thor – der Donnergott. Mjölnir kehrt nach jedem Wurf zu ihm zurück."
+  },
+  {
+    text: "Welches mythische Wesen hat den Körper eines Löwen, einen Menschenkopf und Flügel?",
+    options: ["Greif", "Sphinx", "Pegasus", "Mein Wäschehaufen am Sonntag"],
+    correct: 1,
+    explanation: "Sphinx – aus der griechischen und ägyptischen Mythologie."
+  },
+  {
+    text: "Wie heißt der dreiköpfige Höllenhund der griechischen Unterwelt?",
+    options: ["Cerberus", "Orthos", "Argos", "Lassie"],
+    correct: 0,
+    explanation: "Cerberus (Kerberos) – Wächter der Unterwelt unter Hades."
+  },
+  {
+    text: "Wie heißen die berühmten trojanischen Königssöhne der „Ilias“?",
+    options: ["Hektor und Paris", "Achilles und Odysseus", "Aeneas und Romulus", "Priamus und Menelaos"],
+    correct: 0,
+    explanation: "Hektor und Paris – Söhne von König Priamos."
+  },
+  {
+    text: "Wer war im alten Ägypten der Sonnengott?",
+    options: ["Anubis", "Osiris", "Ra", "Horus"],
+    correct: 2,
+    explanation: "Ra – mit Falkenkopf und Sonnenscheibe dargestellt."
+  },
+  {
+    text: "Wer löste der Legende nach den „Gordischen Knoten“?",
+    options: ["Herakles", "Theseus", "Alexander der Große", "Mit dem Schwert in einer Sekunde"],
+    correct: 2,
+    explanation: "Alexander der Große – er hieb den Knoten mit dem Schwert durch."
+  },
+  {
+    text: "Welche Göttin gab der Stadt Athen ihren Namen?",
+    options: ["Athene", "Hera", "Artemis", "Demeter"],
+    correct: 0,
+    explanation: "Athene – Göttin der Weisheit und der Strategie."
+  },
+
+  // === ASTRONOMIE ===
+  {
+    text: "Welcher Stern ist der Erde am nächsten (außer der Sonne)?",
+    options: ["Sirius", "Polaris", "Proxima Centauri", "Beteigeuze"],
+    correct: 2,
+    explanation: "Proxima Centauri – etwa 4,2 Lichtjahre entfernt."
+  },
+  {
+    text: "Wie viele Planeten hat unser Sonnensystem (Stand heute)?",
+    options: ["7", "8", "9", "Bis Pluto wieder Lust hat"],
+    correct: 1,
+    explanation: "Acht – Pluto wurde 2006 zum Zwergplaneten herabgestuft."
+  },
+  {
+    text: "Wie heißt unsere Heimatgalaxie?",
+    options: ["Andromeda", "Milchstraße", "Magellansche Wolke", "Triangulum"],
+    correct: 1,
+    explanation: "Milchstraße – mit der Andromeda kollidieren wir in ~4,5 Milliarden Jahren."
+  },
+  {
+    text: "Was ist ein „Schwarzes Loch“?",
+    options: [
+      "Eine Region mit so starker Gravitation, dass nichts entkommt",
+      "Ein erloschener Stern ohne Licht",
+      "Eine kosmische Müllkippe",
+      "Mein Geldbeutel am 25. des Monats"
+    ],
+    correct: 0,
+    explanation: "Eine Region, deren Gravitation selbst Licht festhält."
+  },
+  {
+    text: "Welcher ist der größte Planet unseres Sonnensystems?",
+    options: ["Saturn", "Jupiter", "Neptun", "Uranus"],
+    correct: 1,
+    explanation: "Jupiter – über 300-mal so massereich wie die Erde."
+  },
+  {
+    text: "Welcher Planet ist berühmt für seine deutlich sichtbaren Ringe?",
+    options: ["Jupiter", "Saturn", "Uranus", "Mars"],
+    correct: 1,
+    explanation: "Saturn – seine Ringe bestehen hauptsächlich aus Eis und Gestein."
+  },
+  {
+    text: "Was ist die Sonne im astronomischen Sinn?",
+    options: ["Ein Stern", "Ein Planet", "Ein Asteroid", "Eine sehr große Glühbirne"],
+    correct: 0,
+    explanation: "Ein Stern – etwa 4,6 Milliarden Jahre alt, mittlere Größe."
+  },
+  {
+    text: "Wie nennt man ein abgegrenztes System aus Milliarden Sternen?",
+    options: ["Sonnensystem", "Galaxie", "Universum", "Sternennebel"],
+    correct: 1,
+    explanation: "Galaxie – die Milchstraße ist eine davon."
+  },
+  {
+    text: "Welcher Planet rotiert nahezu „auf der Seite“ (Achsneigung ca. 98°)?",
+    options: ["Mars", "Uranus", "Neptun", "Merkur"],
+    correct: 1,
+    explanation: "Uranus – vermutlich Folge eines gewaltigen Einschlags."
+  },
+  {
+    text: "Zwischen welchen Planetenbahnen liegt der Asteroidengürtel?",
+    options: ["Erde und Mars", "Mars und Jupiter", "Jupiter und Saturn", "Saturn und Uranus"],
+    correct: 1,
+    explanation: "Zwischen Mars und Jupiter – Heimat von Ceres und vielen kleinen Brocken."
+  },
+
+  // === MODE & MARKEN ===
+  {
+    text: "Welche Modemarke hat zwei verschlungene Cs als Logo?",
+    options: ["Calvin Klein", "Chanel", "Cartier", "Coca-Cola"],
+    correct: 1,
+    explanation: "Chanel – die ineinandergreifenden Cs stehen für Coco Chanel."
+  },
+  {
+    text: "Welche Sportmarke hat das berühmte „Swoosh“-Logo?",
+    options: ["Adidas", "Nike", "Puma", "Reebok"],
+    correct: 1,
+    explanation: "Nike – das Swoosh wurde 1971 von einer Designstudentin für 35 Dollar entworfen."
+  },
+  {
+    text: "Welcher Apple-Mitbegründer verließ das Unternehmen 1985 nach internem Streit?",
+    options: ["Steve Wozniak", "Steve Jobs", "Tim Cook", "Ronald Wayne"],
+    correct: 1,
+    explanation: "Steve Jobs – kehrte 1997 mit der NeXT-Übernahme zurück."
+  },
+  {
+    text: "Welcher deutsche Sportartikel-Konzern wurde von Adolf „Adi“ Dassler gegründet?",
+    options: ["Adidas", "Puma", "Bogner", "Aldi-Sport-Edition"],
+    correct: 0,
+    explanation: "Adidas – sein Bruder Rudolf gründete später Puma."
+  },
+  {
+    text: "Welche Brausemarke wurde 1886 als „Geheimrezept“ eines Apothekers in Atlanta erfunden?",
+    options: ["Pepsi", "Coca-Cola", "Fanta", "Bionade"],
+    correct: 1,
+    explanation: "Coca-Cola – John Pemberton war der Apotheker."
+  },
+  {
+    text: "Welche Modemarke trägt ein Krokodil als Logo?",
+    options: ["Lacoste", "Hugo Boss", "Diesel", "Benetton"],
+    correct: 0,
+    explanation: "Lacoste – René Lacoste war Tennisspieler mit dem Spitznamen „Krokodil“."
+  },
+  {
+    text: "Welche Firma produziert das „iPhone“?",
+    options: ["Samsung", "Apple", "Huawei", "Aldi-Telefon-Werke"],
+    correct: 1,
+    explanation: "Apple – seit 2007 auf dem Markt."
+  },
+  {
+    text: "Welche Designerin gilt als Erfinderin des „Kleinen Schwarzen“?",
+    options: ["Coco Chanel", "Vivienne Westwood", "Donatella Versace", "Karl Lagerfeld"],
+    correct: 0,
+    explanation: "Coco Chanel – populär gemacht in den 1920er Jahren."
+  },
+  {
+    text: "In welchem deutschen Stadtteil hat Porsche seinen Stammsitz?",
+    options: ["München-Schwabing", "Stuttgart-Zuffenhausen", "Köln-Mülheim", "Berlin-Mitte"],
+    correct: 1,
+    explanation: "Stuttgart-Zuffenhausen – seit 1938."
+  },
+  {
+    text: "Welche britische Modemarke hat den klassischen Trenchcoat populär gemacht?",
+    options: ["Burberry", "Barbour", "Paul Smith", "Mein Rentner-Lieblingsmantel"],
+    correct: 0,
+    explanation: "Burberry – ursprünglich für britische Offiziere im Ersten Weltkrieg."
+  },
+
+  // === COMICS & ZEICHENTRICK II ===
+  {
+    text: "Wer ist die Freundin von Disneys Mickey Mouse?",
+    options: ["Daisy Duck", "Minnie Mouse", "Clarabelle Cow", "Peg-Leg Pete"],
+    correct: 1,
+    explanation: "Minnie Mouse – seit 1928 an Mickeys Seite."
+  },
+  {
+    text: "Wie heißt der weiße Hund in „Tim und Struppi“?",
+    options: ["Idefix", "Struppi", "Pluto", "Snoopy"],
+    correct: 1,
+    explanation: "Struppi (im Original „Milou“). Idefix gehört zu Asterix."
+  },
+  {
+    text: "Welche Comicfigur lebt mit Lucy und Linus im Universum der Peanuts?",
+    options: ["Snoopy", "Garfield", "Tom", "Asterix"],
+    correct: 0,
+    explanation: "Snoopy – der Beagle von Charlie Brown."
+  },
+  {
+    text: "Wie heißt der Druide im gallischen Dorf von Asterix und Obelix?",
+    options: ["Methusalix", "Verleihnix", "Miraculix", "Onkel Klaus"],
+    correct: 2,
+    explanation: "Miraculix – braut den berühmten Zaubertrank."
+  },
+  {
+    text: "In welcher Stadt lebt Spider-Man / Peter Parker?",
+    options: ["Gotham City", "Metropolis", "New York City", "Wuppertal"],
+    correct: 2,
+    explanation: "New York City – genauer: Queens und später Manhattan."
+  },
+  {
+    text: "Welche Manga-/Anime-Figur möchte „König der Piraten“ werden?",
+    options: ["Naruto Uzumaki", "Son Goku", "Monkey D. Luffy", "Light Yagami"],
+    correct: 2,
+    explanation: "Monkey D. Luffy aus „One Piece“ – seit 1997 auf der Suche nach dem Schatz."
+  },
+  {
+    text: "Welche Disney-Prinzessin lebt unter Wasser und heißt Ariel?",
+    options: ["Schneewittchen", "Cinderella", "Arielle, die Meerjungfrau", "Mulan"],
+    correct: 2,
+    explanation: "Arielle, die Meerjungfrau – seit 1989, Realfilm-Remake 2023."
+  },
+  {
+    text: "Wie heißen die kleinen blauen Wesen aus dem Pilz-Dorf auf Deutsch?",
+    options: ["Schlümpfe", "Smurfs (englisch)", "Pikachus", "Pilzlinge"],
+    correct: 0,
+    explanation: "Die Schlümpfe – im Englischen „Smurfs“, geschaffen 1958 von Peyo."
+  },
+  {
+    text: "Welche Figur ist berühmt für ihren Ausruf „D’oh!“?",
+    options: ["Bart Simpson", "Homer Simpson", "Peter Griffin", "Stewie Griffin"],
+    correct: 1,
+    explanation: "Homer Simpson – sogar im Oxford English Dictionary verzeichnet."
+  },
+  {
+    text: "In welchem Land spielen die Geschichten um Pippi Langstrumpf?",
+    options: ["Schweden", "Norwegen", "Finnland", "Dänemark"],
+    correct: 0,
+    explanation: "Schweden – Astrid Lindgren ließ Pippi in der Villa Kunterbunt wohnen."
+  },
+
+  // === POLITIK & WIRTSCHAFT ===
+  {
+    text: "Wer war von 2005 bis 2021 Bundeskanzlerin der Bundesrepublik Deutschland?",
+    options: ["Annalena Baerbock", "Angela Merkel", "Ursula von der Leyen", "Andrea Nahles"],
+    correct: 1,
+    explanation: "Angela Merkel – 16 Jahre durchgehend, vier Amtszeiten."
+  },
+  {
+    text: "Welche deutsche Partei war Petra Kelly 1980 maßgeblich am Gründen?",
+    options: ["SPD", "FDP", "Die Grünen", "CDU"],
+    correct: 2,
+    explanation: "Die Grünen – aus der Friedens- und Umweltbewegung heraus."
+  },
+  {
+    text: "Welche Währung wird in der Schweiz verwendet?",
+    options: ["Euro", "Schweizer Franken", "Schilling", "Goldkugeln aus dem Kuhfell"],
+    correct: 1,
+    explanation: "Schweizer Franken – Kürzel CHF, ISO-Code für „Confoederatio Helvetica“."
+  },
+  {
+    text: "In welcher deutschen Stadt sitzt die Deutsche Bundesbank?",
+    options: ["Berlin", "Frankfurt am Main", "Hamburg", "München"],
+    correct: 1,
+    explanation: "Frankfurt am Main – ebenso wie die Europäische Zentralbank."
+  },
+  {
+    text: "Welche US-Investmentbank ging 2008 pleite und löste die globale Finanzkrise aus?",
+    options: ["Goldman Sachs", "Lehman Brothers", "Morgan Stanley", "Bear Stearns"],
+    correct: 1,
+    explanation: "Lehman Brothers – 15. September 2008, der Tag, an dem alles wankte."
+  },
+  {
+    text: "Wer leitete von 2003 bis 2011 die Europäische Zentralbank (EZB)?",
+    options: ["Mario Draghi", "Christine Lagarde", "Jean-Claude Trichet", "Wim Duisenberg"],
+    correct: 2,
+    explanation: "Jean-Claude Trichet – nach Duisenberg, vor Draghi."
+  },
+  {
+    text: "Welche heutige Weltfirma wurde 1976 in einer Garage in Cupertino gegründet?",
+    options: ["Microsoft", "Apple", "Amazon", "Google"],
+    correct: 1,
+    explanation: "Apple – Steve Jobs und Steve Wozniak in der Garage von Jobs’ Eltern."
+  },
+  {
+    text: "Wofür steht die Abkürzung „BIP“ in der Wirtschaft?",
+    options: [
+      "Brutto-Inlandsprodukt",
+      "Bargeld in Plastik",
+      "Bezahlt In Raten",
+      "Bauern-Investitions-Plan"
+    ],
+    correct: 0,
+    explanation: "Brutto-Inlandsprodukt – misst die wirtschaftliche Leistung eines Landes."
+  },
+  {
+    text: "Welche US-Aktie wird unter dem Tickersymbol „GOOG“ gehandelt?",
+    options: ["Goldman Sachs", "Goodyear", "Alphabet (Google)", "Mein Glück an der Börse"],
+    correct: 2,
+    explanation: "Alphabet – die Mutter von Google."
+  },
+  {
+    text: "Wer wurde 2017 mit 39 Jahren der jüngste Präsident der Französischen V. Republik?",
+    options: ["Nicolas Sarkozy", "François Hollande", "Emmanuel Macron", "Charles de Gaulle"],
+    correct: 2,
+    explanation: "Emmanuel Macron – mit 39 Jahren ins Amt."
+  },
+
+  // === KUNST & ARCHITEKTUR ===
+  {
+    text: "Welcher niederländische Maler schnitt sich 1888 ein Stück seines Ohrs ab?",
+    options: ["Rembrandt", "Vincent van Gogh", "Piet Mondrian", "Johannes Vermeer"],
+    correct: 1,
+    explanation: "Vincent van Gogh – nach einem Streit mit Paul Gauguin."
+  },
+  {
+    text: "Wer schuf die berühmte Bronze-Skulptur „Der Denker“?",
+    options: ["Auguste Rodin", "Michelangelo", "Donatello", "Henry Moore"],
+    correct: 0,
+    explanation: "Auguste Rodin – ursprünglich Teil des „Höllentors“."
+  },
+  {
+    text: "In welcher Stadt steht die berühmte Kirche „Sagrada Família“?",
+    options: ["Madrid", "Sevilla", "Barcelona", "Auf der Lieferadresse, wird ja noch gebaut"],
+    correct: 2,
+    explanation: "Barcelona – Antoni Gaudís Lebenswerk, seit 1882 in Bau."
+  },
+  {
+    text: "Welcher Künstler bemalte die Decke der Sixtinischen Kapelle?",
+    options: ["Leonardo da Vinci", "Raffael", "Michelangelo", "Caravaggio"],
+    correct: 2,
+    explanation: "Michelangelo – von 1508 bis 1512, im Auftrag von Papst Julius II."
+  },
+  {
+    text: "Welcher Kunstrichtung wird Picassos „Les Demoiselles d’Avignon“ zugerechnet?",
+    options: ["Impressionismus", "Expressionismus", "Kubismus", "Pop Art"],
+    correct: 2,
+    explanation: "Kubismus – das Bild gilt als Wegbereiter dieser Stilrichtung."
+  },
+  {
+    text: "Welches Gemälde ist das berühmteste im Pariser Louvre?",
+    options: ["Mona Lisa", "Die Sternennacht", "Der Schrei", "Das letzte Abendmahl"],
+    correct: 0,
+    explanation: "Mona Lisa – täglich von tausenden Menschen umringt."
+  },
+  {
+    text: "Welcher amerikanische Pop-Art-Künstler malte die berühmten „Campbell’s Soup Cans“?",
+    options: ["Andy Warhol", "Roy Lichtenstein", "Jackson Pollock", "Aldi-Künstler des Jahres"],
+    correct: 0,
+    explanation: "Andy Warhol – 1962, eine Serie von 32 Leinwänden."
+  },
+  {
+    text: "In welchem Architekturstil wurde der Kölner Dom überwiegend errichtet?",
+    options: ["Romanik", "Gotik", "Renaissance", "Barock"],
+    correct: 1,
+    explanation: "Gotik – Bau von 1248 bis 1880 (mit Pause)."
+  },
+  {
+    text: "Welche berühmte Hängebrücke verbindet Manhattan mit Brooklyn?",
+    options: ["Brooklyn Bridge", "Golden Gate Bridge", "Tower Bridge", "Erasmus-Brücke"],
+    correct: 0,
+    explanation: "Brooklyn Bridge – 1883 eröffnet, eine der ältesten Hängebrücken der USA."
+  },
+  {
+    text: "Wer malte das ikonische Gemälde „Der Schrei“?",
+    options: ["Edvard Munch", "Vincent van Gogh", "Pablo Picasso", "Mein Bruder beim Anblick einer Spinne"],
+    correct: 0,
+    explanation: "Edvard Munch – Norweger, 1893. Mehrere Versionen existieren."
+  },
+
+  // === MEDIZIN & ANATOMIE ===
+  {
+    text: "Welches ist das größte innere Organ des menschlichen Körpers?",
+    options: ["Lunge", "Leber", "Magen", "Niere"],
+    correct: 1,
+    explanation: "Leber – wiegt rund 1,5 kg und übernimmt über 500 Aufgaben."
+  },
+  {
+    text: "Wie viele Lungenflügel hat der Mensch?",
+    options: ["1", "2", "3", "Genug zum Atmen"],
+    correct: 1,
+    explanation: "Zwei – der rechte hat drei Lappen, der linke nur zwei."
+  },
+  {
+    text: "Welche Blutgruppe gilt als „Universalspender“?",
+    options: ["0 negativ", "A positiv", "AB positiv", "B negativ"],
+    correct: 0,
+    explanation: "0 negativ – kann allen Empfängern gegeben werden, da kaum Antigene."
+  },
+  {
+    text: "In welchem Organ wird der Gallensaft gebildet?",
+    options: ["Niere", "Leber", "Magen", "Bauchspeicheldrüse"],
+    correct: 1,
+    explanation: "Leber. Die Gallenblase speichert ihn nur."
+  },
+  {
+    text: "Welche Blutgruppe ist weltweit am häufigsten?",
+    options: ["0 positiv", "A positiv", "B positiv", "AB negativ"],
+    correct: 0,
+    explanation: "0 positiv – etwa 38 % der Weltbevölkerung."
+  },
+  {
+    text: "Welcher deutsche Wissenschaftler entdeckte 1895 die nach ihm benannte Strahlung?",
+    options: ["Wilhelm Conrad Röntgen", "Marie Curie", "Albert Einstein", "Robert Koch"],
+    correct: 0,
+    explanation: "Wilhelm Conrad Röntgen – erhielt 1901 den ersten Physik-Nobelpreis."
+  },
+  {
+    text: "Wie heißen die Träger der Erbinformation in Zellen?",
+    options: ["Mitochondrien", "Chromosomen", "Ribosomen", "Lysosomen"],
+    correct: 1,
+    explanation: "Chromosomen – beim Menschen 46 (23 Paare)."
+  },
+  {
+    text: "Welcher Muskel gilt (relativ zur Größe) als der stärkste im menschlichen Körper?",
+    options: ["Bizeps", "Massetermuskel (Kaumuskel)", "Herzmuskel", "Mein Wille beim Aufstehen"],
+    correct: 1,
+    explanation: "Der Massetermuskel – beim Beißen entwickelt er hunderte Newton."
+  },
+  {
+    text: "Welcher antike griechische Arzt gilt als „Vater der Medizin“?",
+    options: ["Galen", "Hippokrates", "Asklepios", "Pythagoras"],
+    correct: 1,
+    explanation: "Hippokrates – auf ihn geht der bekannte „Hippokratische Eid“ zurück."
+  },
+  {
+    text: "Wer führte 1967 die erste erfolgreiche Herztransplantation am Menschen durch?",
+    options: ["Christiaan Barnard", "Robert Jarvik", "Norman Shumway", "Ferdinand Sauerbruch"],
+    correct: 0,
+    explanation: "Christiaan Barnard – in Kapstadt, Patient Louis Washkansky."
+  },
+
+  // === MATHE & LOGIK ===
+  {
+    text: "Wie viele Ecken hat ein Würfel?",
+    options: ["6", "8", "12", "24"],
+    correct: 1,
+    explanation: "Acht Ecken. (Sechs Flächen, zwölf Kanten, acht Ecken.)"
+  },
+  {
+    text: "Was ist die Quadratwurzel aus 144?",
+    options: ["10", "12", "14", "16"],
+    correct: 1,
+    explanation: "12 – denn 12 × 12 = 144."
+  },
+  {
+    text: "Was ist 7 × 8?",
+    options: ["54", "56", "64", "Wer fragt sowas in einer Quizshow"],
+    correct: 1,
+    explanation: "56. Klassische Stolperfalle in der Grundschule."
+  },
+  {
+    text: "Welche dieser Zahlen ist eine Primzahl?",
+    options: ["9", "15", "17", "21"],
+    correct: 2,
+    explanation: "17. (9 = 3·3, 15 = 3·5, 21 = 3·7)"
+  },
+  {
+    text: "Wie nennt man ein Dreieck mit drei gleich langen Seiten?",
+    options: ["Gleichschenkliges Dreieck", "Gleichseitiges Dreieck", "Rechtwinkliges Dreieck", "Stumpfwinkliges Dreieck"],
+    correct: 1,
+    explanation: "Gleichseitig – alle drei Seiten gleich, alle Innenwinkel 60°."
+  },
+  {
+    text: "Wie viele Grad hat ein Vollkreis?",
+    options: ["180°", "270°", "360°", "So viele wie beim Skifahren-Sturz"],
+    correct: 2,
+    explanation: "360°. Babylonisches Sexagesimalsystem lässt grüßen."
+  },
+  {
+    text: "Was ergibt 0 geteilt durch 5?",
+    options: ["0", "5", "Undefiniert", "Eine Pizza, weil ich Hunger hab"],
+    correct: 0,
+    explanation: "0 – Null geteilt durch eine Zahl ist immer 0. (5 / 0 wäre dagegen undefiniert.)"
+  },
+  {
+    text: "Wie viele Seiten hat ein Oktagon (Achteck)?",
+    options: ["6", "7", "8", "10"],
+    correct: 2,
+    explanation: "Acht Seiten. „Okta“ kommt vom griechischen Wort für 8."
+  },
+  {
+    text: "Was beschreibt die mathematische Konstante π (Pi)?",
+    options: [
+      "Verhältnis von Kreisumfang zu Durchmesser",
+      "Quadratwurzel aus 9",
+      "Eulersche Zahl",
+      "Jede kreisrunde Form"
+    ],
+    correct: 0,
+    explanation: "Verhältnis Umfang : Durchmesser eines Kreises – etwa 3,14159…"
+  },
+  {
+    text: "Wie viel sind 25 % von 200?",
+    options: ["25", "50", "75", "Mehr, als ich brauche"],
+    correct: 1,
+    explanation: "50. Ein Viertel von 200."
+  },
+
+  // === SPRACHE & SPRICHWÖRTER ===
+  {
+    text: "Welche Sprache hat in der EU die meisten Muttersprachler?",
+    options: ["Englisch", "Deutsch", "Französisch", "Italienisch"],
+    correct: 1,
+    explanation: "Deutsch – etwa 16 % der EU-Bevölkerung."
+  },
+  {
+    text: "Welcher Buchstabe wird in der deutschen Sprache am häufigsten verwendet?",
+    options: ["A", "E", "N", "R"],
+    correct: 1,
+    explanation: "E – mit Abstand der häufigste Buchstabe im Deutschen."
+  },
+  {
+    text: "Welche Sprachen sind im Vatikan offiziell verwendet?",
+    options: ["Latein und Italienisch", "Nur Italienisch", "Nur Latein", "Französisch"],
+    correct: 0,
+    explanation: "Latein (Amtssprache) und Italienisch (Alltagssprache)."
+  },
+  {
+    text: "Was bedeutet das Sprichwort „Tomaten auf den Augen haben“?",
+    options: [
+      "Kopfschmerzen haben",
+      "Etwas Offensichtliches nicht sehen",
+      "Eine Allergie haben",
+      "Im Garten gearbeitet zu haben"
+    ],
+    correct: 1,
+    explanation: "Etwas Offensichtliches übersehen oder nicht bemerken."
+  },
+  {
+    text: "Aus welcher Sprache stammt das Wort „Algebra“?",
+    options: ["Lateinisch", "Griechisch", "Arabisch", "Sanskrit"],
+    correct: 2,
+    explanation: "Arabisch – „al-jabr“, etwa „das Zusammenfügen“."
+  },
+  {
+    text: "Was bedeutet das deutsche Wort „Fernweh“?",
+    options: [
+      "Sehnsucht in die Ferne, weg von zu Hause",
+      "Heimweh am Strand",
+      "Kopfschmerzen beim Reisen",
+      "Allergie gegen die eigene Heimat"
+    ],
+    correct: 0,
+    explanation: "Sehnsucht nach fernen Orten – das Gegenteil von Heimweh."
+  },
+  {
+    text: "Welche drei Schriften werden im modernen Japanisch verwendet?",
+    options: [
+      "Hiragana, Katakana, Kanji",
+      "Kyrillisch, Lateinisch, Kanji",
+      "Nur Kanji",
+      "Nur Hiragana"
+    ],
+    correct: 0,
+    explanation: "Hiragana und Katakana sind Silbenschriften, Kanji sind chinesische Zeichen."
+  },
+  {
+    text: "Was bezeichnet der Begriff „Spanglish“?",
+    options: [
+      "Englisch mit spanischem Akzent",
+      "Mischsprache aus Spanisch und Englisch",
+      "Englisch in Spanien",
+      "Spanisch nur in Lateinamerika"
+    ],
+    correct: 1,
+    explanation: "Mischsprache aus Spanisch und Englisch – verbreitet vor allem in den USA."
+  },
+  {
+    text: "Zu welcher Sprachfamilie gehört Deutsch?",
+    options: [
+      "Romanische Sprachen",
+      "Germanische Sprachen",
+      "Slawische Sprachen",
+      "Keltische Sprachen"
+    ],
+    correct: 1,
+    explanation: "Germanisch – wie Englisch, Niederländisch, Schwedisch."
+  },
+  {
+    text: "Wofür steht die Internet-Abkürzung „WTF“ (höflich umschrieben)?",
+    options: [
+      "What The F***",
+      "Where To Find",
+      "With The Family",
+      "Was The Fail"
+    ],
+    correct: 0,
+    explanation: "Stimmt – Ausdruck der Überraschung oder des Unverständnisses."
+  },
+
+  // === AKTUELLES & POLITIK II ===
+  {
+    text: "In welchem Jahr trat der Vertrag von Maastricht (Gründung der EU) in Kraft?",
+    options: ["1989", "1992", "1993", "2002"],
+    correct: 2,
+    explanation: "1993 – unterzeichnet 1992, in Kraft 1. November 1993."
+  },
+  {
+    text: "In welcher Stadt fanden 2024 die Olympischen Sommerspiele statt?",
+    options: ["Tokio", "Paris", "Los Angeles", "Brisbane"],
+    correct: 1,
+    explanation: "Paris – zum dritten Mal nach 1900 und 1924."
+  },
+  {
+    text: "Wer wurde 2024 erneut zum US-Präsidenten gewählt?",
+    options: ["Joe Biden", "Donald Trump", "Kamala Harris", "Ron DeSantis"],
+    correct: 1,
+    explanation: "Donald Trump – Amtsantritt zum zweiten Mal im Januar 2025."
+  },
+  {
+    text: "Welche Politikerin war von 2021 bis 2025 deutsche Außenministerin?",
+    options: ["Annalena Baerbock", "Sahra Wagenknecht", "Ursula von der Leyen", "Mama vom Bundestag"],
+    correct: 0,
+    explanation: "Annalena Baerbock (Grüne) – im Kabinett Scholz."
+  },
+  {
+    text: "Wer ist seit 2019 Präsidentin der Europäischen Kommission?",
+    options: ["Ursula von der Leyen", "Christine Lagarde", "Roberta Metsola", "Angela Merkel"],
+    correct: 0,
+    explanation: "Ursula von der Leyen – 2024 für eine zweite Amtszeit bestätigt."
+  },
+  {
+    text: "Wo befindet sich der Hauptsitz der Vereinten Nationen (UN)?",
+    options: ["Genf", "New York", "Wien", "Brüssel"],
+    correct: 1,
+    explanation: "New York City – mit weiteren Hauptsitzen in Genf, Wien und Nairobi."
+  },
+  {
+    text: "In welcher Stadt hat die NATO ihr Hauptquartier?",
+    options: ["Washington D.C.", "Brüssel", "Genf", "Aldi-Hauptzentrale"],
+    correct: 1,
+    explanation: "Brüssel – seit 1967 nach Frankreichs Austritt aus der Militärintegration."
+  },
+  {
+    text: "Welcher Partei gehörte Bundeskanzler Helmut Kohl an?",
+    options: ["SPD", "CDU", "FDP", "Die Grünen"],
+    correct: 1,
+    explanation: "CDU – Kanzler von 1982 bis 1998."
+  },
+  {
+    text: "In welchem Jahr trat die Bundesrepublik Deutschland der NATO bei?",
+    options: ["1949", "1955", "1966", "1990"],
+    correct: 1,
+    explanation: "1955 – im Zuge der westdeutschen Wiederbewaffnung."
+  },
+  {
+    text: "In welcher Region findet die Olympische Winterspiele 2026 statt?",
+    options: ["Mailand und Cortina d’Ampezzo", "Innsbruck", "Stockholm-Åre", "Sapporo"],
+    correct: 0,
+    explanation: "Mailand und Cortina d’Ampezzo (Italien) – die Winterspiele kehren ins Land der Dolomiten zurück."
   }
 ];
