@@ -91,10 +91,10 @@ function renderTeams(teams) {
   const status = document.getElementById('lobby-status');
   if (teams.length < 2) {
     startBtn.disabled = true;
-    status.textContent = `Warten auf weitere Teams… (${teams.length}/2 mindestens)`;
+    status.textContent = `Warten auf weitere Teams… (${teams.length}/2 mindestens, max. 6)`;
   } else {
     startBtn.disabled = false;
-    status.textContent = `${teams.length} Teams bereit. Jeder kann starten.`;
+    status.textContent = `${teams.length}/6 Teams – jeder kann starten.`;
   }
 }
 

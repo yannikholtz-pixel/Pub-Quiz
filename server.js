@@ -3,128 +3,17 @@ const http = require('http');
 const path = require('path');
 const { Server } = require('socket.io');
 
+const QUESTIONS = require('./questions');
+const { CORRECT_GIFS, WRONG_GIFS } = require('./gifs');
+
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: '*' } });
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-const QUESTIONS = [
-  {
-    text: "Wie viele Herzen hat ein Oktopus?",
-    options: [
-      "1, ist doch ein Tier wie jedes andere",
-      "3",
-      "8 – eines pro Arm",
-      "Keins. Oktopusse vergeben Herzen an niemanden."
-    ],
-    correct: 1,
-    explanation: "Drei Herzen: zwei für die Kiemen, eines für den Rest des Körpers."
-  },
-  {
-    text: "Was ist schwerer: 1 kg Federn oder 1 kg Blei?",
-    options: [
-      "Blei – ist halt Blei",
-      "Federn – die wiegen schwer auf dem Gewissen",
-      "Beides gleich schwer",
-      "Hängt vom Wetter ab"
-    ],
-    correct: 2,
-    explanation: "Ein Kilo bleibt ein Kilo. Aber zugegeben: ein Sack Federn sieht imposanter aus."
-  },
-  {
-    text: "In welchem Jahr fand die deutsche Wiedervereinigung statt?",
-    options: ["1989", "1990", "1991", "Letzten Dienstag"],
-    correct: 1,
-    explanation: "Am 3. Oktober 1990 wurde Deutschland offiziell wiedervereinigt."
-  },
-  {
-    text: "Wie viele Streifen hat eine durchschnittliche Banane?",
-    options: [
-      "Bananen haben keine Streifen",
-      "47",
-      "Genau 9, das ist Bananen-Standard",
-      "So viele wie ein Zebra Bananen hat"
-    ],
-    correct: 0,
-    explanation: "Bananen haben keine Streifen. Glückwunsch, falls du nicht in die Falle getappt bist."
-  },
-  {
-    text: "Welches Tier kann seine Zunge nicht herausstrecken?",
-    options: ["Giraffe", "Frosch", "Krokodil", "Schwiegermutter"],
-    correct: 2,
-    explanation: "Krokodile haben ihre Zunge am Mundboden festgewachsen – Schluss mit Frechheiten."
-  },
-  {
-    text: "Was bedeutet die Abkürzung „WLAN“?",
-    options: [
-      "Wahnsinnig Langsames Anti-Netzwerk",
-      "Wireless Local Area Network",
-      "Wo Lebt Andis Nachbar",
-      "Wenn Lädt Alles Nicht"
-    ],
-    correct: 1,
-    explanation: "Wireless Local Area Network. Und ja, manchmal stimmt auch die letzte Antwort."
-  },
-  {
-    text: "Wie heißt die Hauptstadt von Australien?",
-    options: [
-      "Sydney",
-      "Melbourne",
-      "Canberra",
-      "Da, wo die Kängurus gerade sind"
-    ],
-    correct: 2,
-    explanation: "Canberra. Sydney ist der berühmtere Bruder – aber den Titel hat Canberra."
-  },
-  {
-    text: "Wie viele Zwerge begleiten Schneewittchen?",
-    options: ["5", "7", "9", "Kommt auf den Tarifvertrag an"],
-    correct: 1,
-    explanation: "Sieben. Hatschi, Schlafmütz, Brummbär und Co."
-  },
-  {
-    text: "Welche Farbe hat ein Schimmel (das Pferd, nicht das auf dem Brot)?",
-    options: [
-      "Schwarz",
-      "Braun",
-      "Weiß",
-      "Grünlich, wenn er lange im Stall stand"
-    ],
-    correct: 2,
-    explanation: "Schimmel sind weiße Pferde. Auf altem Brot allerdings …"
-  },
-  {
-    text: "Wie viele Augen hat eine Biene?",
-    options: [
-      "2, klar",
-      "4",
-      "5",
-      "Alle, die sie braucht, um deinen Kuchen zu finden"
-    ],
-    correct: 2,
-    explanation: "Fünf: zwei große Komplexaugen plus drei Punktaugen auf dem Kopf."
-  }
-];
-
-const CORRECT_GIFS = [
-  "https://media.giphy.com/media/3o7TKr3nzbh5WgCFxe/giphy.gif",
-  "https://media.giphy.com/media/26u4lOMA8JKSnL9Uk/giphy.gif",
-  "https://media.giphy.com/media/g9582DNuQppxC/giphy.gif",
-  "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif",
-  "https://media.giphy.com/media/3o7abAHdYvZdBNnGZq/giphy.gif",
-  "https://media.giphy.com/media/3o6Zt6ML6BklcajjsA/giphy.gif"
-];
-
-const WRONG_GIFS = [
-  "https://media.giphy.com/media/3o7TKsQ8gqVrxZZUw0/giphy.gif",
-  "https://media.giphy.com/media/l4FGuhL4U2WyjdkaY/giphy.gif",
-  "https://media.giphy.com/media/26gsspfbuhqdpwxva/giphy.gif",
-  "https://media.giphy.com/media/14ut8PhnIwzros/giphy.gif",
-  "https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif",
-  "https://media.giphy.com/media/QMHoU66sBXqqLqYvGO/giphy.gif"
-];
-
+const MAX_TEAMS = 6;
+const QUESTIONS_PER_GAME = 50;
 const QUESTION_TIME_MS = 25_000;
 const REVEAL_TIME_MS = 7_000;
 const ROOM_TTL_AFTER_FINISH_MS = 10 * 60 * 1000;
@@ -139,6 +28,15 @@ function genCode() {
 }
 
 function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+function shuffleAndPick(arr, n) {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy.slice(0, Math.min(n, copy.length));
+}
 
 function teamList(room) {
   return Object.values(room.teams).map(t => ({ name: t.name, score: t.score }));
@@ -159,19 +57,19 @@ function nextQuestion(code) {
   room.answers = {};
   room.revealed = false;
 
-  if (room.questionIdx >= QUESTIONS.length) {
+  if (room.questionIdx >= room.gameQuestions.length) {
     const finalScores = teamList(room).sort((a, b) => b.score - a.score);
     io.to(code).emit('game:over', finalScores);
     setTimeout(() => { delete rooms[code]; }, ROOM_TTL_AFTER_FINISH_MS);
     return;
   }
 
-  const q = QUESTIONS[room.questionIdx];
+  const q = room.gameQuestions[room.questionIdx];
   const deadline = Date.now() + QUESTION_TIME_MS;
   room.deadline = deadline;
   io.to(code).emit('question', {
     idx: room.questionIdx,
-    total: QUESTIONS.length,
+    total: room.gameQuestions.length,
     text: q.text,
     options: q.options,
     deadline
@@ -185,8 +83,8 @@ function revealAnswer(code) {
   room.revealed = true;
   clearTimeout(room.questionTimer);
 
-  const q = QUESTIONS[room.questionIdx];
-  const isLast = room.questionIdx === QUESTIONS.length - 1;
+  const q = room.gameQuestions[room.questionIdx];
+  const isLast = room.questionIdx === room.gameQuestions.length - 1;
   const nextDeadline = Date.now() + REVEAL_TIME_MS;
 
   for (const sid of Object.keys(room.teams)) {
@@ -225,7 +123,8 @@ io.on('connection', (socket) => {
       questionIdx: -1,
       answers: {},
       started: false,
-      revealed: false
+      revealed: false,
+      gameQuestions: []
     };
     rooms[code].teams[socket.id] = { name, score: 0 };
     socket.join(code);
@@ -242,6 +141,9 @@ io.on('connection', (socket) => {
     if (!room) return socket.emit('errorMsg', 'Raum nicht gefunden.');
     if (room.started) return socket.emit('errorMsg', 'Spiel läuft bereits – warte auf die nächste Runde.');
     if (!name) return socket.emit('errorMsg', 'Bitte gib einen Teamnamen ein.');
+    if (Object.keys(room.teams).length >= MAX_TEAMS) {
+      return socket.emit('errorMsg', `Raum voll – max. ${MAX_TEAMS} Teams.`);
+    }
     const taken = Object.values(room.teams).some(t => t.name.toLowerCase() === name.toLowerCase());
     if (taken) return socket.emit('errorMsg', 'Teamname schon vergeben, nimm einen anderen.');
     room.teams[socket.id] = { name, score: 0 };
@@ -260,6 +162,7 @@ io.on('connection', (socket) => {
       return socket.emit('errorMsg', 'Mindestens 2 Teams werden benötigt.');
     }
     room.started = true;
+    room.gameQuestions = shuffleAndPick(QUESTIONS, QUESTIONS_PER_GAME);
     io.to(code).emit('game:start');
     setTimeout(() => nextQuestion(code), 1500);
   });
@@ -305,4 +208,5 @@ io.on('connection', (socket) => {
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Pub-Quiz läuft auf Port ${PORT}`);
+  console.log(`Fragenpool: ${QUESTIONS.length} Fragen, ${QUESTIONS_PER_GAME} pro Spiel, max. ${MAX_TEAMS} Teams`);
 });
