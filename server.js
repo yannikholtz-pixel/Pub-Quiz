@@ -12,7 +12,7 @@ const io = new Server(server, { cors: { origin: '*' } });
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-const MAX_TEAMS = 6;
+const MAX_TEAMS = 99;
 const ALLOWED_LENGTHS = [25, 50, 100];
 const DEFAULT_LENGTH = 50;
 const QUESTION_TIME_MS = 25_000;
@@ -217,8 +217,8 @@ io.on('connection', (socket) => {
     const code = socket.data.room;
     const room = rooms[code];
     if (!room || room.started) return;
-    if (Object.keys(room.teams).length < 2) {
-      return socket.emit('errorMsg', 'Mindestens 2 Teams werden benötigt.');
+    if (Object.keys(room.teams).length < 1) {
+      return socket.emit('errorMsg', 'Mindestens 1 Team wird benötigt.');
     }
     room.started = true;
     room.gameQuestions = shuffleAndPick(QUESTIONS, room.questionCount);

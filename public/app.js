@@ -122,12 +122,13 @@ function renderTeams(teams) {
   }
   const startBtn = document.getElementById('btn-start');
   const status = document.getElementById('lobby-status');
-  if (teams.length < 2) {
-    startBtn.disabled = true;
-    status.textContent = `Warten auf weitere Teams… (${teams.length}/2 mindestens, max. 6)`;
+  startBtn.disabled = teams.length < 1;
+  if (teams.length === 0) {
+    status.textContent = 'Warten auf das erste Team…';
+  } else if (teams.length === 1) {
+    status.textContent = '1 Team – du kannst auch alleine starten.';
   } else {
-    startBtn.disabled = false;
-    status.textContent = `${teams.length}/6 Teams – jeder kann starten.`;
+    status.textContent = `${teams.length} Teams – jeder kann starten. (max. 99)`;
   }
 }
 
