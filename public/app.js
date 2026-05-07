@@ -1,5 +1,18 @@
 const socket = io();
 
+document.addEventListener('click', () => SoundFX.init(), { once: true });
+
+const muteBtn = document.getElementById('mute-toggle');
+function refreshMuteBtn() {
+  muteBtn.textContent = SoundFX.isMuted() ? '🔇' : '🔊';
+}
+refreshMuteBtn();
+muteBtn.addEventListener('click', () => {
+  SoundFX.toggleMuted();
+  SoundFX.init();
+  refreshMuteBtn();
+});
+
 const screens = {
   start: document.getElementById('screen-start'),
   lobby: document.getElementById('screen-lobby'),
@@ -144,6 +157,7 @@ socket.on('question', ({ idx, total, text, options, deadline }) => {
   });
 
   startCountdown(deadline, document.getElementById('q-timer'), document.getElementById('timer-fill'));
+  SoundFX.questionStart();
   show('question');
 });
 
@@ -160,6 +174,8 @@ socket.on('answered', () => {
 
 socket.on('reveal', ({ answered, correct, correctChoice, correctText, explanation, gif, score, isLast, nextDeadline }) => {
   clearInterval(questionTimerHandle);
+
+  if (correct) SoundFX.correct(); else SoundFX.wrong();
 
   const headline = document.getElementById('r-headline');
   if (!answered) {
@@ -199,6 +215,7 @@ socket.on('reveal:scores', ({ scores }) => {
 
 socket.on('game:over', (scores) => {
   clearInterval(revealTimerHandle);
+  SoundFX.finale();
   const ol = document.getElementById('final-scores');
   ol.innerHTML = '';
   for (const s of scores) {
@@ -221,9 +238,14 @@ socket.on('game:over', (scores) => {
 function startCountdown(deadline, labelEl, fillEl) {
   clearInterval(questionTimerHandle);
   const total = Math.max(1, deadline - Date.now());
+  let lastSecond = -1;
   const update = () => {
     const remaining = Math.max(0, deadline - Date.now());
     const seconds = Math.ceil(remaining / 1000);
+    if (seconds !== lastSecond && seconds > 0 && seconds <= 5) {
+      SoundFX.tick();
+    }
+    lastSecond = seconds;
     if (labelEl) labelEl.textContent = seconds;
     if (fillEl) fillEl.style.width = (remaining / total * 100) + '%';
     if (remaining <= 0) clearInterval(questionTimerHandle);

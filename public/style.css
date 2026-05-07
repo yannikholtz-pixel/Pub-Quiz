@@ -299,3 +299,27 @@ button.ghost:hover:not(:disabled) { border-color: var(--accent); color: var(--ac
 #screen-reveal h1 { font-size: 2rem; }
 .headline-correct { color: var(--good); }
 .headline-wrong { color: var(--bad); }
+
+.mute-btn {
+  position: fixed;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 1.25rem;
+  background: rgba(255,255,255,0.12);
+  color: var(--text);
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+}
+.mute-btn:hover:not(:disabled) {
+  background: rgba(255,255,255,0.22);
+  border-color: var(--accent);
+  transform: none;
+}
