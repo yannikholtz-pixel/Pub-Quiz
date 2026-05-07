@@ -13,7 +13,8 @@ const io = new Server(server, { cors: { origin: '*' } });
 app.use(express.static(path.join(__dirname, 'public')));
 
 const MAX_TEAMS = 6;
-const QUESTIONS_PER_GAME = 50;
+const ALLOWED_LENGTHS = [25, 50, 100];
+const DEFAULT_LENGTH = 50;
 const QUESTION_TIME_MS = 25_000;
 const REVEAL_TIME_MS = 7_000;
 const ROOM_TTL_AFTER_FINISH_MS = 10 * 60 * 1000;
@@ -124,13 +125,18 @@ io.on('connection', (socket) => {
       answers: {},
       started: false,
       revealed: false,
-      gameQuestions: []
+      gameQuestions: [],
+      questionCount: DEFAULT_LENGTH
     };
     rooms[code].teams[socket.id] = { name, score: 0 };
     socket.join(code);
     socket.data.room = code;
     socket.data.name = name;
-    socket.emit('room:joined', { code, name, teams: teamList(rooms[code]) });
+    socket.emit('room:joined', {
+      code, name,
+      teams: teamList(rooms[code]),
+      questionCount: rooms[code].questionCount
+    });
     broadcastLobby(code);
   });
 
@@ -150,8 +156,21 @@ io.on('connection', (socket) => {
     socket.join(code);
     socket.data.room = code;
     socket.data.name = name;
-    socket.emit('room:joined', { code, name, teams: teamList(room) });
+    socket.emit('room:joined', {
+      code, name,
+      teams: teamList(room),
+      questionCount: room.questionCount
+    });
     broadcastLobby(code);
+  });
+
+  socket.on('lobby:setLength', ({ count }) => {
+    const code = socket.data.room;
+    const room = rooms[code];
+    if (!room || room.started) return;
+    if (!ALLOWED_LENGTHS.includes(count)) return;
+    room.questionCount = Math.min(count, QUESTIONS.length);
+    io.to(code).emit('lobby:length', { count: room.questionCount });
   });
 
   socket.on('room:start', () => {
@@ -162,7 +181,7 @@ io.on('connection', (socket) => {
       return socket.emit('errorMsg', 'Mindestens 2 Teams werden benötigt.');
     }
     room.started = true;
-    room.gameQuestions = shuffleAndPick(QUESTIONS, QUESTIONS_PER_GAME);
+    room.gameQuestions = shuffleAndPick(QUESTIONS, room.questionCount);
     io.to(code).emit('game:start');
     setTimeout(() => nextQuestion(code), 1500);
   });
@@ -208,5 +227,5 @@ io.on('connection', (socket) => {
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Pub-Quiz läuft auf Port ${PORT}`);
-  console.log(`Fragenpool: ${QUESTIONS.length} Fragen, ${QUESTIONS_PER_GAME} pro Spiel, max. ${MAX_TEAMS} Teams`);
+  console.log(`Fragenpool: ${QUESTIONS.length}, wählbar ${ALLOWED_LENGTHS.join('/')} pro Spiel, max. ${MAX_TEAMS} Teams`);
 });

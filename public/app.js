@@ -68,11 +68,29 @@ document.getElementById('btn-restart').addEventListener('click', () => {
 
 socket.on('errorMsg', showError);
 
-socket.on('room:joined', ({ code, name, teams }) => {
+socket.on('room:joined', ({ code, name, teams, questionCount }) => {
   myCode = code;
   document.getElementById('room-code').textContent = code;
   renderTeams(teams);
+  if (questionCount) setLengthButtons(questionCount);
   show('lobby');
+});
+
+socket.on('lobby:length', ({ count }) => {
+  setLengthButtons(count);
+});
+
+function setLengthButtons(len) {
+  document.querySelectorAll('.len-btn').forEach(btn => {
+    btn.classList.toggle('active', parseInt(btn.dataset.len, 10) === len);
+  });
+}
+
+document.querySelectorAll('.len-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const len = parseInt(btn.dataset.len, 10);
+    socket.emit('lobby:setLength', { count: len });
+  });
 });
 
 socket.on('lobby:teams', (teams) => {
