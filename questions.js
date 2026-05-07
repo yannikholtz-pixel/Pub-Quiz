@@ -1300,5 +1300,631 @@ module.exports = [
     options: ["Cheops-Pyramide", "Mykerinos-Pyramide", "Tutanchamun-Pyramide", "Die mit dem schönsten Dach"],
     correct: 0,
     explanation: "Cheops-Pyramide in Gizeh – einziges noch erhaltenes Weltwunder der Antike."
+  },
+
+  // === GEOGRAPHIE III ===
+  {
+    text: "Wie heißt die Hauptstadt Schwedens?",
+    options: ["Oslo", "Stockholm", "Helsinki", "Wo Ikea wohnt"],
+    correct: 1,
+    explanation: "Stockholm – verteilt auf 14 Inseln rund um den Mälaren."
+  },
+  {
+    text: "Wie heißt der höchste Berg Afrikas?",
+    options: ["Kilimandscharo", "Mount Kenya", "Mount Meru", "Mein Wäscheberg im Schlafzimmer"],
+    correct: 0,
+    explanation: "Kilimandscharo in Tansania – 5.895 m."
+  },
+  {
+    text: "Welche Hauptstadt liegt fast genau auf dem Äquator (Breitengrad 0)?",
+    options: ["Quito", "Nairobi", "Singapur", "Kinshasa"],
+    correct: 0,
+    explanation: "Quito (Ecuador) liegt nur wenige Kilometer südlich des Äquators."
+  },
+  {
+    text: "Welcher Fluss bildet einen großen Teil der Grenze zwischen Deutschland und Polen?",
+    options: ["Rhein", "Oder", "Elbe", "Donau"],
+    correct: 1,
+    explanation: "Oder (zusammen mit der Neiße) – die sogenannte Oder-Neiße-Linie."
+  },
+  {
+    text: "Welcher See ist der größte zusammenhängende See in Afrika?",
+    options: ["Tanganjikasee", "Viktoriasee", "Malawisee", "Tschadsee"],
+    correct: 1,
+    explanation: "Viktoriasee – über 68.000 km² groß, drei Länder grenzen daran."
+  },
+  {
+    text: "Welches Land hat die längste Küstenlinie der Welt?",
+    options: ["Russland", "Kanada", "Australien", "Wo das Bier-Strand-Bild herkommt"],
+    correct: 1,
+    explanation: "Kanada – über 200.000 km Küstenlinie."
+  },
+  {
+    text: "Wie heißt die Hauptstadt Argentiniens?",
+    options: ["Santiago", "Buenos Aires", "Lima", "Bogotá"],
+    correct: 1,
+    explanation: "Buenos Aires – „gute Lüfte“, am Río de la Plata."
+  },
+  {
+    text: "Welcher große Fluss durchquert Ägypten von Süden nach Norden?",
+    options: ["Tigris", "Euphrat", "Nil", "Rio Grande"],
+    correct: 2,
+    explanation: "Der Nil – mit 6.650 km gilt er als längster Fluss der Erde."
+  },
+  {
+    text: "Welches Land deckt die meisten Zeitzonen ab?",
+    options: ["Russland", "Frankreich (mit Überseegebieten)", "USA", "China"],
+    correct: 1,
+    explanation: "Frankreich – mit seinen Überseegebieten 12 Zeitzonen."
+  },
+  {
+    text: "Welche US-Stadt heißt im Volksmund „Big Apple“?",
+    options: ["Chicago", "New York City", "Boston", "Los Angeles"],
+    correct: 1,
+    explanation: "New York City – der Spitzname stammt aus dem Pferderennsport der 1920er."
+  },
+  {
+    text: "Welche Großstadt liegt teils in Europa, teils in Asien?",
+    options: ["Moskau", "Istanbul", "Athen", "Berlin (gefühlt)"],
+    correct: 1,
+    explanation: "Istanbul – der Bosporus trennt die beiden Stadtteile."
+  },
+  {
+    text: "Wie viele Bundesstaaten hat die USA?",
+    options: ["48", "49", "50", "52"],
+    correct: 2,
+    explanation: "50 – seit 1959 mit Alaska und Hawaii."
+  },
+  {
+    text: "In welchem deutschen Bundesland liegt der Schwarzwald?",
+    options: ["Bayern", "Baden-Württemberg", "Hessen", "Da, wo der Schinken herkommt"],
+    correct: 1,
+    explanation: "Baden-Württemberg – im Südwesten Deutschlands."
+  },
+  {
+    text: "Zu welchem Land gehören die Kanarischen Inseln?",
+    options: ["Portugal", "Spanien", "Marokko", "Frankreich"],
+    correct: 1,
+    explanation: "Spanien – obwohl näher an Afrika als am spanischen Festland."
+  },
+  {
+    text: "Welcher europäische Staat ist der flächenmäßig kleinste?",
+    options: ["Monaco", "Liechtenstein", "San Marino", "Vatikanstadt"],
+    correct: 3,
+    explanation: "Vatikanstadt – nur 0,44 km² und ca. 800 Einwohner."
+  },
+
+  // === GESCHICHTE II ===
+  {
+    text: "In welchem Jahr wurde das Deutsche Reich gegründet?",
+    options: ["1815", "1848", "1871", "1918"],
+    correct: 2,
+    explanation: "1871 – Reichsproklamation in Versailles, Bismarck als Reichskanzler."
+  },
+  {
+    text: "Wer war der erste römische Kaiser?",
+    options: ["Julius Cäsar", "Augustus", "Nero", "Caligula"],
+    correct: 1,
+    explanation: "Augustus (27 v. Chr. – 14 n. Chr.). Cäsar war Diktator, kein Kaiser."
+  },
+  {
+    text: "In welchem Jahr endete der Zweite Weltkrieg in Europa?",
+    options: ["1944", "1945", "1946", "1950"],
+    correct: 1,
+    explanation: "8. Mai 1945 – Tag der bedingungslosen Kapitulation der Wehrmacht."
+  },
+  {
+    text: "Wer war der bekannte Bauherr von Schloss Neuschwanstein?",
+    options: ["Friedrich der Große", "Ludwig II. von Bayern", "Wilhelm II.", "Karneval-König Helau IV."],
+    correct: 1,
+    explanation: "Ludwig II. – der „Märchenkönig“, geriet finanziell ins Trudeln dabei."
+  },
+  {
+    text: "Für welches europäische Land segelte Christoph Kolumbus, als er 1492 Amerika erreichte?",
+    options: ["Portugal", "Spanien", "England", "Frankreich"],
+    correct: 1,
+    explanation: "Spanien – im Auftrag von Königin Isabella und König Ferdinand."
+  },
+  {
+    text: "Was war Napoleon Bonaparte historisch?",
+    options: ["Französischer Kaiser", "Italienischer Maler", "Spanischer Entdecker", "Erfinder der Croissants"],
+    correct: 0,
+    explanation: "Französischer Kaiser von 1804 bis 1814/15."
+  },
+  {
+    text: "In welcher US-Stadt wurde John F. Kennedy 1963 ermordet?",
+    options: ["Washington D.C.", "New York", "Dallas", "Chicago"],
+    correct: 2,
+    explanation: "Dallas, Texas – am 22. November 1963."
+  },
+  {
+    text: "In welchem Jahr begann die Französische Revolution?",
+    options: ["1776", "1789", "1812", "Vor langer, langer Zeit"],
+    correct: 1,
+    explanation: "1789 – Sturm auf die Bastille am 14. Juli."
+  },
+  {
+    text: "Welche Schlacht 1815 besiegelte Napoleons endgültige Niederlage?",
+    options: ["Trafalgar", "Borodino", "Waterloo", "Austerlitz"],
+    correct: 2,
+    explanation: "Waterloo – das Wort wurde danach Synonym für eine schwere Niederlage."
+  },
+  {
+    text: "Wer schrieb das „Kommunistische Manifest“ (1848)?",
+    options: ["Karl Marx und Friedrich Engels", "Lenin", "Stalin und Trotzki", "Der Geschichtslehrer von nebenan"],
+    correct: 0,
+    explanation: "Marx und Engels gemeinsam – „Ein Gespenst geht um in Europa…“"
+  },
+  {
+    text: "In welchem Jahr zerfiel die Sowjetunion?",
+    options: ["1985", "1989", "1991", "1995"],
+    correct: 2,
+    explanation: "1991 – Ende eines Imperiums nach knapp 70 Jahren."
+  },
+  {
+    text: "Welcher Vertrag beendete den Ersten Weltkrieg offiziell?",
+    options: ["Vertrag von Versailles", "Vertrag von Trianon", "Vertrag von Brest-Litowsk", "Vertrag von Maastricht"],
+    correct: 0,
+    explanation: "Versailles, 1919 – mit harten Bedingungen für das Deutsche Reich."
+  },
+  {
+    text: "Welcher antike griechische Philosoph wurde 399 v. Chr. zum Tode verurteilt?",
+    options: ["Sokrates", "Platon", "Aristoteles", "Pythagoras"],
+    correct: 0,
+    explanation: "Sokrates – wegen „Verderbung der Jugend“ und „Asebie“. Trank den Schierlingsbecher."
+  },
+  {
+    text: "Wer war der erste Mensch im Weltall?",
+    options: ["Neil Armstrong", "Yuri Gagarin", "Alan Shepard", "John Glenn"],
+    correct: 1,
+    explanation: "Yuri Gagarin (UdSSR), 12. April 1961 – einmal um die Erde."
+  },
+  {
+    text: "In welchem Jahr wurde John Lennon erschossen?",
+    options: ["1975", "1980", "1985", "Vor langer Zeit, mehr weiß ich nicht"],
+    correct: 1,
+    explanation: "8. Dezember 1980 – vor seinem Apartment in New York."
+  },
+
+  // === WISSENSCHAFT II ===
+  {
+    text: "Wie heißt der Prozess, bei dem Pflanzen Sonnenlicht in Energie umwandeln?",
+    options: ["Atmung", "Photosynthese", "Verdauung", "Transpiration"],
+    correct: 1,
+    explanation: "Photosynthese – CO₂ + Wasser + Licht → Zucker + Sauerstoff."
+  },
+  {
+    text: "Welches Element ist mit Abstand am häufigsten in der Erdkruste?",
+    options: ["Sauerstoff", "Silicium", "Aluminium", "Die Energie meiner Schwiegermutter"],
+    correct: 0,
+    explanation: "Sauerstoff – chemisch gebunden in Silikaten, etwa 46 % der Erdkruste."
+  },
+  {
+    text: "Was ist die SI-Einheit für elektrische Spannung?",
+    options: ["Watt", "Ampere", "Volt", "Ohm"],
+    correct: 2,
+    explanation: "Volt – benannt nach Alessandro Volta."
+  },
+  {
+    text: "Was misst ein Seismograph?",
+    options: ["Wind", "Erdbeben", "Niederschlag", "Temperatur"],
+    correct: 1,
+    explanation: "Erdbeben bzw. Erschütterungen der Erdoberfläche."
+  },
+  {
+    text: "Wer formulierte die Theorie der natürlichen Selektion (Evolution)?",
+    options: ["Charles Darwin", "Gregor Mendel", "Louis Pasteur", "Marie Curie"],
+    correct: 0,
+    explanation: "Darwin – „On the Origin of Species“, 1859."
+  },
+  {
+    text: "Welches Gas atmen Menschen aus der Luft ein, das wir zum Leben brauchen?",
+    options: ["Stickstoff", "Sauerstoff", "Kohlendioxid", "Espresso-Dampf"],
+    correct: 1,
+    explanation: "Sauerstoff – ca. 21 % der Luft."
+  },
+  {
+    text: "Welcher Wissenschaftler entdeckte 1928 die antibiotische Wirkung des Penicillins?",
+    options: ["Louis Pasteur", "Alexander Fleming", "Robert Koch", "Joseph Lister"],
+    correct: 1,
+    explanation: "Alexander Fleming – Schimmelpilz auf einer vergessenen Petrischale."
+  },
+  {
+    text: "Welches Computer-Betriebssystem hat einen Pinguin als Maskottchen?",
+    options: ["Windows", "macOS", "Linux", "Tinder"],
+    correct: 2,
+    explanation: "Linux – der Pinguin heißt Tux."
+  },
+  {
+    text: "Wie viele Knochen hat eine Hand des erwachsenen Menschen?",
+    options: ["24", "27", "30", "33"],
+    correct: 1,
+    explanation: "27 – Handwurzel, Mittelhand und Finger zusammen."
+  },
+  {
+    text: "Wie viele Bit hat 1 Byte?",
+    options: ["4", "8", "16", "Mehr, als ich brauche"],
+    correct: 1,
+    explanation: "8 Bit – seit Jahrzehnten Standard."
+  },
+  {
+    text: "Welcher deutsche Erfinder gilt als Pionier des modernen Computers?",
+    options: ["Konrad Zuse", "Werner von Siemens", "Wernher von Braun", "Heinrich Hertz"],
+    correct: 0,
+    explanation: "Konrad Zuse – baute 1941 mit der Z3 den ersten funktionsfähigen programmgesteuerten Rechner."
+  },
+  {
+    text: "Welches ist das schnellste Landtier der Welt?",
+    options: ["Löwe", "Antilope", "Gepard", "Pferd"],
+    correct: 2,
+    explanation: "Gepard – Spitzengeschwindigkeit über 110 km/h, allerdings nur kurz."
+  },
+  {
+    text: "Welcher ist der größte Knochen im menschlichen Körper?",
+    options: ["Schienbein", "Oberschenkelknochen", "Beckenknochen", "Wirbel"],
+    correct: 1,
+    explanation: "Femur (Oberschenkelknochen) – durchschnittlich rund ein Viertel der Körpergröße."
+  },
+  {
+    text: "Wofür steht die Abkürzung „LASER“?",
+    options: [
+      "Light Amplification by Stimulated Emission of Radiation",
+      "Liquid Active Sound Emission Reflector",
+      "Long-Acting Single Energy Reactor",
+      "Lass-Andere-Sich-Erst-Räuspern"
+    ],
+    correct: 0,
+    explanation: "Stimmt – „verstärktes Licht durch angeregte Strahlungsemission“."
+  },
+  {
+    text: "Was bezeichnet die „Halbwertszeit“?",
+    options: [
+      "Die Zeit, in der die Hälfte einer radioaktiven Substanz zerfällt",
+      "Die halbe Lebenserwartung",
+      "Halb so lang wie die Vollwertszeit",
+      "Pause halbe Halbe (mit Bier)"
+    ],
+    correct: 0,
+    explanation: "Klassisch in der Physik: Zeit, bis die Hälfte einer Probe radioaktiv zerfallen ist."
+  },
+
+  // === POP-KULTUR II ===
+  {
+    text: "Welche Sängerin trägt den Beinamen „Queen of Pop“?",
+    options: ["Madonna", "Beyoncé", "Lady Gaga", "Meine Mama, anscheinend"],
+    correct: 0,
+    explanation: "Madonna – seit den 80ern fest in der Pop-Geschichte verankert."
+  },
+  {
+    text: "Aus welcher Filmreihe stammt das Zitat „May the Force be with you“?",
+    options: ["Star Trek", "Star Wars", "Marvel", "Lord of the Rings"],
+    correct: 1,
+    explanation: "Star Wars – ein Standardabschiedsspruch der Jedi."
+  },
+  {
+    text: "Welcher Schauspieler verkörperte Harry Potter in den Filmen?",
+    options: ["Daniel Radcliffe", "Rupert Grint", "Tom Felton", "Robert Pattinson"],
+    correct: 0,
+    explanation: "Daniel Radcliffe – von 2001 bis 2011 in allen acht Filmen."
+  },
+  {
+    text: "Welche Band veröffentlichte 1969 das Album „Abbey Road“?",
+    options: ["The Rolling Stones", "The Beatles", "Led Zeppelin", "The Who"],
+    correct: 1,
+    explanation: "The Beatles – das Cover wurde zur Pop-Ikone."
+  },
+  {
+    text: "Wie heißt der Sänger der Band U2?",
+    options: ["Bono", "The Edge", "Sting", "Mick Jagger"],
+    correct: 0,
+    explanation: "Bono (Paul Hewson) – seit 1976 Frontmann."
+  },
+  {
+    text: "In welchem Videospiel-Universum sind „Mario“ und „Luigi“ Hauptfiguren?",
+    options: ["Sonic", "Super Mario", "Pac-Man", "An der Aldi-Kasse"],
+    correct: 1,
+    explanation: "Super Mario – seit 1985 Nintendo-Maskottchen."
+  },
+  {
+    text: "Welche Comic-Heldin trägt das „Lasso der Wahrheit“?",
+    options: ["Wonder Woman", "Catwoman", "Black Widow", "Supergirl"],
+    correct: 0,
+    explanation: "Wonder Woman – jeder, der ans Lasso gebunden ist, muss die Wahrheit sagen."
+  },
+  {
+    text: "Welcher Marvel-Held ist Tony Stark?",
+    options: ["Captain America", "Iron Man", "Thor", "Hulk"],
+    correct: 1,
+    explanation: "Iron Man – Milliardär mit Selbstbau-Anzug."
+  },
+  {
+    text: "Welcher Film gewann 2020 den Oscar als bester Film?",
+    options: ["Joker", "Parasite", "1917", "Once Upon a Time in Hollywood"],
+    correct: 1,
+    explanation: "Parasite – erster nicht-englischsprachiger Film mit dem Hauptpreis."
+  },
+  {
+    text: "Wer komponierte „Eine kleine Nachtmusik“?",
+    options: ["Bach", "Beethoven", "Mozart", "Haydn"],
+    correct: 2,
+    explanation: "Mozart – komponiert 1787, eines seiner bekanntesten Werke."
+  },
+  {
+    text: "Welche Band veröffentlichte den Welthit „Bohemian Rhapsody“?",
+    options: ["Queen", "The Beatles", "Pink Floyd", "Mein Auto-CD-Player auf Repeat"],
+    correct: 0,
+    explanation: "Queen – 1975, geschrieben von Freddie Mercury."
+  },
+  {
+    text: "Welcher Schauspieler spielte James Bond in den meisten offiziellen Filmen?",
+    options: ["Sean Connery", "Roger Moore", "Daniel Craig", "Pierce Brosnan"],
+    correct: 1,
+    explanation: "Roger Moore – mit sieben Bond-Filmen Rekordhalter."
+  },
+  {
+    text: "Wer komponierte die Oper „Die Zauberflöte“?",
+    options: ["Mozart", "Wagner", "Beethoven", "Bach"],
+    correct: 0,
+    explanation: "Mozart – uraufgeführt 1791, kurz vor seinem Tod."
+  },
+  {
+    text: "Wer lieh Homer Simpson über Jahre die deutsche Synchronstimme?",
+    options: ["Norbert Gastell", "Christoph Maria Herbst", "Hape Kerkeling", "Onkel Klaus aus Wuppertal"],
+    correct: 0,
+    explanation: "Norbert Gastell – sprach Homer von 1991 bis zu seinem Tod 2015."
+  },
+  {
+    text: "Welcher Disney-Film war 1937 der erste abendfüllende Zeichentrickfilm?",
+    options: ["Schneewittchen und die sieben Zwerge", "Pinocchio", "Bambi", "König der Löwen"],
+    correct: 0,
+    explanation: "Schneewittchen – ein gewagtes Experiment, das Disney den Weg ebnete."
+  },
+
+  // === SPORT II ===
+  {
+    text: "In welcher Sportart wurde Roger Federer Weltklasse?",
+    options: ["Golf", "Tennis", "Boxen", "Schwimmen"],
+    correct: 1,
+    explanation: "Tennis – 20 Grand-Slam-Titel."
+  },
+  {
+    text: "Wie viele Spieler einer Mannschaft stehen beim Basketball gleichzeitig auf dem Feld?",
+    options: ["4", "5", "6", "7"],
+    correct: 1,
+    explanation: "Fünf pro Team."
+  },
+  {
+    text: "Wo findet die Fußball-Weltmeisterschaft 2026 statt?",
+    options: ["Saudi-Arabien", "USA, Mexiko und Kanada", "Frankreich", "Auf dem Bolzplatz nebenan"],
+    correct: 1,
+    explanation: "USA, Mexiko und Kanada gemeinsam – erste WM mit drei Gastgebern."
+  },
+  {
+    text: "Wer gewann die Fußball-Weltmeisterschaft 2022 in Katar?",
+    options: ["Frankreich", "Argentinien", "Brasilien", "Deutschland (im Geist)"],
+    correct: 1,
+    explanation: "Argentinien – im Finale gegen Frankreich (im Elfmeterschießen)."
+  },
+  {
+    text: "In welchem Sport gibt es den Begriff „Birdie“ für ein Schlagergebnis?",
+    options: ["Golf", "Tennis", "Cricket", "Basketball"],
+    correct: 0,
+    explanation: "Golf – ein Schlag unter Par."
+  },
+  {
+    text: "Welche Punktzahl folgt im Tennis nach „30“?",
+    options: ["35", "40", "45", "50"],
+    correct: 1,
+    explanation: "40 – die seltsame Tennis-Zählung: 0, 15, 30, 40, Spiel."
+  },
+  {
+    text: "Welche Sportart wird auf einer Eisbahn mit Steinen und Besen gespielt?",
+    options: ["Eisstockschießen", "Curling", "Bobfahren", "Synchronschwimmen auf Eis"],
+    correct: 1,
+    explanation: "Curling – die „schreiende Kunst auf Eis“."
+  },
+  {
+    text: "Welcher deutsche Radprofi gewann 1997 die Tour de France?",
+    options: ["Erik Zabel", "Jan Ullrich", "André Greipel", "Bernhard Eisel"],
+    correct: 1,
+    explanation: "Jan Ullrich – bisher einziger Deutscher mit Tour-Sieg."
+  },
+  {
+    text: "Wie viele Punkte zählt ein Touchdown im American Football?",
+    options: ["3", "6", "7", "Genug, dass man jubelt"],
+    correct: 1,
+    explanation: "6 Punkte – plus 1 oder 2 Punkte bei Extra Point oder Conversion."
+  },
+  {
+    text: "In welcher Disziplin hält Usain Bolt den 100-m- und 200-m-Weltrekord?",
+    options: ["100 Meter", "400 Meter", "Marathon", "Hochsprung"],
+    correct: 0,
+    explanation: "100 m – 9,58 s (2009 in Berlin)."
+  },
+
+  // === KULTUR & LITERATUR II ===
+  {
+    text: "Welcher deutsche Autor schrieb den Roman „Buddenbrooks“?",
+    options: ["Hermann Hesse", "Thomas Mann", "Heinrich Mann", "Franz Kafka"],
+    correct: 1,
+    explanation: "Thomas Mann – sein Debüt von 1901, Nobelpreis 1929."
+  },
+  {
+    text: "Wer schrieb die Kinderbücher „Die kleine Hexe“ und „Räuber Hotzenplotz“?",
+    options: ["Erich Kästner", "Otfried Preußler", "Astrid Lindgren", "Cornelia Funke"],
+    correct: 1,
+    explanation: "Otfried Preußler – auch „Krabat“ stammt von ihm."
+  },
+  {
+    text: "Welchem griechischen Dichter werden „Ilias“ und „Odyssee“ zugeschrieben?",
+    options: ["Sophokles", "Homer", "Aischylos", "Verfasser unbekannt – Homer ist Mythos"],
+    correct: 1,
+    explanation: "Homer – ob er real existierte, ist allerdings Forschungsstreit."
+  },
+  {
+    text: "In welcher Religion ist die „Tora“ heilige Schrift?",
+    options: ["Christentum", "Judentum", "Islam", "Hinduismus"],
+    correct: 1,
+    explanation: "Judentum – die Tora umfasst die fünf Bücher Mose."
+  },
+  {
+    text: "Wie heißt das heilige Buch der Muslime?",
+    options: ["Bibel", "Koran", "Tora", "Telefonbuch des Propheten"],
+    correct: 1,
+    explanation: "Der Koran – auf Arabisch „Lesung“ oder „Vortrag“."
+  },
+  {
+    text: "Welche Religionen kennen den Begriff „Karma“ als zentrales Konzept?",
+    options: ["Christentum", "Hinduismus und Buddhismus", "Islam", "Pure Yoga-Studios"],
+    correct: 1,
+    explanation: "Hinduismus und Buddhismus – das Prinzip von Ursache und Wirkung im Leben."
+  },
+  {
+    text: "Wer schrieb das Lustspiel „Der zerbrochene Krug“?",
+    options: ["Heinrich von Kleist", "Friedrich Schiller", "Theodor Fontane", "Thomas Mann"],
+    correct: 0,
+    explanation: "Heinrich von Kleist – uraufgeführt 1808."
+  },
+  {
+    text: "In welcher deutschen Stadt steht das Festspielhaus, in dem Wagner-Opern aufgeführt werden?",
+    options: ["Bayreuth", "München", "Wien (nein, Österreich)", "Berlin"],
+    correct: 0,
+    explanation: "Bayreuth – die berühmten Bayreuther Festspiele finden dort jährlich statt."
+  },
+  {
+    text: "Wer schrieb die Novelle „Der kleine Prinz“?",
+    options: ["Antoine de Saint-Exupéry", "Albert Camus", "Jean-Paul Sartre", "Victor Hugo"],
+    correct: 0,
+    explanation: "Antoine de Saint-Exupéry – 1943, eines der meistübersetzten Bücher der Welt."
+  },
+  {
+    text: "Wer schrieb das Drama „Die Räuber“ (1781)?",
+    options: ["Goethe", "Schiller", "Lessing", "Heine"],
+    correct: 1,
+    explanation: "Friedrich Schiller – mit nur 21 Jahren."
+  },
+
+  // === NATUR & TIERE II ===
+  {
+    text: "Welches ist das größte heute lebende Tier der Erde?",
+    options: ["Afrikanischer Elefant", "Blauwal", "Anaconda", "Mein Onkel nach 5 Bier"],
+    correct: 1,
+    explanation: "Blauwal – bis zu 30 m lang und 180 t schwer."
+  },
+  {
+    text: "Welches Insekt produziert Honig?",
+    options: ["Wespe", "Honigbiene", "Hummel", "Hornisse"],
+    correct: 1,
+    explanation: "Honigbiene – ein einziges Volk schafft jährlich bis zu 30 kg."
+  },
+  {
+    text: "Welche Pflanze gilt traditionell als erster Frühlingsbote in Mitteleuropa?",
+    options: ["Krokus", "Schneeglöckchen", "Gänseblümchen", "Tulpe"],
+    correct: 1,
+    explanation: "Schneeglöckchen – schiebt sich oft schon im Februar durch den Schnee."
+  },
+  {
+    text: "An welchem Baum wachsen Eicheln?",
+    options: ["Buche", "Birke", "Eiche", "Kastanie"],
+    correct: 2,
+    explanation: "An der Eiche – wichtige Nahrung für Eichhörnchen, Eichelhäher und Co."
+  },
+  {
+    text: "Wie nennt man die Verwandlung der Kaulquappe zum Frosch?",
+    options: ["Mutation", "Metamorphose", "Photosynthese", "Wachstumsschub"],
+    correct: 1,
+    explanation: "Metamorphose – der vollständige Umbau des Körpers."
+  },
+  {
+    text: "Wie nennt man Tiere, die sich ausschließlich pflanzlich ernähren?",
+    options: ["Karnivoren", "Herbivoren", "Omnivoren", "Veganer im Tierreich"],
+    correct: 1,
+    explanation: "Herbivoren – von lateinisch „herba“ (Pflanze)."
+  },
+  {
+    text: "Wie viele Beine hat ein Hummer (inklusive Scheren)?",
+    options: ["6", "8", "10", "Genug, um auf den Tisch zu kommen"],
+    correct: 2,
+    explanation: "10 – acht zum Laufen, zwei mit Scheren."
+  },
+  {
+    text: "Welches ist das größte landlebende Säugetier?",
+    options: ["Nilpferd", "Afrikanischer Elefant", "Giraffe", "Bär"],
+    correct: 1,
+    explanation: "Afrikanischer Elefant – Bullen wiegen bis zu 6 Tonnen."
+  },
+  {
+    text: "Wie heißt die Wissenschaft, die sich mit Vögeln beschäftigt?",
+    options: ["Ornithologie", "Botanik", "Zoologie", "Herpetologie"],
+    correct: 0,
+    explanation: "Ornithologie – griechisch „ornis“ heißt Vogel."
+  },
+  {
+    text: "Welcher Mineralstoff ist Hauptbestandteil von Knochen und Zähnen?",
+    options: ["Eisen", "Calcium", "Magnesium", "Natrium"],
+    correct: 1,
+    explanation: "Calcium – als Calciumphosphat im Knochen eingebaut."
+  },
+
+  // === ESSEN & TRINKEN ===
+  {
+    text: "Welches Kraut ist Hauptzutat eines klassischen Pesto Genovese?",
+    options: ["Basilikum", "Petersilie", "Spinat", "Rucola"],
+    correct: 0,
+    explanation: "Basilikum – plus Pinienkerne, Knoblauch, Parmesan, Olivenöl, Salz."
+  },
+  {
+    text: "Aus welcher Pflanze wird das Gewürz Safran gewonnen?",
+    options: ["Kurkuma-Wurzel", "Safran-Krokus (Narben der Blüte)", "Paprika", "Goldsplitter"],
+    correct: 1,
+    explanation: "Aus den Narben der Safran-Krokus-Blüte – deshalb so teuer."
+  },
+  {
+    text: "Welcher italienische Käse wird mit Edelschimmel veredelt?",
+    options: ["Brie", "Camembert", "Gorgonzola", "Cheddar"],
+    correct: 2,
+    explanation: "Gorgonzola – aus der Lombardei und dem Piemont."
+  },
+  {
+    text: "Welche traditionelle deutsche Spezialität enthält Sauerkraut, Würste und Speck?",
+    options: ["Sauerbraten", "Schlachtplatte", "Königsberger Klopse", "Currywurst"],
+    correct: 1,
+    explanation: "Schlachtplatte – Klassiker mit Kasseler, Eisbein, Bratwurst, Sauerkraut."
+  },
+  {
+    text: "Aus welchem Land stammen die kleinen Häppchen „Tapas“?",
+    options: ["Italien", "Spanien", "Portugal", "Aldi-Premium-Buffet"],
+    correct: 1,
+    explanation: "Spanien – ursprünglich kleine Beilagen, die das Glas „abdeckten“."
+  },
+  {
+    text: "Welche italienische Nudelsorte sieht aus wie kleine Schmetterlinge?",
+    options: ["Penne", "Farfalle", "Spaghetti", "Lasagne-Reste"],
+    correct: 1,
+    explanation: "Farfalle – heißt auf Italienisch tatsächlich „Schmetterlinge“."
+  },
+  {
+    text: "Welche Frucht ist Hauptbestandteil von Marzipan?",
+    options: ["Walnuss", "Mandel", "Haselnuss", "Kokos"],
+    correct: 1,
+    explanation: "Mandel – plus Zucker und ein Schuss Rosenwasser."
+  },
+  {
+    text: "Wie wird der griechische Käse Feta traditionell gereift?",
+    options: ["In Salzlake", "An der Luft", "In Holzfässern mit Wein", "Am offenen Feuer"],
+    correct: 0,
+    explanation: "In Salzlake – das ist auch namensrechtlich entscheidend."
+  },
+  {
+    text: "Wofür ist die Stadt Nürnberg kulinarisch besonders berühmt?",
+    options: ["Lebkuchen und Bratwürste", "Marzipan", "Sauerkraut", "Eintopf"],
+    correct: 0,
+    explanation: "Lebkuchen seit dem Mittelalter, Nürnberger Rostbratwürste seit Jahrhunderten."
+  },
+  {
+    text: "Was ist die Tomate aus botanischer Sicht?",
+    options: ["Ein Gemüse", "Eine Frucht (Beere)", "Eine Wurzel", "Mein Gesicht im Hochsommer"],
+    correct: 1,
+    explanation: "Botanisch eine Beerenfrucht – im Alltag aber ein Gemüse."
   }
 ];
