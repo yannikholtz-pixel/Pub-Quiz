@@ -18,6 +18,7 @@ const screens = {
   lobby: document.getElementById('screen-lobby'),
   question: document.getElementById('screen-question'),
   reveal: document.getElementById('screen-reveal'),
+  milestone: document.getElementById('screen-milestone'),
   final: document.getElementById('screen-final')
 };
 
@@ -35,6 +36,7 @@ function showError(msg) {
 let myCode = null;
 let questionTimerHandle = null;
 let revealTimerHandle = null;
+let milestoneTimerHandle = null;
 
 const params = new URLSearchParams(location.search);
 if (params.get('room')) {
@@ -172,10 +174,20 @@ socket.on('answered', () => {
   document.getElementById('q-status').classList.remove('hidden');
 });
 
-socket.on('reveal', ({ answered, correct, correctChoice, correctText, explanation, gif, score, isLast, nextDeadline }) => {
+socket.on('reveal', ({ answered, correct, correctChoice, correctText, explanation, gif, score, isLast, nextDeadline, strafschluck }) => {
   clearInterval(questionTimerHandle);
 
   if (correct) SoundFX.correct(); else SoundFX.wrong();
+
+  const strafBox = document.getElementById('r-strafschluck');
+  if (strafschluck) {
+    strafBox.classList.remove('hidden');
+    document.getElementById('r-strafschluck-count').textContent =
+      strafschluck.count + (strafschluck.count === 1 ? ' Schluck' : ' Schlücke');
+    document.getElementById('r-strafschluck-msg').textContent = strafschluck.message;
+  } else {
+    strafBox.classList.add('hidden');
+  }
 
   const headline = document.getElementById('r-headline');
   if (!answered) {
@@ -213,8 +225,37 @@ socket.on('reveal:scores', ({ scores }) => {
   }
 });
 
+socket.on('milestone:scoreboard', ({ scores, completed, total, nextDeadline }) => {
+  clearInterval(revealTimerHandle);
+  document.getElementById('m-progress').textContent =
+    `Frage ${completed} / ${total} geschafft`;
+  const ol = document.getElementById('m-scores');
+  ol.innerHTML = '';
+  for (const s of scores) {
+    const li = document.createElement('li');
+    li.innerHTML = `<span>${escapeHtml(s.name)}</span><span class="pts">${s.score} Pkt</span>`;
+    ol.appendChild(li);
+  }
+  startMilestoneCountdown(nextDeadline);
+  SoundFX.finale();
+  show('milestone');
+});
+
+function startMilestoneCountdown(deadline) {
+  clearInterval(milestoneTimerHandle);
+  const labelEl = document.getElementById('m-countdown');
+  const update = () => {
+    const remaining = Math.max(0, deadline - Date.now());
+    if (labelEl) labelEl.textContent = Math.ceil(remaining / 1000);
+    if (remaining <= 0) clearInterval(milestoneTimerHandle);
+  };
+  update();
+  milestoneTimerHandle = setInterval(update, 250);
+}
+
 socket.on('game:over', (scores) => {
   clearInterval(revealTimerHandle);
+  clearInterval(milestoneTimerHandle);
   SoundFX.finale();
   const ol = document.getElementById('final-scores');
   ol.innerHTML = '';

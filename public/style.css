@@ -300,6 +300,65 @@ button.ghost:hover:not(:disabled) { border-color: var(--accent); color: var(--ac
 .headline-correct { color: var(--good); }
 .headline-wrong { color: var(--bad); }
 
+.strafschluck {
+  background: linear-gradient(135deg, #ffd166 0%, #ef476f 100%);
+  color: #1a1033;
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0.5rem 0;
+  animation: strafPulse 0.5s ease-out;
+  box-shadow: 0 4px 20px rgba(239, 71, 111, 0.4);
+}
+.strafschluck-header {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+}
+.strafschluck-count {
+  font-size: 1.8rem;
+  margin: 0.15rem 0 0.3rem;
+}
+.strafschluck-message {
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 600;
+}
+@keyframes strafPulse {
+  0% { transform: scale(0.85); opacity: 0; }
+  60% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.milestone-label {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}
+#screen-milestone h1 {
+  font-size: 1.6rem;
+  margin: 0.25rem 0 1rem;
+}
+.scoreboard.milestone li {
+  background: rgba(255,255,255,0.12);
+  font-size: 1.15rem;
+  padding: 0.9rem 1.1rem;
+}
+.scoreboard.milestone li:nth-child(1) {
+  background: linear-gradient(135deg, #ffd166, #ef476f);
+  color: #1a1033;
+  font-weight: 700;
+  transform: scale(1.02);
+}
+.scoreboard.milestone li:nth-child(1)::before { color: #1a1033; }
+.scoreboard.milestone li:nth-child(1) .pts { color: #1a1033; }
+.scoreboard.milestone li:nth-child(2) { background: rgba(192,192,192,0.25); }
+.scoreboard.milestone li:nth-child(3) { background: rgba(205,127,50,0.3); }
+
 .mute-btn {
   position: fixed;
   top: 0.75rem;

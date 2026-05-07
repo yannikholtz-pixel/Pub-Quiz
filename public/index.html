@@ -75,14 +75,29 @@
       <img id="r-gif" class="gif" alt="" onerror="this.style.display='none'" />
       <p id="r-correct" class="correct-line"></p>
       <p id="r-explanation" class="explanation"></p>
+
+      <div id="r-strafschluck" class="strafschluck hidden">
+        <div class="strafschluck-header">🍻 Strafschluck!</div>
+        <div class="strafschluck-count" id="r-strafschluck-count">1 Schluck</div>
+        <div class="strafschluck-message" id="r-strafschluck-msg"></div>
+      </div>
+
       <p class="score-line">Deine Punkte: <strong id="r-score">0</strong></p>
 
       <div class="card">
-        <h2>Zwischenstand</h2>
+        <h2>Aktuelle Tabelle</h2>
         <ol id="r-scores" class="scoreboard"></ol>
       </div>
 
       <p class="hint">Nächste Frage in <span id="r-countdown">7</span>…</p>
+    </section>
+
+    <!-- Zwischenstand alle 10 Fragen -->
+    <section id="screen-milestone" class="screen hidden">
+      <h2 class="milestone-label">Halbzeit-Stand</h2>
+      <h1 id="m-progress">Frage 10 / 50 geschafft</h1>
+      <ol id="m-scores" class="scoreboard milestone"></ol>
+      <p class="hint">Weiter geht’s in <span id="m-countdown">9</span>…</p>
     </section>
 
     <!-- Endbildschirm -->

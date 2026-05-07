@@ -17,7 +17,28 @@ const ALLOWED_LENGTHS = [25, 50, 100];
 const DEFAULT_LENGTH = 50;
 const QUESTION_TIME_MS = 25_000;
 const REVEAL_TIME_MS = 7_000;
+const MILESTONE_INTERVAL = 10;
+const MILESTONE_TIME_MS = 9_000;
+const STRAFSCHLUCK_CHANCE = 0.35;
 const ROOM_TTL_AFTER_FINISH_MS = 10 * 60 * 1000;
+
+const STRAFSCHLUCK_MESSAGES = {
+  1: ["Klein-Strafe – nur einer!", "Nicht so wild: 1 Schluck.", "Anwärmen für die nächste Runde!", "Ein kleiner Schluck zur Beruhigung."],
+  2: ["Doppelte Strafe!", "Zwei Schlücke. Gönn dir.", "2 Schlücke – passt schon.", "Doppelt hält besser."],
+  3: ["Maxi-Strafe! 3 Schlücke!", "Drei Schlücke – Au.", "Voll daneben, voll bestraft: 3 Schlücke!", "Zeit, die Leber zu testen: 3 Schlücke!"]
+};
+
+function maybeStrafschluck() {
+  if (Math.random() > STRAFSCHLUCK_CHANCE) return null;
+  const r = Math.random();
+  let count;
+  if (r < 0.6) count = 1;
+  else if (r < 0.9) count = 2;
+  else count = 3;
+  const messages = STRAFSCHLUCK_MESSAGES[count];
+  const message = messages[Math.floor(Math.random() * messages.length)];
+  return { count, message };
+}
 
 const rooms = {};
 
@@ -94,6 +115,7 @@ function revealAnswer(code) {
     const answered = ans !== undefined;
     const correct = answered && ans === q.correct;
     if (correct) team.score += 100;
+    const strafschluck = !correct ? maybeStrafschluck() : null;
     io.to(sid).emit('reveal', {
       answered,
       correct,
@@ -103,14 +125,32 @@ function revealAnswer(code) {
       gif: correct ? pick(CORRECT_GIFS) : pick(WRONG_GIFS),
       score: team.score,
       isLast,
-      nextDeadline
+      nextDeadline,
+      strafschluck
     });
   }
 
   const scores = teamList(room).sort((a, b) => b.score - a.score);
   io.to(code).emit('reveal:scores', { scores, isLast, nextDeadline });
 
-  room.revealTimer = setTimeout(() => nextQuestion(code), REVEAL_TIME_MS);
+  const completed = room.questionIdx + 1;
+  const isMilestone = !isLast && completed % MILESTONE_INTERVAL === 0;
+
+  room.revealTimer = setTimeout(() => {
+    if (isMilestone) {
+      const milestoneDeadline = Date.now() + MILESTONE_TIME_MS;
+      const finalScores = teamList(room).sort((a, b) => b.score - a.score);
+      io.to(code).emit('milestone:scoreboard', {
+        scores: finalScores,
+        completed,
+        total: room.gameQuestions.length,
+        nextDeadline: milestoneDeadline
+      });
+      room.revealTimer = setTimeout(() => nextQuestion(code), MILESTONE_TIME_MS);
+    } else {
+      nextQuestion(code);
+    }
+  }, REVEAL_TIME_MS);
 }
 
 io.on('connection', (socket) => {

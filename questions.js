@@ -899,5 +899,406 @@ module.exports = [
     options: ["Englisch", "Spanisch", "Italienisch", "Sächsisch (im Tanztempo)"],
     correct: 1,
     explanation: "Spanisch – Los del Río, 1993. Tanzfläche-Killer bis heute."
+  },
+
+  // === SAUFEN II ===
+  {
+    text: "Welche Spirituose ist die Basis eines Caipirinha?",
+    options: ["Rum", "Cachaça", "Wodka", "Brennspiritus aus Opas Keller"],
+    correct: 1,
+    explanation: "Cachaça – brasilianischer Zuckerrohrschnaps. Macht den Drink erst echt."
+  },
+  {
+    text: "Welche Farbe hat ein klassisches Pils?",
+    options: ["Tiefschwarz", "Goldgelb", "Bernstein", "Pink (Glitzer-Edition)"],
+    correct: 1,
+    explanation: "Goldgelb mit feiner weißer Schaumkrone."
+  },
+  {
+    text: "Wie heißt das größte deutsche Weinanbaugebiet?",
+    options: ["Mosel", "Pfalz", "Rheinhessen", "Bayern (klar, was sonst?)"],
+    correct: 2,
+    explanation: "Rheinhessen mit über 26.000 Hektar Rebfläche."
+  },
+  {
+    text: "Was bedeutet „Halbe“ in der bayerischen Bier-Sprache?",
+    options: ["0,3 L Bier", "0,5 L Bier", "0,33 L Bier", "Halbe Stunde Pause"],
+    correct: 1,
+    explanation: "Eine „Halbe“ ist ein halber Liter – im Bayerischen die Standardgröße."
+  },
+  {
+    text: "Was gehört in einen klassischen Aperol Spritz?",
+    options: [
+      "Aperol, Prosecco, Soda",
+      "Aperol, Tonic Water, Eis",
+      "Aperol, Bier, Limette",
+      "Aperol, was halt da ist"
+    ],
+    correct: 0,
+    explanation: "3 Teile Prosecco, 2 Teile Aperol, 1 Spritzer Soda. Italienische Sommer-Pflicht."
+  },
+  {
+    text: "Aus welchem Getreide wird Whisky traditionell gebrannt?",
+    options: ["Reis", "Weizen", "Gerste (oder Mais, Roggen)", "Hopfen"],
+    correct: 2,
+    explanation: "Meist Gerste (Single Malt) oder Mais (Bourbon). Hopfen geht ins Bier."
+  },
+  {
+    text: "Welcher italienische Schnaps schmeckt deutlich nach Anis?",
+    options: ["Grappa", "Sambuca", "Limoncello", "Espressotränen"],
+    correct: 1,
+    explanation: "Sambuca – wird traditionell mit drei Kaffeebohnen serviert."
+  },
+  {
+    text: "Was kommt in einen klassischen Margarita?",
+    options: [
+      "Tequila, Limette, Triple Sec",
+      "Tequila, Cola, Eis",
+      "Tequila, Apfelsaft, Salz",
+      "Tequila, Mut, mehr Tequila"
+    ],
+    correct: 0,
+    explanation: "Tequila + Limettensaft + Triple Sec/Cointreau, klassisch mit Salzrand am Glas."
+  },
+
+  // === Ü18 II ===
+  {
+    text: "Wie heißt der berühmte amerikanische Sex-Therapeut „Dr. Ruth“ mit Nachnamen?",
+    options: ["Goldberg", "Westheimer", "Stern", "Kennedy"],
+    correct: 1,
+    explanation: "Ruth Westheimer – wurde 96 Jahre alt und blieb bis zuletzt aktiv."
+  },
+  {
+    text: "In welchem Land wurde das Kamasutra geschrieben?",
+    options: ["China", "Indien", "Japan", "Im Hinterzimmer eines Buchladens"],
+    correct: 1,
+    explanation: "Indien, ca. 250–300 n. Chr. Übrigens nicht nur ein Sex-Buch, sondern eine Lebensphilosophie."
+  },
+  {
+    text: "Welcher US-Präsident hatte die berüchtigte Affäre mit Praktikantin Monica Lewinsky?",
+    options: ["John F. Kennedy", "Bill Clinton", "Donald Trump", "Ronald Reagan"],
+    correct: 1,
+    explanation: "Bill Clinton, 1995–96. Führte 1998 fast zum Impeachment."
+  },
+  {
+    text: "Was symbolisiert der Pfirsich (🍑) im Internet-Slang?",
+    options: ["Eine Frucht (literal)", "Ein Hintern", "Ein Cocktail", "Ein bayerisches Frühstück"],
+    correct: 1,
+    explanation: "Der Hintern. Ja, wirklich. Pass auf, was du Mama schickst."
+  },
+  {
+    text: "Welcher Tag ist der Internationale Frauentag?",
+    options: ["1. Januar", "8. März", "1. Mai", "Wenn Mama es sagt"],
+    correct: 1,
+    explanation: "8. März – seit 1911 ein internationaler Aktionstag, in Berlin sogar Feiertag."
+  },
+  {
+    text: "Welche Pflanze wurde im Volksmund auch „Liebesapfel“ genannt?",
+    options: ["Granatapfel", "Tomate", "Aprikose", "Kürbis"],
+    correct: 1,
+    explanation: "Tomate – das französische „pomme d’amour“ klingt einfach romantischer."
+  },
+  {
+    text: "In welchem Land schenken am Valentinstag traditionell die Frauen den Männern Schokolade?",
+    options: ["USA", "Frankreich", "Japan", "Nirgendwo, das gibt’s nicht"],
+    correct: 2,
+    explanation: "Japan! Männer revanchieren sich am „White Day“ einen Monat später."
+  },
+  {
+    text: "Wofür steht das „T“ in „LGBTQ+“?",
+    options: ["Tradition", "Transgender", "Tolerant", "Tanzbar"],
+    correct: 1,
+    explanation: "Transgender. Q steht für Queer, das + für alle weiteren Identitäten."
+  },
+
+  // === SCHERZFRAGEN II ===
+  {
+    text: "Wie viele Eier kann man in einen leeren Korb tun?",
+    options: [
+      "Beliebig viele",
+      "Nur eines – dann ist der Korb nicht mehr leer",
+      "Genau 12",
+      "Bis er platzt"
+    ],
+    correct: 1,
+    explanation: "Klassiker: Sobald ein Ei drin ist, ist der Korb nicht mehr leer."
+  },
+  {
+    text: "Was passiert mit einem grünen Stein, wenn man ihn ins Rote Meer wirft?",
+    options: ["Er wird rot", "Er wird nass", "Er sinkt steingrün", "Er verschwindet"],
+    correct: 1,
+    explanation: "Er wird nass. Jede andere Antwort denkt zu viel."
+  },
+  {
+    text: "Wann kann man 31 Tage am Stück nichts essen?",
+    options: [
+      "Niemals – das überlebt keiner",
+      "Wenn man nachts isst",
+      "Wenn man fastet",
+      "Frag den Arzt"
+    ],
+    correct: 1,
+    explanation: "Wenn man nachts isst, isst man am Tag nichts – 31 Tage lang."
+  },
+  {
+    text: "Welche zwei deutschen Wochentage beginnen mit „D“?",
+    options: [
+      "Dienstag und Donnerstag",
+      "Donnerstag und Dezember",
+      "Dienstag und Mittwoch",
+      "Donnerstag, sonst keiner"
+    ],
+    correct: 0,
+    explanation: "Dienstag und Donnerstag. Dezember ist ein Monat, kein Wochentag."
+  },
+  {
+    text: "Worauf kannst du jeden Tag treten, ohne dass es dir wehtut?",
+    options: ["Auf den Boden", "Auf deinen Schatten", "Auf die Bremse", "Auf einen Lego-Stein (autsch!)"],
+    correct: 1,
+    explanation: "Auf deinen eigenen Schatten – der spürt nichts."
+  },
+  {
+    text: "Welches Instrument hat genau 88 Tasten?",
+    options: ["Akkordeon", "Klavier", "Cembalo", "Mein Wecker (88 Snooze-Knöpfe)"],
+    correct: 1,
+    explanation: "Klavier – 52 weiße + 36 schwarze Tasten."
+  },
+  {
+    text: "Was ist immer vor dir, kannst du aber nie sehen?",
+    options: ["Deine Nase", "Die Zukunft", "Ein Geist", "Dein Reflex"],
+    correct: 1,
+    explanation: "Die Zukunft – egal, wie schnell du läufst, du kommst nie an."
+  },
+  {
+    text: "Welche Frage kann man niemals wahrheitsgemäß mit „Ja“ beantworten?",
+    options: [
+      "„Bist du wach?“",
+      "„Schläfst du?“",
+      "„Lebst du?“",
+      "„Hast du Hunger?“"
+    ],
+    correct: 1,
+    explanation: "„Schläfst du?“ – wenn du schläfst, kannst du nicht antworten."
+  },
+
+  // === VERWALTUNG II ===
+  {
+    text: "Was war der „Pfennig“ in Deutschland?",
+    options: [
+      "Die deutsche Cent-Münze",
+      "1/100 der Deutschen Mark – heute abgeschafft",
+      "Eine Schreibweise für Pennig",
+      "Restgeld auf dem Boden"
+    ],
+    correct: 1,
+    explanation: "1/100 Mark – seit 2002 mit der Euro-Einführung Geschichte."
+  },
+  {
+    text: "In welcher Stadt sitzt der Deutsche Bundestag?",
+    options: ["Bonn", "Berlin", "Frankfurt", "Wo das WLAN am besten ist"],
+    correct: 1,
+    explanation: "Berlin, im Reichstagsgebäude – seit dem Umzug 1999."
+  },
+  {
+    text: "Wofür steht „BAG“ im deutschen Rechtssystem?",
+    options: [
+      "Bundesarbeitsgericht",
+      "Bundesausgleichsgericht",
+      "Bürgerliches Arbeitsgericht",
+      "Bayrisches Allgemeingericht"
+    ],
+    correct: 0,
+    explanation: "Bundesarbeitsgericht – sitzt in Erfurt, höchste Instanz im Arbeitsrecht."
+  },
+  {
+    text: "Wie viele Stimmen hat ein Wähler bei der Bundestagswahl?",
+    options: ["1", "2", "3", "Egal, es wird eh kompliziert"],
+    correct: 1,
+    explanation: "Zwei: Erststimme für den Wahlkreis-Kandidaten, Zweitstimme für die Partei."
+  },
+  {
+    text: "Wer trifft sich offiziell im Bundesrat?",
+    options: [
+      "Bundeskanzler und Minister",
+      "Vertreter der Bundesländer",
+      "Bundespräsident und Beamte",
+      "Pensionierte Abgeordnete"
+    ],
+    correct: 1,
+    explanation: "Vertreter der Bundesländer – jedes Land hat zwischen 3 und 6 Stimmen."
+  },
+  {
+    text: "Was bedeutet „Ehrenamt“ im deutschen Recht?",
+    options: [
+      "Bezahlter Job mit Bonus",
+      "Unbezahlte Tätigkeit für die Gesellschaft",
+      "Ein Adelstitel",
+      "Was man am Wochenende vergisst"
+    ],
+    correct: 1,
+    explanation: "Unbezahlte Tätigkeit – aber durchaus mit Ehrenpflichten und teils Aufwandsentschädigung."
+  },
+  {
+    text: "In welcher Stadt sitzt das Statistische Bundesamt?",
+    options: ["Berlin", "Wiesbaden", "Frankfurt", "Wo am wenigsten Statistik verbreitet wird"],
+    correct: 1,
+    explanation: "Wiesbaden – der „Destatis“-Hauptsitz."
+  },
+  {
+    text: "Wofür steht „SEPA“ bei deutschen Bank-Überweisungen?",
+    options: [
+      "Single Euro Payments Area",
+      "System Europäischer Privater Abrechnung",
+      "Sicherer Europäischer Pfennig-Austausch",
+      "Schnell-Eingehende-Pleite-Anweisung"
+    ],
+    correct: 0,
+    explanation: "Single Euro Payments Area – einheitlicher europäischer Zahlungsraum seit 2014."
+  },
+
+  // === SCHÄTZFRAGEN II ===
+  {
+    text: "Wie viele Schritte macht ein Deutscher durchschnittlich pro Tag?",
+    options: ["~3.000", "~7.500", "~15.000", "Bis die Beine müde sind"],
+    correct: 1,
+    explanation: "Etwa 7.000–8.000 Schritte – die berühmten 10.000 sind eher Marketing."
+  },
+  {
+    text: "Wie viel Wasser sollte ein Erwachsener pro Tag trinken (laut DGE)?",
+    options: ["0,5 L", "1,5 L", "5 L", "Nur Bier, Mama"],
+    correct: 1,
+    explanation: "Etwa 1,5 Liter aus Getränken plus Wasser über Nahrung."
+  },
+  {
+    text: "Wie viele Tassen Kaffee trinkt ein Deutscher durchschnittlich pro Tag?",
+    options: ["1", "3", "7", "Nicht genug"],
+    correct: 1,
+    explanation: "Etwa 3 Tassen täglich – Deutschland ist Kaffee-Weltmeister Nr. 5."
+  },
+  {
+    text: "Wie viel Müll produziert ein Deutscher ungefähr pro Jahr?",
+    options: ["~150 kg", "~400 kg", "~620 kg", "So viel wie sein Online-Shopping-Verlauf"],
+    correct: 2,
+    explanation: "Rund 620 kg Siedlungsabfälle pro Kopf pro Jahr."
+  },
+  {
+    text: "Wie viele Rinder leben ungefähr in Deutschland?",
+    options: ["~1 Million", "~5 Millionen", "~11 Millionen", "Eine pro Bayern"],
+    correct: 2,
+    explanation: "Rund 11 Millionen Rinder in deutschen Ställen und auf Weiden."
+  },
+  {
+    text: "Wie viel CO₂ stößt ein Deutscher durchschnittlich pro Jahr aus?",
+    options: ["~1 t", "~5 t", "~11 t", "Klimaaktivisten weinen"],
+    correct: 2,
+    explanation: "Rund 11 Tonnen pro Person und Jahr – weit über dem 1,5-Grad-Ziel."
+  },
+  {
+    text: "Wie viele Sprachen werden weltweit gesprochen?",
+    options: ["~500", "~2.500", "~7.000", "Eine pro WG-Konflikt"],
+    correct: 2,
+    explanation: "Etwa 7.000, davon allerdings die Hälfte vom Aussterben bedroht."
+  },
+  {
+    text: "Wie hoch fliegt die Internationale Raumstation (ISS) ungefähr?",
+    options: ["~50 km", "~400 km", "~10.000 km", "So hoch, dass kein WLAN reicht"],
+    correct: 1,
+    explanation: "Rund 400 km – sie umkreist die Erde alle 90 Minuten."
+  },
+
+  // === SPORT ===
+  {
+    text: "Welcher Tennisspieler hält den Rekord für die meisten Grand-Slam-Titel (Männer)?",
+    options: ["Roger Federer", "Rafael Nadal", "Novak Djokovic", "Boris Becker (zu Hause)"],
+    correct: 2,
+    explanation: "Novak Djokovic – mit 24 Grand-Slam-Titeln vorn."
+  },
+  {
+    text: "Wie viele Spieler einer Eishockey-Mannschaft stehen gleichzeitig auf dem Eis?",
+    options: ["5", "6", "7", "So viele, wie ich grad zähle"],
+    correct: 1,
+    explanation: "Sechs: 5 Feldspieler + 1 Torhüter."
+  },
+  {
+    text: "Wie viele Runden hat ein Profi-Boxkampf maximal?",
+    options: ["8", "10", "12", "Bis einer am Boden liegt"],
+    correct: 2,
+    explanation: "Zwölf Runden à drei Minuten."
+  },
+  {
+    text: "Wie viele Spieler einer Volleyball-Mannschaft stehen gleichzeitig auf dem Feld?",
+    options: ["5", "6", "7", "Anders als bei Beachvolleyball"],
+    correct: 1,
+    explanation: "Sechs auf dem Feld. Beachvolleyball nur zwei."
+  },
+  {
+    text: "Wie heißt Tischtennis im internationalen Sportkontext?",
+    options: ["Ping-Pong", "Mini Tennis", "Table Tennis", "Klatschsport"],
+    correct: 2,
+    explanation: "Table Tennis – Ping-Pong ist der umgangssprachliche Begriff."
+  },
+
+  // === GEOGRAPHIE II ===
+  {
+    text: "Welcher Kontinent ist der kleinste?",
+    options: ["Antarktis", "Europa", "Australien (mit Ozeanien)", "Asien"],
+    correct: 2,
+    explanation: "Australien (Ozeanien) – rund 8,6 Mio. km². Antarktis ist 14 Mio. km²."
+  },
+  {
+    text: "Welcher Fluss ist innerhalb Deutschlands der längste?",
+    options: ["Donau", "Elbe", "Rhein", "Müggelteich"],
+    correct: 2,
+    explanation: "Der Rhein – ca. 865 km auf deutschem Boden. Donau ist insgesamt länger, fließt aber nur 647 km durch DE."
+  },
+  {
+    text: "Wie heißt die größte Insel der Welt (außer Australien als Kontinent)?",
+    options: ["Madagaskar", "Sumatra", "Grönland", "Sylt (gefühlt)"],
+    correct: 2,
+    explanation: "Grönland – über 2,1 Millionen km², zu Dänemark gehörig."
+  },
+  {
+    text: "An welchem Meer liegt die deutsche Insel Sylt?",
+    options: ["Ostsee", "Mittelmeer", "Nordsee", "Sahnehering-Meer"],
+    correct: 2,
+    explanation: "An der Nordsee, ganz oben in Schleswig-Holstein."
+  },
+  {
+    text: "Welcher Gebirgszug bildet die traditionelle Grenze zwischen Europa und Asien?",
+    options: ["Alpen", "Ural", "Himalaya", "Erzgebirge"],
+    correct: 1,
+    explanation: "Der Ural – verläuft Nord-Süd durch Russland."
+  },
+
+  // === WISSENSCHAFT & GESCHICHTE ===
+  {
+    text: "Welcher Wissenschaftler entdeckte die Schwerkraft (laut der berühmten Apfel-Anekdote)?",
+    options: ["Isaac Newton", "Johannes Kepler", "Galileo Galilei", "Darwin (anderes Fach)"],
+    correct: 0,
+    explanation: "Isaac Newton – die Apfel-Geschichte ist allerdings teils Legende."
+  },
+  {
+    text: "In welchem Jahr sank die Titanic?",
+    options: ["1898", "1912", "1925", "Letzten Sommer (im Kino schon wieder)"],
+    correct: 1,
+    explanation: "15. April 1912 – Kollision mit einem Eisberg im Nordatlantik."
+  },
+  {
+    text: "Wer war der zweite Bundeskanzler der BRD (nach Adenauer)?",
+    options: ["Willy Brandt", "Ludwig Erhard", "Kurt Georg Kiesinger", "Helmut Kohl"],
+    correct: 1,
+    explanation: "Ludwig Erhard, 1963–1966. Vater des „Wirtschaftswunders“."
+  },
+  {
+    text: "In welcher Tonart steht Beethovens „Für Elise“?",
+    options: ["C-Dur", "a-Moll", "Es-Dur", "Mein Klavierlehrer wusste es"],
+    correct: 1,
+    explanation: "a-Moll – das ikonische Eingangsmotiv beginnt mit E–Dis–E."
+  },
+  {
+    text: "Wie heißt die größte Pyramide in Ägypten?",
+    options: ["Cheops-Pyramide", "Mykerinos-Pyramide", "Tutanchamun-Pyramide", "Die mit dem schönsten Dach"],
+    correct: 0,
+    explanation: "Cheops-Pyramide in Gizeh – einziges noch erhaltenes Weltwunder der Antike."
   }
 ];
