@@ -1,0 +1,21 @@
+{
+  "name": "🍻 Pub Quiz",
+  "short_name": "Pub Quiz",
+  "description": "Multiplayer Pub-Quiz mit Strafschlücken, Sabotage und Quizmaster-Sprüchen.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#050816",
+  "theme_color": "#050816",
+  "lang": "de",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
