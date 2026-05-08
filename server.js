@@ -58,24 +58,67 @@ function pickQuizmasterComment(room) {
   const sorted = teams.slice().sort((a, b) => b.score - a.score);
   const leader = sorted[0];
   const loser = sorted.length > 1 ? sorted[sorted.length - 1] : null;
-  const randomTeam = teams[Math.floor(Math.random() * teams.length)];
 
-  const pool = [
-    ...(QUIZMASTER_COMMENTS.generic || []),
-    ...(QUIZMASTER_COMMENTS.team || [])
-  ];
-  if (sorted.length >= 2) {
-    pool.push(...(QUIZMASTER_COMMENTS.leader || []));
-    if (loser && loser.token !== leader.token) {
-      pool.push(...(QUIZMASTER_COMMENTS.loser || []));
+  // Spezifische Situationen sammeln (passen zur aktuellen Spiellage).
+  const specific = [];
+
+  for (const team of teams) {
+    if ((team.streak || 0) >= 3) {
+      specific.push({ pool: 'hotStreak', team });
+    }
+    if (team.lastStreakWasBroken) {
+      specific.push({ pool: 'streakBroken', team });
+      team.lastStreakWasBroken = false;
+    }
+    if (team.justSurvivedSabotage) {
+      specific.push({ pool: 'sabotageSurvived', team });
+      team.justSurvivedSabotage = false;
+    }
+    if (team.justFailedSabotage) {
+      specific.push({ pool: 'sabotageFailed', team });
+      team.justFailedSabotage = false;
+    }
+    if (team.justGotStrafschluck) {
+      specific.push({ pool: 'drink', team });
+      team.justGotStrafschluck = false;
     }
   }
+
+  if (sorted.length >= 2) {
+    const gap = sorted[0].score - sorted[1].score;
+    if (gap >= 300) specific.push({ pool: 'bigLead', team: leader });
+    if (gap > 0 && gap < 100 && sorted[0].score > 0) specific.push({ pool: 'tightRace' });
+  }
+
+  // Fallback-Pool: generisches und Standard-Team-/Leader-/Loser-Bezugnahmen.
+  const fallback = [{ pool: 'generic' }];
+  fallback.push({
+    pool: 'team',
+    team: teams[Math.floor(Math.random() * teams.length)]
+  });
+  if (sorted.length >= 2) {
+    fallback.push({ pool: 'leader', team: leader });
+    if (loser && loser.token !== leader.token) {
+      fallback.push({ pool: 'loser', team: loser });
+    }
+  }
+
+  // Wenn was Spezifisches passiert ist, mit 70% Wahrscheinlichkeit darauf
+  // eingehen, sonst aus dem Fallback ziehen.
+  let chosen;
+  if (specific.length > 0 && Math.random() < 0.7) {
+    chosen = specific[Math.floor(Math.random() * specific.length)];
+  } else {
+    chosen = fallback[Math.floor(Math.random() * fallback.length)];
+  }
+
+  const pool = QUIZMASTER_COMMENTS[chosen.pool] || [];
   if (pool.length === 0) return null;
 
   let template = pool[Math.floor(Math.random() * pool.length)];
-  template = template.replace(/\{team\}/g, randomTeam.name);
-  if (leader) template = template.replace(/\{leader\}/g, leader.name);
-  if (loser) template = template.replace(/\{loser\}/g, loser.name);
+  if (chosen.team) {
+    template = template.replace(/\{team\}/g, chosen.team.name);
+  }
   return template;
 }
 
@@ -281,12 +324,20 @@ function revealAnswer(code) {
     if (correct) {
       team.streak = (team.streak || 0) + 1;
     } else if (!skipped) {
+      if ((team.streak || 0) >= 3) team.lastStreakWasBroken = true;
       team.streak = 0;
     }
     const canSabotage = team.streak >= STREAK_FOR_SABOTAGE && otherTeamsCount > 0;
 
+    // Sabotage-Ausgang merken (für Quizmaster-Sprüche)
+    if (team.currentQuestionHard) {
+      if (correct) team.justSurvivedSabotage = true;
+      else if (answered) team.justFailedSabotage = true;
+    }
+
     // Strafschluck nur bei aktiv falscher Antwort, nicht bei Skip oder Timeout.
     const strafschluck = (answered && !correct) ? maybeStrafschluck() : null;
+    if (strafschluck) team.justGotStrafschluck = true;
     const gif = correct ? pick(CORRECT_GIFS) : pick(WRONG_GIFS);
 
     room.lastReveal[token] = {
@@ -429,7 +480,11 @@ io.on('connection', (socket) => {
       token, name, avatar: sanitizeAvatar(avatar), score: 0,
       socketId: socket.id, offlineSince: null,
       jokers: freshJokers(), pendingDoublepoints: false,
-      streak: 0, pendingHardQuestion: false, currentQuestion: null
+      streak: 0, pendingHardQuestion: false, currentQuestion: null,
+      lastStreakWasBroken: false,
+      justSurvivedSabotage: false,
+      justFailedSabotage: false,
+      justGotStrafschluck: false
     };
     socket.join(code);
     socket.data.room = code;
@@ -461,7 +516,11 @@ io.on('connection', (socket) => {
       token, name, avatar: sanitizeAvatar(avatar), score: 0,
       socketId: socket.id, offlineSince: null,
       jokers: freshJokers(), pendingDoublepoints: false,
-      streak: 0, pendingHardQuestion: false, currentQuestion: null
+      streak: 0, pendingHardQuestion: false, currentQuestion: null,
+      lastStreakWasBroken: false,
+      justSurvivedSabotage: false,
+      justFailedSabotage: false,
+      justGotStrafschluck: false
     };
     socket.join(code);
     socket.data.room = code;
