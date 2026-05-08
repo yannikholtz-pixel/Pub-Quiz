@@ -6,6 +6,7 @@ const { Server } = require('socket.io');
 
 const QUESTIONS = require('./questions');
 const HARD_QUESTIONS = require('./hardQuestions');
+const QUIZMASTER_COMMENTS = require('./quizmasterComments');
 const { CORRECT_GIFS, WRONG_GIFS } = require('./gifs');
 
 const app = express();
@@ -46,6 +47,37 @@ const STRAFSCHLUCK_MESSAGES = {
   2: ["Doppelte Strafe!", "Zwei Schlücke. Gönn dir.", "2 Schlücke – passt schon.", "Doppelt hält besser."],
   3: ["Maxi-Strafe! 3 Schlücke!", "Drei Schlücke – Au.", "Voll daneben, voll bestraft: 3 Schlücke!", "Zeit, die Leber zu testen: 3 Schlücke!"]
 };
+
+const QUIZMASTER_CHANCE = 0.30;
+
+function pickQuizmasterComment(room) {
+  if (Math.random() > QUIZMASTER_CHANCE) return null;
+  const teams = Object.values(room.teams);
+  if (teams.length === 0) return null;
+
+  const sorted = teams.slice().sort((a, b) => b.score - a.score);
+  const leader = sorted[0];
+  const loser = sorted.length > 1 ? sorted[sorted.length - 1] : null;
+  const randomTeam = teams[Math.floor(Math.random() * teams.length)];
+
+  const pool = [
+    ...(QUIZMASTER_COMMENTS.generic || []),
+    ...(QUIZMASTER_COMMENTS.team || [])
+  ];
+  if (sorted.length >= 2) {
+    pool.push(...(QUIZMASTER_COMMENTS.leader || []));
+    if (loser && loser.token !== leader.token) {
+      pool.push(...(QUIZMASTER_COMMENTS.loser || []));
+    }
+  }
+  if (pool.length === 0) return null;
+
+  let template = pool[Math.floor(Math.random() * pool.length)];
+  template = template.replace(/\{team\}/g, randomTeam.name);
+  if (leader) template = template.replace(/\{leader\}/g, leader.name);
+  if (loser) template = template.replace(/\{loser\}/g, loser.name);
+  return template;
+}
 
 function maybeStrafschluck() {
   if (Math.random() > STRAFSCHLUCK_CHANCE) return null;
@@ -286,6 +318,13 @@ function revealAnswer(code) {
   room.lastScores = scores;
   io.to(code).emit('reveal:scores', { scores, isLast, nextDeadline });
 
+  // Quizmaster-Kommentar (~30% pro Auflösung)
+  const comment = pickQuizmasterComment(room);
+  room.lastQuizmaster = comment;
+  if (comment) {
+    io.to(code).emit('quizmaster:comment', { text: comment });
+  }
+
   const completed = room.questionIdx + 1;
   const isMilestone = !isLast && completed % MILESTONE_INTERVAL === 0;
   room.lastIsMilestone = isMilestone;
@@ -340,6 +379,9 @@ function sendCurrentState(socket, room, team) {
         isLast: cached ? cached.isLast : false,
         nextDeadline: room.revealDeadline
       });
+    }
+    if (room.lastQuizmaster) {
+      socket.emit('quizmaster:comment', { text: room.lastQuizmaster });
     }
     return;
   }

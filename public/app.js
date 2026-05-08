@@ -229,6 +229,10 @@ socket.on('question', ({ idx, total, text, options, deadline, doublornix, hard }
   document.getElementById('q-total2').textContent = '?';
   document.getElementById('q-status').classList.add('hidden');
 
+  // Quizmaster-Sprechblase fürs nächste Reveal zurücksetzen
+  const qmBubble = document.getElementById('r-quizmaster');
+  if (qmBubble) qmBubble.classList.add('hidden');
+
   // Doppelornix-Banner aus dem Server-Hinweis (per question payload optional)
   document.getElementById('doublornix-banner').classList.toggle('hidden', !doublornix);
 
@@ -445,6 +449,13 @@ socket.on('reveal', ({ answered, correct, skipped, pointsDelta, correctChoice, c
 
   startRevealCountdown(nextDeadline, isLast);
   show('reveal');
+});
+
+socket.on('quizmaster:comment', ({ text }) => {
+  const bubble = document.getElementById('r-quizmaster');
+  if (!bubble) return;
+  bubble.querySelector('.quizmaster-text').textContent = text;
+  bubble.classList.remove('hidden');
 });
 
 socket.on('reveal:scores', ({ scores }) => {
