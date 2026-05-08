@@ -2591,5 +2591,614 @@ module.exports = [
     options: ["Mailand und Cortina d’Ampezzo", "Innsbruck", "Stockholm-Åre", "Sapporo"],
     correct: 0,
     explanation: "Mailand und Cortina d’Ampezzo (Italien) – die Winterspiele kehren ins Land der Dolomiten zurück."
+  },
+
+  // === Internet & Digital ===
+  {
+    text: "Welche Suchmaschine wurde 1998 in einer kalifornischen Garage gegründet?",
+    options: ["Yahoo", "Google", "Bing", "Ask Jeeves"],
+    correct: 1,
+    explanation: "Google – Larry Page und Sergey Brin gründeten es als Stanford-Studenten."
+  },
+  {
+    text: "Wofür steht die Abkürzung „URL“?",
+    options: ["Universal Resource Library", "Uniform Resource Locator", "Unified Routing Logic", "Unsere Realität Lädt"],
+    correct: 1,
+    explanation: "Uniform Resource Locator – die eindeutige Adresse einer Webseite."
+  },
+  {
+    text: "Wofür steht die Datei-Endung „.pdf“?",
+    options: ["Portable Document Format", "Print-Document File", "Public Data Format", "Probably Doesn’t Format"],
+    correct: 0,
+    explanation: "Portable Document Format – von Adobe 1993 entwickelt."
+  },
+  {
+    text: "Welcher Browser hat einen Fuchs (genauer: Rotfuchs) als Logo?",
+    options: ["Chrome", "Safari", "Firefox", "Edge"],
+    correct: 2,
+    explanation: "Firefox – streng genommen ein „Feuerfuchs“ (Rotfuchs auf einer Weltkugel)."
+  },
+  {
+    text: "Welche Plattform hatte ursprünglich ein Tweet-Limit von 140 Zeichen?",
+    options: ["Facebook", "Twitter (heute X)", "Instagram", "TikTok"],
+    correct: 1,
+    explanation: "Twitter – 2017 wurde es auf 280 Zeichen verdoppelt."
+  },
+  {
+    text: "Was bedeutet die Internet-Abkürzung „ROFL“?",
+    options: ["Really Out For Lunch", "Rolling On the Floor Laughing", "Run Out, Food's Late", "Reagiert Ohne Faktor Logik"],
+    correct: 1,
+    explanation: "„Vor Lachen am Boden rollend“ – Online-Klassiker seit den 90ern."
+  },
+  {
+    text: "Welche Personen werden als Mitgründer von YouTube genannt?",
+    options: [
+      "Steve Chen, Chad Hurley, Jawed Karim",
+      "Mark Zuckerberg und Eduardo Saverin",
+      "Larry Page und Sergey Brin",
+      "Drei Programmierer aus Wuppertal"
+    ],
+    correct: 0,
+    explanation: "Drei ehemalige PayPal-Mitarbeiter, 2005."
+  },
+  {
+    text: "Welche App startete 2010 als Foto-Filter-Plattform und gehört heute zu Meta?",
+    options: ["Instagram", "Snapchat", "TikTok", "BeReal"],
+    correct: 0,
+    explanation: "Instagram – 2012 von Facebook für 1 Milliarde Dollar gekauft."
+  },
+
+  // === Promis & Stars ===
+  {
+    text: "Welcher US-Rapper heißt mit bürgerlichem Namen Marshall Mathers?",
+    options: ["Eminem", "50 Cent", "Snoop Dogg", "Kanye West"],
+    correct: 0,
+    explanation: "Eminem – sein Künstlername ergibt sich aus den Initialen M&M."
+  },
+  {
+    text: "Welcher US-Präsident war zuvor Hollywood-Schauspieler?",
+    options: ["John F. Kennedy", "Ronald Reagan", "Jimmy Carter", "Gerald Ford"],
+    correct: 1,
+    explanation: "Ronald Reagan – über 50 Filme in den 1940er–60er Jahren."
+  },
+  {
+    text: "Welcher Singer-Songwriter heißt mit bürgerlichem Namen Robert Zimmerman?",
+    options: ["Bruce Springsteen", "Bob Dylan", "Neil Young", "Billy Joel"],
+    correct: 1,
+    explanation: "Bob Dylan – Literaturnobelpreis 2016."
+  },
+  {
+    text: "Welche deutsche Sängerin gewann 2010 den Eurovision Song Contest?",
+    options: ["Helene Fischer", "Lena Meyer-Landrut", "Yvonne Catterfeld", "Vanessa Mai"],
+    correct: 1,
+    explanation: "Lena Meyer-Landrut – mit „Satellite“ in Oslo."
+  },
+  {
+    text: "Welcher Schauspieler verkörperte 2019 den „Joker“ in Todd Phillips' Film?",
+    options: ["Heath Ledger", "Joaquin Phoenix", "Jared Leto", "Cesar Romero"],
+    correct: 1,
+    explanation: "Joaquin Phoenix – Oscar als bester Hauptdarsteller 2020."
+  },
+  {
+    text: "Welcher deutsche Komiker schuf den Kinofilm „(T)Raumschiff Surprise – Periode 1“?",
+    options: ["Otto Waalkes", "Bully Herbig", "Dieter Hallervorden", "Hape Kerkeling"],
+    correct: 1,
+    explanation: "Michael „Bully“ Herbig – einer der erfolgreichsten deutschen Komödien-Regisseure."
+  },
+  {
+    text: "Welcher japanische Filmemacher schuf „Mein Nachbar Totoro“ und „Chihiros Reise“?",
+    options: ["Hayao Miyazaki", "Akira Kurosawa", "Mamoru Hosoda", "Makoto Shinkai"],
+    correct: 0,
+    explanation: "Miyazaki – Mitgründer des Studio Ghibli."
+  },
+  {
+    text: "Welche US-Sängerin dominierte 2023/24 mit „The Eras Tour“ die Welttournee-Charts?",
+    options: ["Beyoncé", "Taylor Swift", "Ariana Grande", "Olivia Rodrigo"],
+    correct: 1,
+    explanation: "Taylor Swift – erste Tour, die über 1 Milliarde Dollar einspielte."
+  },
+
+  // === Tiere ===
+  {
+    text: "Wie viele Mägen hat eine Kuh?",
+    options: ["1", "2", "4", "Mehr, als ich Bier vertrage"],
+    correct: 2,
+    explanation: "Vier – Pansen, Netzmagen, Blättermagen und Labmagen."
+  },
+  {
+    text: "Welches Tier ist – gemessen an Todesopfern beim Menschen – das gefährlichste der Welt?",
+    options: ["Hai", "Krokodil", "Mücke", "Elefant"],
+    correct: 2,
+    explanation: "Mücke – über 700.000 Todesfälle pro Jahr durch übertragene Krankheiten."
+  },
+  {
+    text: "Wie heißt eine Gruppe Krähen im Englischen?",
+    options: ["A choir", "A murder", "A flock", "A swarm"],
+    correct: 1,
+    explanation: "„A murder of crows“ – stammt aus dem Spätmittelalter."
+  },
+  {
+    text: "Welches Säugetier kann von allen Tieren am tiefsten tauchen?",
+    options: ["Blauwal", "Pottwal", "Beluga", "Robbe"],
+    correct: 1,
+    explanation: "Pottwal – über 2.000 Meter Tiefe nachgewiesen, mehr als 90 Min am Stück."
+  },
+  {
+    text: "Welcher Vogel hat die größte Flügelspannweite aller lebenden Vogelarten?",
+    options: ["Steinadler", "Wanderalbatros", "Kalifornischer Kondor", "Kaiserpinguin (er fliegt nicht)"],
+    correct: 1,
+    explanation: "Wanderalbatros – bis zu 3,7 Meter Spannweite."
+  },
+  {
+    text: "Welche Tiere sind auf dem australischen Wappen abgebildet?",
+    options: ["Zwei Kängurus", "Zwei Koalas", "Känguru und Emu", "Wombat und Schnabeltier"],
+    correct: 2,
+    explanation: "Känguru und Emu – beide angeblich, weil sie nicht rückwärts laufen können."
+  },
+  {
+    text: "Wie viele Knochen hat ein erwachsener Hund ungefähr?",
+    options: ["~150", "~220", "~320", "Genau so viele wie er versteckt hat"],
+    correct: 2,
+    explanation: "Etwa 319–321 Knochen, je nach Rasse und Schwanzlänge."
+  },
+  {
+    text: "Welcher Vogel hat seine Geschmacksknospen auf den Füßen?",
+    options: ["Schmetterling (kein Vogel!)", "Spatz", "Specht", "Strauß"],
+    correct: 0,
+    explanation: "Schmetterling – schmeckt mit den Füßen, sobald er auf einer Blüte landet. (Die Frage ist eine Falle.)"
+  },
+  {
+    text: "Welches Tier kann seinen Körper bei Gefahr in Stacheln einkugeln?",
+    options: ["Igel", "Gürteltier", "Beides", "Kaktus (kein Tier)"],
+    correct: 2,
+    explanation: "Sowohl Igel als auch Kugelgürteltier rollen sich zur Verteidigung ein."
+  },
+  {
+    text: "Welche Farbe sehen Stiere im Stierkampf NICHT als rot?",
+    options: ["Rot", "Sie sehen die Farbe rot überhaupt nicht so", "Pink", "Lila"],
+    correct: 1,
+    explanation: "Stiere reagieren auf die Bewegung, nicht auf die Farbe – sie sind teilweise farbenblind."
+  },
+
+  // === Lebensmittel ===
+  {
+    text: "Aus welchem Tier wird traditionell Mortadella hergestellt?",
+    options: ["Rind", "Schwein", "Lamm", "Pute"],
+    correct: 1,
+    explanation: "Schwein – aus Bologna, deshalb auch in den USA „bologna sausage“ genannt."
+  },
+  {
+    text: "Welches Brot ist die typische Spezialität der westfälischen Stadt Pumpernickel?",
+    options: ["Pumpernickel", "Knäckebrot", "Stollen", "Hefezopf"],
+    correct: 0,
+    explanation: "Pumpernickel – sehr dunkles Roggenvollkornbrot, wird über 16 Stunden gebacken."
+  },
+  {
+    text: "Was ist die Hauptzutat von Hummus?",
+    options: ["Linsen", "Kichererbsen", "Bohnen", "Erbsen"],
+    correct: 1,
+    explanation: "Kichererbsen – püriert mit Tahin (Sesampaste), Olivenöl, Zitrone und Knoblauch."
+  },
+  {
+    text: "Aus welcher Pflanze wird das Gewürz Vanille gewonnen?",
+    options: ["Aus einer Orchidee", "Aus einem Kaktus", "Aus einer Liane", "Aus einer Wurzel"],
+    correct: 0,
+    explanation: "Vanille – die einzige Orchidee, die ein essbares Produkt liefert."
+  },
+  {
+    text: "Was ist Tofu hauptsächlich?",
+    options: ["Fermentierter Reis", "Geronnene Sojamilch", "Gepresster Quark", "Gequetschte Linsen"],
+    correct: 1,
+    explanation: "Geronnene Sojamilch – seit über 2.000 Jahren in China bekannt."
+  },
+  {
+    text: "Welche Fischart ist im klassischen Sushi am häufigsten?",
+    options: ["Lachs", "Thunfisch", "Makrele", "Hering"],
+    correct: 1,
+    explanation: "Thunfisch – traditionell in Japan, Lachs wurde erst durch Norweger populär."
+  },
+  {
+    text: "Welche deutsche Stadt streitet sich (mit Berlin) um die Erfindung der Currywurst?",
+    options: ["Hamburg", "Köln", "München", "Hannover"],
+    correct: 0,
+    explanation: "Hamburg – dort soll Lena Brückner sie erfunden haben (umstritten gegenüber Herta Heuwer aus Berlin 1949)."
+  },
+  {
+    text: "Was ist „Kombucha“?",
+    options: ["Ein japanischer Tee-Pilz", "Fermentierter Tee", "Eine indische Frucht", "Ein neuer TikTok-Trend"],
+    correct: 1,
+    explanation: "Fermentierter, leicht prickelnder Tee – mit dem „Tee-Pilz“ (SCOBY)."
+  },
+
+  // === Wissenschaft ===
+  {
+    text: "Wofür steht die Abkürzung „DNA“?",
+    options: ["Desoxyribonukleinsäure", "Durchschnitts-Nervenzellen-Aktivität", "Dichroitische Nuklear-Achse", "Darmflora-Nukleus-Analyse"],
+    correct: 0,
+    explanation: "Desoxyribonukleinsäure – englisch DNA, deutsch oft DNS."
+  },
+  {
+    text: "Welche Krankheit besiegte Edward Jenner 1796 mit der ersten Schutzimpfung?",
+    options: ["Pest", "Pocken", "Cholera", "Tollwut"],
+    correct: 1,
+    explanation: "Pocken – die erste durch Impfung weltweit ausgerottete Krankheit (1980 offiziell)."
+  },
+  {
+    text: "Welche Konstante hat den Wert von rund 299.792.458 m/s?",
+    options: ["Lichtgeschwindigkeit (c)", "Schallgeschwindigkeit", "Erdbeschleunigung", "Planck-Konstante"],
+    correct: 0,
+    explanation: "Lichtgeschwindigkeit – exakte Definition seit 1983."
+  },
+  {
+    text: "Welcher Wissenschaftler formulierte die Heisenberg'sche Unschärferelation?",
+    options: ["Werner Heisenberg", "Albert Einstein", "Niels Bohr", "Max Planck"],
+    correct: 0,
+    explanation: "Werner Heisenberg, 1927 – Grundlage der Quantenmechanik."
+  },
+  {
+    text: "Welche Krankheit überträgt der Tigermücke-Stich vor allem in tropischen Regionen?",
+    options: ["Dengue-Fieber", "Tuberkulose", "Lyme-Borreliose", "Tetanus"],
+    correct: 0,
+    explanation: "Dengue (auch Chikungunya, Zika) – durch Aedes-Mücken."
+  },
+  {
+    text: "Welche Naturkonstante ist im Periodensystem als „Avogadro-Zahl“ bekannt?",
+    options: ["~6 × 10²³", "~3 × 10⁸", "~9,81", "~1,38 × 10⁻²³"],
+    correct: 0,
+    explanation: "Avogadro-Zahl: ~6,022 × 10²³ Teilchen pro Mol."
+  },
+
+  // === Geschichte ===
+  {
+    text: "An welchem Datum stürmten die Pariser 1789 die Bastille?",
+    options: ["4. Juli", "14. Juli", "1. August", "9. November"],
+    correct: 1,
+    explanation: "14. Juli 1789 – heute französischer Nationalfeiertag."
+  },
+  {
+    text: "Welche britische Königin regierte von 1837 bis 1901?",
+    options: ["Elisabeth I.", "Victoria", "Anna", "Mary I."],
+    correct: 1,
+    explanation: "Königin Victoria – 63 Jahre, 7 Monate auf dem Thron."
+  },
+  {
+    text: "Wer umsegelte 1519–1522 als Erster mit seiner Flotte die Erde (er selbst überlebte nicht)?",
+    options: ["Magellan", "Vasco da Gama", "Christoph Kolumbus", "Sir Francis Drake"],
+    correct: 0,
+    explanation: "Ferdinand Magellan – starb 1521 auf den Philippinen, Elcano vollendete die Reise."
+  },
+  {
+    text: "Welcher französische General gründete 1958 die V. Republik?",
+    options: ["Charles de Gaulle", "Napoleon III.", "François Mitterrand", "Georges Pompidou"],
+    correct: 0,
+    explanation: "Charles de Gaulle – nach der Algerien-Krise."
+  },
+  {
+    text: "In welchem Jahr wurde Pompeji durch den Vesuv verschüttet?",
+    options: ["79 v. Chr.", "79 n. Chr.", "179 n. Chr.", "279 n. Chr."],
+    correct: 1,
+    explanation: "24. August 79 n. Chr. (Datum umstritten) – Plinius der Jüngere beschrieb es."
+  },
+  {
+    text: "Welcher römische Kaiser ließ den Hadrianswall in Britannien errichten?",
+    options: ["Hadrian", "Trajan", "Marcus Aurelius", "Konstantin"],
+    correct: 0,
+    explanation: "Hadrian, ab 122 n. Chr. – 117 km lang."
+  },
+  {
+    text: "Welcher Reformer gründete den Buddhismus im 5. Jahrhundert v. Chr.?",
+    options: ["Konfuzius", "Buddha (Siddhartha Gautama)", "Laotse", "Mohammed"],
+    correct: 1,
+    explanation: "Siddhartha Gautama – um 480 v. Chr. erleuchtet unter dem Bodhi-Baum."
+  },
+
+  // === Sprache & Kuriosa ===
+  {
+    text: "Wofür steht der griechische Buchstabe „π“ (Pi)?",
+    options: ["Den Buchstaben P", "Eine mathematische Konstante", "Beides", "Eine Pizza-Bestellung"],
+    correct: 2,
+    explanation: "Beides – griechisches P und gleichzeitig Symbol für Kreisumfang/Durchmesser."
+  },
+  {
+    text: "Aus welcher Sprache stammt das Wort „Kindergarten“?",
+    options: ["Englisch", "Deutsch (wurde so übernommen)", "Niederländisch", "Schwedisch"],
+    correct: 1,
+    explanation: "Deutsch – im Englischen unverändert übernommen, geprägt von Friedrich Fröbel."
+  },
+  {
+    text: "Welche Sprache hat die meisten Muttersprachler in Indien?",
+    options: ["Englisch", "Hindi", "Tamil", "Bengali"],
+    correct: 1,
+    explanation: "Hindi – Englisch ist nur Verkehrssprache, nicht Muttersprache der meisten."
+  },
+  {
+    text: "Welche Sprachen sind neben Deutsch Amtssprachen der Schweiz?",
+    options: ["Französisch und Italienisch", "Französisch, Italienisch, Rätoromanisch", "Nur Französisch", "Nur Italienisch"],
+    correct: 1,
+    explanation: "Vier Amtssprachen: Deutsch, Französisch, Italienisch, Rätoromanisch."
+  },
+  {
+    text: "Was bedeutet das deutsche Wort „Backpfeifengesicht“ wörtlich übersetzt?",
+    options: ["Ein Bäckergesicht", "Ein Gesicht, das nach einer Ohrfeige verlangt", "Ein Gesicht voller Mehl", "Ein freches Lächeln"],
+    correct: 1,
+    explanation: "Wörtlich: ein Gesicht, das eine „Backpfeife“ (Ohrfeige) verdient. Gibt's so nur im Deutschen."
+  },
+
+  // === Reise & Geographie ===
+  {
+    text: "Welche europäische Stadt hat den größten Container-Hafen?",
+    options: ["Rotterdam", "Hamburg", "Antwerpen", "Marseille"],
+    correct: 0,
+    explanation: "Rotterdam – größter Hafen Europas, weltweit unter den Top 10."
+  },
+  {
+    text: "Wie heißt der höchste Berg auf Hawaii (vom Meeresboden gemessen sogar der höchste Berg der Welt)?",
+    options: ["Mauna Kea", "Mauna Loa", "Diamond Head", "Kilauea"],
+    correct: 0,
+    explanation: "Mauna Kea – vom Meeresboden gemessen ~10.200 m, höher als der Mount Everest."
+  },
+  {
+    text: "Welche US-Stadt wird als „Tor zum Westen“ bezeichnet (mit dem berühmten Bogen)?",
+    options: ["Chicago", "St. Louis", "Denver", "Kansas City"],
+    correct: 1,
+    explanation: "St. Louis, Missouri – Gateway Arch, 192 m hoch."
+  },
+  {
+    text: "Welche Stadt war der wichtigste Sitz der Hanse im Mittelalter?",
+    options: ["Hamburg", "Bremen", "Lübeck", "Rostock"],
+    correct: 2,
+    explanation: "Lübeck – „Königin der Hanse“."
+  },
+  {
+    text: "Welche italienische Stadt ist berühmt für ihren schiefen Turm?",
+    options: ["Florenz", "Pisa", "Bologna", "Genua"],
+    correct: 1,
+    explanation: "Pisa – der Turm steht seit 1372 schief, mittlerweile auf 4° stabilisiert."
+  },
+  {
+    text: "Welcher Pass ist der höchste fahrbare in den Alpen?",
+    options: ["Stilfser Joch", "Großglockner", "Furkapass", "Brennerpass"],
+    correct: 0,
+    explanation: "Stilfser Joch (ital. Passo dello Stelvio) – 2757 m, 75 Kehren."
+  },
+
+  // === Kunst & Kultur ===
+  {
+    text: "Welcher Maler ist berühmt für seine Serie von „Sonnenblumen“-Bildern?",
+    options: ["Vincent van Gogh", "Claude Monet", "Pablo Picasso", "Henri Matisse"],
+    correct: 0,
+    explanation: "Van Gogh – 1888/89 in Arles, Geschenk an Paul Gauguin."
+  },
+  {
+    text: "Welcher Komponist erblindete im Alter und schrieb trotzdem viele Werke (1685–1750)?",
+    options: ["Bach", "Beethoven", "Händel", "Mozart"],
+    correct: 2,
+    explanation: "Georg Friedrich Händel – ab ca. 1751 fast blind, komponierte aber weiter."
+  },
+  {
+    text: "Welcher Architekt entwarf das Pariser Centre Pompidou (mit den außenliegenden Rohren)?",
+    options: ["Renzo Piano und Richard Rogers", "Le Corbusier", "Jean Nouvel", "Frank Gehry"],
+    correct: 0,
+    explanation: "Renzo Piano und Richard Rogers – High-Tech-Architektur, eröffnet 1977."
+  },
+  {
+    text: "Welche Oper Mozarts spielt in Sevilla?",
+    options: ["Don Giovanni", "Die Hochzeit des Figaro", "Beide", "Die Zauberflöte"],
+    correct: 2,
+    explanation: "Beide – „Le nozze di Figaro“ und „Don Giovanni“ spielen in Sevilla."
+  },
+  {
+    text: "Welcher Schriftsteller verfasste „Hundert Jahre Einsamkeit“?",
+    options: ["Gabriel García Márquez", "Mario Vargas Llosa", "Isabel Allende", "Jorge Luis Borges"],
+    correct: 0,
+    explanation: "García Márquez – 1967, Hauptwerk des magischen Realismus, Nobelpreis 1982."
+  },
+
+  // === Sport ===
+  {
+    text: "Welcher europäische Fußballverein hat die meisten Champions-League-Titel (Stand 2024)?",
+    options: ["FC Bayern München", "AC Mailand", "Real Madrid", "FC Barcelona"],
+    correct: 2,
+    explanation: "Real Madrid – 15 Titel, mit großem Abstand vor Mailand (7) und Bayern (6)."
+  },
+  {
+    text: "Wie heißt der wichtigste Pokal des US-Baseballs?",
+    options: ["Stanley Cup", "Vince Lombardi Trophy", "Commissioner's Trophy", "Larry O'Brien Trophy"],
+    correct: 2,
+    explanation: "Commissioner's Trophy – wird beim World Series-Sieger überreicht."
+  },
+  {
+    text: "Welches Tennis-Grand-Slam-Turnier wird traditionell auf Rasen gespielt?",
+    options: ["Wimbledon", "French Open", "US Open", "Australian Open"],
+    correct: 0,
+    explanation: "Wimbledon – seit 1877 auf Rasen, ältestes Tennisturnier."
+  },
+  {
+    text: "Welcher Sport heißt im Englischen „table tennis“?",
+    options: ["Tischtennis", "Tischbillard", "Federball", "Squash"],
+    correct: 0,
+    explanation: "Tischtennis – Ping-Pong ist der umgangssprachliche Begriff."
+  },
+  {
+    text: "Wie viele Punkte zählt ein „Field Goal“ im American Football?",
+    options: ["1", "2", "3", "6"],
+    correct: 2,
+    explanation: "Drei Punkte – beim Touchdown sind es 6, plus 1–2 für die Conversion."
+  },
+
+  // === Mythologie & Religion ===
+  {
+    text: "Welcher griechische Gott herrscht über die Unterwelt?",
+    options: ["Zeus", "Poseidon", "Hades", "Apollon"],
+    correct: 2,
+    explanation: "Hades – sein Reich heißt ebenfalls Hades."
+  },
+  {
+    text: "Welche hinduistische Gottheit wird mit blauer Haut dargestellt und gilt als Beschützer?",
+    options: ["Shiva", "Vishnu / Krishna", "Brahma", "Ganesha"],
+    correct: 1,
+    explanation: "Vishnu, oft als Krishna inkarniert – die blaue Haut symbolisiert das Unendliche."
+  },
+  {
+    text: "Wer war laut Bibel der erste Apostel, den Jesus berief?",
+    options: ["Petrus (Simon)", "Johannes", "Paulus", "Matthäus"],
+    correct: 0,
+    explanation: "Simon, der von Jesus „Petrus“ (Fels) genannt wurde – Bruder des Andreas."
+  },
+  {
+    text: "Welcher chinesische Philosoph schrieb das „Tao Te King“?",
+    options: ["Konfuzius", "Laotse (Laozi)", "Sunzi", "Mengzi"],
+    correct: 1,
+    explanation: "Laotse – Begründer des Taoismus, im 6. Jh. v. Chr."
+  },
+
+  // === Filme & Serien ===
+  {
+    text: "Welcher Filmregisseur drehte „Schindlers Liste“ (1993)?",
+    options: ["Steven Spielberg", "Martin Scorsese", "Francis Ford Coppola", "Roman Polanski"],
+    correct: 0,
+    explanation: "Spielberg – 7 Oscars, gilt als sein persönlichstes Werk."
+  },
+  {
+    text: "Welche US-Animationsserie spielt in der fiktiven Stadt Springfield?",
+    options: ["South Park", "Family Guy", "Die Simpsons", "Rick and Morty"],
+    correct: 2,
+    explanation: "Die Simpsons – seit 1989, längste laufende Primetime-Serie der USA."
+  },
+  {
+    text: "Aus welchem Film stammt der Satz „Houston, wir haben ein Problem“?",
+    options: ["Apollo 13", "2001: Odyssee im Weltraum", "Interstellar", "Gravity"],
+    correct: 0,
+    explanation: "„Apollo 13“ (1995) – die echte Funkphrase war übrigens leicht anders: „Houston, we've had a problem.“"
+  },
+  {
+    text: "Welcher Disney-Animationsfilm spielt unter Wasser und hat 2023 ein Realfilm-Remake bekommen?",
+    options: ["Findet Nemo", "Arielle, die Meerjungfrau", "Atlantis", "Vaiana"],
+    correct: 1,
+    explanation: "„Arielle, die Meerjungfrau“ – Realfilm 2023 mit Halle Bailey."
+  },
+  {
+    text: "Welche TV-Serie zeigte in „Star Trek: Deep Space Nine“ erstmals einen schwarzen Captain in Hauptrolle?",
+    options: ["Star Trek", "Star Trek: TNG", "Star Trek: DS9", "Star Trek: Voyager"],
+    correct: 2,
+    explanation: "DS9 (1993) mit Avery Brooks als Captain Sisko."
+  },
+
+  // === Mathe & Logik 2 ===
+  {
+    text: "Wie viele Sekunden hat ein Tag?",
+    options: ["3.600", "60.400", "86.400", "Gefühlt zu wenige am Wochenende"],
+    correct: 2,
+    explanation: "86.400 – 24 × 60 × 60."
+  },
+  {
+    text: "Was ergibt 11 × 11?",
+    options: ["111", "121", "131", "1111"],
+    correct: 1,
+    explanation: "121 – einfacher als man denkt im Quizdruck."
+  },
+  {
+    text: "Welcher griechische Mathematiker schrieb „Die Elemente“ (~300 v. Chr.)?",
+    options: ["Pythagoras", "Euklid", "Archimedes", "Thales"],
+    correct: 1,
+    explanation: "Euklid von Alexandria – das wichtigste Lehrbuch der Mathematik überhaupt."
+  },
+  {
+    text: "Wie viele Diagonalen hat ein Achteck?",
+    options: ["8", "16", "20", "24"],
+    correct: 2,
+    explanation: "20 – Formel n(n−3)/2 = 8·5/2."
+  },
+
+  // === Kuriositäten ===
+  {
+    text: "Was bedeutet das amerikanische „OK“ ursprünglich (laut der gängigsten Theorie)?",
+    options: ["„Oll Korrect“ (humorvoll falsch geschrieben)", "„Okay Yard“", "„Out of Kontrol“", "„Old King“"],
+    correct: 0,
+    explanation: "„Oll Korrect“ – satirische Falschschreibung, die in den 1830ern in Boston populär wurde."
+  },
+  {
+    text: "Wie viele Inseln umfasst Indonesien ungefähr?",
+    options: ["~1.700", "~6.500", "~17.500", "~150.000"],
+    correct: 2,
+    explanation: "Etwa 17.500 Inseln, davon nur ca. 6.000 bewohnt."
+  },
+  {
+    text: "Welche Stadt soll mit über 400 Brücken die meisten weltweit haben?",
+    options: ["Venedig", "Hamburg", "Amsterdam", "Sankt Petersburg"],
+    correct: 1,
+    explanation: "Hamburg – über 2.500 Brücken, mehr als Venedig, Amsterdam und London zusammen."
+  },
+  {
+    text: "Welcher Tag der Woche gilt in Statistiken als unbeliebtester?",
+    options: ["Sonntag (vor der Woche)", "Montag", "Dienstag", "Mittwoch"],
+    correct: 1,
+    explanation: "Montag – „Blue Monday“ ist sogar wissenschaftlich-pseudowissenschaftlich ausgerechnet worden."
+  },
+  {
+    text: "Wer war die erste Frau, die einen Nobelpreis gewann?",
+    options: ["Marie Curie", "Lise Meitner", "Mutter Teresa", "Selma Lagerlöf"],
+    correct: 0,
+    explanation: "Marie Curie – 1903 Physik (mit Pierre Curie und Becquerel), 1911 Chemie (allein)."
+  },
+  {
+    text: "Wann erschien die erste Folge der „Sesamstraße“ in Deutschland?",
+    options: ["1973", "1979", "1985", "1991"],
+    correct: 0,
+    explanation: "1973 – Ernie, Bert, Krümelmonster und Co. liefen erstmals im NDR."
+  },
+  {
+    text: "Welcher Tag wird auf der Nordhalbkugel als „längster Tag des Jahres“ bezeichnet?",
+    options: ["21. März", "21. Juni", "21. September", "21. Dezember"],
+    correct: 1,
+    explanation: "21. Juni – Sommersonnenwende."
+  },
+  {
+    text: "Welcher chemische Stoff ist in Aspirin der Hauptwirkstoff?",
+    options: ["Paracetamol", "Acetylsalicylsäure", "Ibuprofen", "Koffein"],
+    correct: 1,
+    explanation: "Acetylsalicylsäure (ASS) – seit 1899 von Bayer vermarktet."
+  },
+  {
+    text: "Wie heißt das deutsche Wort für jemanden, der zu viel Bier trinkt – aber liebevoll gemeint?",
+    options: ["Schluckspecht", "Bierkrieger", "Hopfenfreund", "Gerstensaftliebhaber"],
+    correct: 0,
+    explanation: "Schluckspecht – auch als Pub-Quiz-Teamname beliebt."
+  },
+  {
+    text: "Welche US-Stadt heißt offiziell „City That Never Sleeps“?",
+    options: ["Las Vegas", "New York City", "Los Angeles", "Miami"],
+    correct: 1,
+    explanation: "New York City – Spitzname seit den 1920ern."
+  },
+  {
+    text: "Welche US-Stadt wird als „Music City“ bezeichnet (Heimat der Country-Musik)?",
+    options: ["Memphis", "Nashville", "New Orleans", "Austin"],
+    correct: 1,
+    explanation: "Nashville, Tennessee – Country-Hauptstadt der Welt."
+  },
+  {
+    text: "Welche Marke produziert die berühmten „Schweizer Taschenmesser“?",
+    options: ["Victorinox", "Swatch", "Migros", "Toblerone"],
+    correct: 0,
+    explanation: "Victorinox – seit 1884, Hauptlieferant der Schweizer Armee."
+  },
+  {
+    text: "Was bedeutet das Smiley „;-)“ in der Internet-Kommunikation?",
+    options: ["Ein Augenzwinkern", "Müdigkeit", "Skepsis", "Eine Brille"],
+    correct: 0,
+    explanation: "Augenzwinkern – meist ironisch oder spielerisch gemeint."
+  },
+  {
+    text: "Welcher Vogel ziert die Marke Lufthansa als Logo?",
+    options: ["Schwalbe", "Adler", "Kranich", "Möwe"],
+    correct: 2,
+    explanation: "Kranich – seit 1918, Symbol für Eleganz und Weitstrecken."
+  },
+  {
+    text: "Welche Farbe entsteht, wenn man Gelb und Blau mischt?",
+    options: ["Grün", "Lila", "Orange", "Rot"],
+    correct: 0,
+    explanation: "Grün – einfache Subtraktiv-Mischung."
   }
 ];
