@@ -1,4 +1,4 @@
-// Sprüche des virtuellen Quizmasters. Erscheinen bei jeder ~25–30%
+// Sprüche des virtuellen Quizmasters. Erscheinen bei jeder ~30%
 // der Auflösungen als Sprechblase.
 //
 // Platzhalter:
@@ -6,8 +6,16 @@
 //   {leader} → das aktuell führende Team (nur, wenn 2+ Teams)
 //   {loser}  → das aktuell letzte Team (nur, wenn 2+ Teams)
 //
-// In den Listen unten: wer keinen Platzhalter hat, gilt als „generic"
-// und passt immer.
+// Grammatik-Hinweis:
+// Teamnamen können Singular („Bobby") oder Plural („Trinkbrüder") sein.
+// Damit der Text in beiden Fällen grammatikalisch sauber ist, steht der
+// Platzhalter NIE als alleiniges Subjekt mit konjugiertem Verb. Stattdessen:
+//   – „Team {team}" als Subjekt (immer Singular: „Team Bobby denkt"
+//     ebenso wie „Team Trinkbrüder denkt")
+//   – im Objekt: „an {team}", „auf {team}", „bei {team}" — funktioniert ohne Verb-Anpassung
+//   – keine direkten Anreden mit „du" oder „ihr" gegen einen Platzhalter
+//
+// Wer eigene Sprüche ergänzt, sollte eine dieser Formen einhalten.
 
 module.exports = {
   generic: [
@@ -34,34 +42,35 @@ module.exports = {
     "Pause für die Schwiegermütter. Jetzt geht's los."
   ],
   team: [
-    "{team}, du atmest noch? Sicher?",
-    "{team}, das war fast schlau.",
-    "{team} denkt hart nach. Beeindruckend.",
-    "Glückwunsch, {team}, du existierst weiterhin.",
-    "{team}, ein Hauch von Hirn wäre jetzt nicht schlecht.",
-    "Ich glaube, {team} braucht eine Pause. Oder mehr Bier.",
-    "{team}, falls dir noch jemand zuhört — los.",
-    "{team}, hör mal auf, deinen Sitznachbarn anzuschauen.",
-    "{team} hat heute den Tag seines Lebens. Behauptet niemand.",
+    "Team {team} denkt hart nach. Beeindruckend.",
+    "Team {team} hat das fast richtig hingekriegt.",
+    "Glückwunsch an {team} – immerhin noch dabei.",
+    "Team {team} braucht offensichtlich mehr Bier.",
+    "Ein Hauch von Hirn würde Team {team} jetzt nicht schaden.",
     "Ich wette einen Schnaps auf {team}. Und verliere.",
-    "{team}, das hier ist nicht „Wer wird Millionär?". Du musst nicht raten."
+    "Falls Team {team} zuhört: Hallo. Falls nicht: schade.",
+    "Team {team} und das Quiz – eine Hassliebe.",
+    "Heute übertrifft sich Team {team} selbst. Im negativen Sinn.",
+    "Mein Beileid an {team}. Aus Gründen.",
+    "Team {team} klickt mal wieder mutig auf die falsche Antwort.",
+    "Schade um {team}. Hatte Hoffnungen für euch."
   ],
   leader: [
-    "{leader} führt. Vermutlich nur Glück.",
-    "{leader} hat anscheinend gegoogelt.",
-    "Setzt eure Hoffnung auf {leader}. Oder auch nicht.",
-    "{leader}, jetzt mal nicht abheben.",
-    "{leader} an der Spitze. Wer hätte das gedacht.",
-    "Bewundernde Blicke an {leader}. Naja, mitleidige.",
-    "{leader} regiert. Bis zur nächsten falschen Antwort."
+    "Team {leader} führt. Vermutlich nur Glück.",
+    "Team {leader} hat anscheinend gegoogelt.",
+    "Spitzenplatz für Team {leader}. Wer hätte das gedacht.",
+    "Team {leader} – vorne weg. Bis zur nächsten Frage.",
+    "Setzt eure Hoffnung auf {leader}. Oder eben nicht.",
+    "Bewundernde Blicke an {leader}. Naja, eher mitleidige.",
+    "Team {leader} regiert das Quiz. Vorerst."
   ],
   loser: [
-    "{loser}, du gibst doch hoffentlich nicht auf?",
-    "{loser}, ein bisschen Stolz, bitte.",
-    "Zur Erinnerung an {loser}: es ist noch nicht vorbei.",
-    "{loser}, soll ich dir die Antworten flüstern?",
-    "{loser} kämpft tapfer. Vergeblich, aber tapfer.",
-    "Setzt jetzt nicht alles auf {loser}. Es ist hoffnungslos.",
-    "{loser}, das letzte Quiz lief auch nicht gut, oder?"
+    "Team {loser} kämpft tapfer. Vergeblich, aber tapfer.",
+    "Team {loser} bleibt hinten. Tradition.",
+    "Soll ich {loser} kurz die Antworten zuflüstern?",
+    "Bei Team {loser} ist das Bier wichtiger als die Punkte.",
+    "Team {loser} hat sicher Spaß. Nur halt keine Punkte.",
+    "Zur Erinnerung an {loser}: das Quiz ist noch nicht vorbei.",
+    "Team {loser} sammelt Erfahrungen. Schmerzhafte."
   ]
 };
