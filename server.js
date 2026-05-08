@@ -5,6 +5,7 @@ const crypto = require('crypto');
 const { Server } = require('socket.io');
 
 const QUESTIONS = require('./questions');
+const HARD_QUESTIONS = require('./hardQuestions');
 const { CORRECT_GIFS, WRONG_GIFS } = require('./gifs');
 
 const app = express();
@@ -22,6 +23,7 @@ const MILESTONE_INTERVAL = 10;
 const MILESTONE_TIME_MS = 6_500;
 const SPECIAL_ROUND_TIME_MS = 9_000;
 const STRAFSCHLUCK_CHANCE = 0.35;
+const STREAK_FOR_SABOTAGE = 5;
 const ROOM_TTL_AFTER_FINISH_MS = 10 * 60 * 1000;
 const OFFLINE_TEAM_TTL_MS = 10 * 60 * 1000;       // 10 Min Reconnect-Fenster
 const OFFLINE_CLEANUP_INTERVAL_MS = 60 * 1000;
@@ -177,18 +179,33 @@ function nextQuestion(code) {
     return;
   }
 
-  const q = room.gameQuestions[room.questionIdx];
+  const baseQuestion = room.gameQuestions[room.questionIdx];
   const deadline = Date.now() + QUESTION_TIME_MS;
   room.deadline = deadline;
   room.phase = 'question';
-  io.to(code).emit('question', {
-    idx: room.questionIdx,
-    total: room.gameQuestions.length,
-    text: q.text,
-    options: q.options,
-    deadline,
-    doublornix: !!room.doublornixActive
-  });
+  room.baseQuestion = baseQuestion;
+
+  // Pro Team eigene Frage zuweisen (Sabotage-Opfer kriegt eine harte mit 6 Optionen).
+  for (const team of Object.values(room.teams)) {
+    let q = baseQuestion;
+    let isHard = false;
+    if (team.pendingHardQuestion && HARD_QUESTIONS.length > 0) {
+      q = HARD_QUESTIONS[Math.floor(Math.random() * HARD_QUESTIONS.length)];
+      isHard = true;
+      team.pendingHardQuestion = false;
+    }
+    team.currentQuestion = q;
+    team.currentQuestionHard = isHard;
+    emitToTeam(team, 'question', {
+      idx: room.questionIdx,
+      total: room.gameQuestions.length,
+      text: q.text,
+      options: q.options,
+      deadline,
+      doublornix: !!room.doublornixActive,
+      hard: isHard
+    });
+  }
   room.questionTimer = setTimeout(() => revealAnswer(code), QUESTION_TIME_MS + 300);
 }
 
@@ -199,7 +216,6 @@ function revealAnswer(code) {
   room.phase = 'reveal';
   clearTimeout(room.questionTimer);
 
-  const q = room.gameQuestions[room.questionIdx];
   const isLast = room.questionIdx === room.gameQuestions.length - 1;
   const nextDeadline = Date.now() + REVEAL_TIME_MS;
   room.revealDeadline = nextDeadline;
@@ -207,9 +223,11 @@ function revealAnswer(code) {
   // Pro Team eigene Reveal-Daten (GIF, Strafschluck) – einmal berechnen, in
   // room.lastReveal cachen, damit ein Reconnect denselben Stand bekommt.
   room.lastReveal = {};
+  const otherTeamsCount = Math.max(0, Object.keys(room.teams).length - 1);
 
   for (const token of Object.keys(room.teams)) {
     const team = room.teams[token];
+    const q = team.currentQuestion || room.baseQuestion;
     const ans = room.answers[token];
     const skipped = ans === 'skip';
     const answered = ans !== undefined && !skipped;
@@ -226,6 +244,15 @@ function revealAnswer(code) {
     team.score += pointsDelta;
     team.pendingDoublepoints = false;
 
+    // Streak-Tracking: bei richtiger Antwort hochzählen, sonst zurücksetzen.
+    // Skip und Timeout brechen den Streak nicht (zumindest beim Skip nicht).
+    if (correct) {
+      team.streak = (team.streak || 0) + 1;
+    } else if (!skipped) {
+      team.streak = 0;
+    }
+    const canSabotage = team.streak >= STREAK_FOR_SABOTAGE && otherTeamsCount > 0;
+
     // Strafschluck nur bei aktiv falscher Antwort, nicht bei Skip oder Timeout.
     const strafschluck = (answered && !correct) ? maybeStrafschluck() : null;
     const gif = correct ? pick(CORRECT_GIFS) : pick(WRONG_GIFS);
@@ -240,7 +267,10 @@ function revealAnswer(code) {
       explanation: q.explanation,
       gif, strafschluck,
       isLast,
-      doublornixActive: !!room.doublornixActive
+      doublornixActive: !!room.doublornixActive,
+      hard: !!team.currentQuestionHard,
+      streak: team.streak,
+      canSabotage
     };
 
     emitToTeam(team, 'reveal', {
@@ -315,14 +345,16 @@ function sendCurrentState(socket, room, team) {
   }
 
   if (room.phase === 'question') {
-    const q = room.gameQuestions[room.questionIdx];
+    const q = team.currentQuestion || room.baseQuestion;
+    if (!q) return;
     socket.emit('question', {
       idx: room.questionIdx,
       total: room.gameQuestions.length,
       text: q.text,
       options: q.options,
       deadline: room.deadline,
-      doublornix: !!room.doublornixActive
+      doublornix: !!room.doublornixActive,
+      hard: !!team.currentQuestionHard
     });
     if (room.answers[team.token] !== undefined) {
       socket.emit('answered');
@@ -354,7 +386,8 @@ io.on('connection', (socket) => {
     rooms[code].teams[token] = {
       token, name, avatar: sanitizeAvatar(avatar), score: 0,
       socketId: socket.id, offlineSince: null,
-      jokers: freshJokers(), pendingDoublepoints: false
+      jokers: freshJokers(), pendingDoublepoints: false,
+      streak: 0, pendingHardQuestion: false, currentQuestion: null
     };
     socket.join(code);
     socket.data.room = code;
@@ -385,7 +418,8 @@ io.on('connection', (socket) => {
     room.teams[token] = {
       token, name, avatar: sanitizeAvatar(avatar), score: 0,
       socketId: socket.id, offlineSince: null,
-      jokers: freshJokers(), pendingDoublepoints: false
+      jokers: freshJokers(), pendingDoublepoints: false,
+      streak: 0, pendingHardQuestion: false, currentQuestion: null
     };
     socket.join(code);
     socket.data.room = code;
@@ -454,13 +488,46 @@ io.on('connection', (socket) => {
     if (!room || !token || !room.teams[token]) return;
     if (room.revealed) return;
     if (room.answers[token] !== undefined) return;
-    if (typeof choice !== 'number' || choice < 0 || choice > 10) return;
+    const team = room.teams[token];
+    const q = team.currentQuestion;
+    if (!q) return;
+    if (typeof choice !== 'number' || choice < 0 || choice >= q.options.length) return;
     room.answers[token] = choice;
     socket.emit('answered');
     const total = Object.keys(room.teams).length;
     const answered = Object.keys(room.answers).length;
     io.to(code).emit('progress', { answered, total });
     if (answered >= total) revealAnswer(code);
+  });
+
+  socket.on('sabotage:cast', ({ targetToken, targetName }) => {
+    const code = socket.data.room;
+    const sourceToken = socket.data.token;
+    const room = rooms[code];
+    if (!room || !sourceToken) return;
+    const source = room.teams[sourceToken];
+    if (!source) return;
+    if ((source.streak || 0) < STREAK_FOR_SABOTAGE) return;
+
+    // Ziel per Token oder per (in-Room eindeutigem) Namen auflösen.
+    let targetTok = targetToken;
+    if (!targetTok && targetName) {
+      const found = Object.values(room.teams).find(t => t.name === targetName);
+      if (found) targetTok = found.token;
+    }
+    if (!targetTok || !room.teams[targetTok]) return;
+    if (targetTok === sourceToken) return;
+    const target = room.teams[targetTok];
+
+    target.pendingHardQuestion = true;
+    source.streak = 0;
+
+    io.to(code).emit('sabotage:cast', {
+      source: { name: source.name, avatar: source.avatar || DEFAULT_AVATAR },
+      target: { name: target.name, avatar: target.avatar || DEFAULT_AVATAR }
+    });
+    // Sender bekommt die aktualisierte Streak-Info, damit der Button verschwindet.
+    emitToTeam(source, 'sabotage:used', { streak: 0 });
   });
 
   socket.on('joker:use', ({ type }) => {
@@ -477,14 +544,18 @@ io.on('connection', (socket) => {
     team.jokers[type] = false;
 
     if (type === 'fiftyfifty') {
-      const q = room.gameQuestions[room.questionIdx];
+      const q = team.currentQuestion;
+      if (!q) return;
       const wrongIndices = [];
       q.options.forEach((_, i) => { if (i !== q.correct) wrongIndices.push(i); });
       for (let i = wrongIndices.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [wrongIndices[i], wrongIndices[j]] = [wrongIndices[j], wrongIndices[i]];
       }
-      const removedIndices = wrongIndices.slice(0, 2);
+      // Bei harten Fragen (6 Optionen) entfernt 50:50 etwas mehr (3),
+      // sonst die üblichen 2.
+      const removeCount = q.options.length >= 6 ? 3 : 2;
+      const removedIndices = wrongIndices.slice(0, removeCount);
       socket.emit('joker:applied', { type, removedIndices, jokers: team.jokers });
       return;
     }

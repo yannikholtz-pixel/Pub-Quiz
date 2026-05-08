@@ -74,6 +74,7 @@
       </div>
       <div class="timer-bar"><div id="timer-fill" class="timer-fill"></div></div>
       <p id="doublornix-banner" class="doublornix-banner hidden">💎 Doppelt oder Nix – richtig +200 / falsch −100</p>
+      <p id="hard-banner" class="hard-banner hidden">💀 Sabotage-Frage! 6 Antworten – nur eine ist richtig.</p>
       <h1 id="q-text"></h1>
       <div id="joker-bar" class="joker-bar">
         <button class="joker-btn" type="button" data-joker="fiftyfifty">
@@ -113,6 +114,12 @@
         <div class="strafschluck-message" id="r-strafschluck-msg"></div>
       </div>
 
+      <div id="r-sabotage" class="sabotage-card hidden">
+        <div class="sabotage-card-label">🎯 5 in Folge richtig!</div>
+        <div class="sabotage-card-text">Du darfst ein anderes Team sabotieren.</div>
+        <button id="btn-sabotage" type="button" class="big">⚡ Team sabotieren</button>
+      </div>
+
       <p class="score-line">Deine Punkte: <strong id="r-score">0</strong></p>
 
       <div class="card">
@@ -138,6 +145,15 @@
       <p id="final-comment" class="sub"></p>
       <button id="btn-restart" class="big">Neues Spiel</button>
     </section>
+  </div>
+
+  <div id="sabotage-modal" class="sabotage-modal hidden">
+    <div class="sabotage-modal-content">
+      <h2>Wähle dein Sabotage-Ziel</h2>
+      <p class="hint">Das Team kriegt eine harte 6-Antworten-Frage.</p>
+      <div id="sabotage-team-list" class="sabotage-team-list"></div>
+      <button id="btn-sabotage-cancel" class="ghost">Abbrechen</button>
+    </div>
   </div>
 
   <script src="/socket.io/socket.io.js"></script>

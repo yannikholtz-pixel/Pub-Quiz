@@ -2,6 +2,10 @@ const socket = io();
 
 const TOKEN_KEY = 'pubquiz-token';
 let myToken = localStorage.getItem(TOKEN_KEY);
+let cachedTeams = [];
+let myStreak = 0;
+let canSabotage = false;
+let myName = null;
 function saveToken(t) {
   myToken = t || null;
   if (t) localStorage.setItem(TOKEN_KEY, t);
@@ -144,9 +148,11 @@ socket.on('errorMsg', showError);
 
 socket.on('room:joined', ({ code, name, token, teams, questionCount, jokers, pendingDoublepoints: pd }) => {
   myCode = code;
+  myName = name || null;
   if (token) saveToken(token);
   if (jokers) myJokers = jokers;
   pendingDoublepoints = !!pd;
+  if (teams) cachedTeams = teams;
   document.getElementById('room-code').textContent = code;
   renderQR(code);
   renderTeams(teams);
@@ -186,6 +192,7 @@ document.querySelectorAll('.len-btn').forEach(btn => {
 });
 
 socket.on('lobby:teams', (teams) => {
+  cachedTeams = teams;
   renderTeams(teams);
 });
 
@@ -214,7 +221,7 @@ socket.on('game:start', () => {
   // brief countdown vor erster Frage – aber Server sendet "question" sowieso bald
 });
 
-socket.on('question', ({ idx, total, text, options, deadline, doublornix }) => {
+socket.on('question', ({ idx, total, text, options, deadline, doublornix, hard }) => {
   document.getElementById('q-idx').textContent = idx + 1;
   document.getElementById('q-total').textContent = total;
   document.getElementById('q-text').textContent = text;
@@ -224,6 +231,10 @@ socket.on('question', ({ idx, total, text, options, deadline, doublornix }) => {
 
   // Doppelornix-Banner aus dem Server-Hinweis (per question payload optional)
   document.getElementById('doublornix-banner').classList.toggle('hidden', !doublornix);
+
+  // Hard-Question-Banner (Sabotage-Frage mit 6 Optionen)
+  const hardBanner = document.getElementById('hard-banner');
+  if (hardBanner) hardBanner.classList.toggle('hidden', !hard);
 
   // Doppelpunkte-Anzeige je nach pendingDoublepoints
   document.getElementById('doublepoints-active').classList.toggle('hidden', !pendingDoublepoints);
@@ -268,6 +279,72 @@ document.querySelectorAll('.joker-btn').forEach(btn => {
   });
 });
 
+socket.on('sabotage:cast', ({ source, target }) => {
+  showSabotageBanner(source, target);
+  SoundFX.wrong();
+});
+
+socket.on('sabotage:used', ({ streak }) => {
+  myStreak = streak || 0;
+  canSabotage = false;
+  const sabBox = document.getElementById('r-sabotage');
+  if (sabBox) sabBox.classList.add('hidden');
+  closeSabotageModal();
+});
+
+document.getElementById('btn-sabotage').addEventListener('click', () => {
+  if (!canSabotage) return;
+  openSabotageModal();
+});
+document.getElementById('btn-sabotage-cancel').addEventListener('click', closeSabotageModal);
+
+function openSabotageModal() {
+  const modal = document.getElementById('sabotage-modal');
+  const list = document.getElementById('sabotage-team-list');
+  list.innerHTML = '';
+
+  // Zielliste: alle anderen Teams (nicht ich)
+  const others = cachedTeams.filter(t => t.name !== myName);
+  if (others.length === 0) {
+    list.innerHTML = '<p class="hint">Keine Gegner zum Sabotieren da.</p>';
+  }
+  others.forEach(t => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'sabotage-target-btn' + (t.online === false ? ' offline' : '');
+    btn.innerHTML = `<span class="target-avatar">${t.avatar || '🎲'}</span><span class="target-name">${escapeHtml(t.name)}</span><span class="target-pts">${t.score} Pkt</span>`;
+    btn.addEventListener('click', () => {
+      const targetToken = t.token || null;
+      // Server identifiziert per Token; aber unser cachedTeams hat keinen Token.
+      // Wir senden stattdessen den Namen, Server löst per Lookup auf.
+      socket.emit('sabotage:cast', { targetName: t.name });
+      closeSabotageModal();
+    });
+    list.appendChild(btn);
+  });
+  modal.classList.remove('hidden');
+}
+function closeSabotageModal() {
+  document.getElementById('sabotage-modal').classList.add('hidden');
+}
+
+
+function showSabotageBanner(source, target) {
+  const banner = document.createElement('div');
+  banner.className = 'sabotage-banner';
+  banner.innerHTML = `
+    <div class="sabotage-label">⚡ Sabotage ⚡</div>
+    <div class="sabotage-row">
+      <span class="sabotage-source">${source.avatar} ${escapeHtml(source.name)}</span>
+      <span class="sabotage-arrow">→</span>
+      <span class="sabotage-target">${target.avatar} ${escapeHtml(target.name)}</span>
+    </div>
+    <div class="sabotage-hint">Nächste Frage wird brutal.</div>
+  `;
+  document.body.appendChild(banner);
+  setTimeout(() => banner.remove(), 4200);
+}
+
 socket.on('joker:applied', ({ type, removedIndices, jokers }) => {
   if (jokers) myJokers = jokers;
   renderJokers();
@@ -304,11 +381,17 @@ socket.on('answered', () => {
   document.getElementById('q-status').classList.remove('hidden');
 });
 
-socket.on('reveal', ({ answered, correct, skipped, pointsDelta, correctChoice, correctText, explanation, gif, score, isLast, nextDeadline, strafschluck, doublornixActive }) => {
+socket.on('reveal', ({ answered, correct, skipped, pointsDelta, correctChoice, correctText, explanation, gif, score, isLast, nextDeadline, strafschluck, doublornixActive, streak, canSabotage: cs }) => {
   clearInterval(questionTimerHandle);
 
   // Doppelpunkte wurden mit dieser Frage verbraucht.
   pendingDoublepoints = false;
+  myStreak = streak || 0;
+  canSabotage = !!cs;
+
+  // Sabotage-Karte ein-/ausblenden
+  const sabBox = document.getElementById('r-sabotage');
+  if (sabBox) sabBox.classList.toggle('hidden', !canSabotage);
 
   if (correct) SoundFX.correct(); else SoundFX.wrong();
   flashStage(correct ? 'correct' : 'wrong');
