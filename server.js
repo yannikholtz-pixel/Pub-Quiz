@@ -19,7 +19,8 @@ const DEFAULT_LENGTH = 50;
 const QUESTION_TIME_MS = 25_000;
 const REVEAL_TIME_MS = 7_000;
 const MILESTONE_INTERVAL = 10;
-const MILESTONE_TIME_MS = 9_000;
+const MILESTONE_TIME_MS = 6_500;
+const SPECIAL_ROUND_TIME_MS = 9_000;
 const STRAFSCHLUCK_CHANCE = 0.35;
 const ROOM_TTL_AFTER_FINISH_MS = 10 * 60 * 1000;
 const OFFLINE_TEAM_TTL_MS = 10 * 60 * 1000;       // 10 Min Reconnect-Fenster
@@ -89,6 +90,57 @@ function teamList(room) {
   }));
 }
 
+function freshJokers() {
+  return { fiftyfifty: true, skip: true, doublepoints: true };
+}
+
+function pickSpecialRound(room) {
+  const r = Math.random();
+  const hasNextQuestion = room.questionIdx + 1 < room.gameQuestions.length;
+  if (r < 0.5) return 'saufroulette';
+  if (r < 0.75) return 'alletrinken';
+  return hasNextQuestion ? 'doublornix' : 'alletrinken';
+}
+
+function startSpecialRound(code) {
+  const room = rooms[code];
+  if (!room) return;
+  const type = pickSpecialRound(room);
+  const deadline = Date.now() + SPECIAL_ROUND_TIME_MS;
+  room.phase = 'special';
+  room.specialDeadline = deadline;
+
+  const onlineTokens = Object.values(room.teams)
+    .filter(t => t.socketId)
+    .map(t => t.token);
+
+  const teams = Object.values(room.teams).map(t => ({
+    name: t.name, avatar: t.avatar || DEFAULT_AVATAR
+  }));
+
+  const payload = { type, nextDeadline: deadline, teams };
+
+  if (type === 'saufroulette') {
+    const candidates = onlineTokens.length ? onlineTokens : Object.keys(room.teams);
+    if (candidates.length === 0) {
+      nextQuestion(code);
+      return;
+    }
+    const pickedToken = candidates[Math.floor(Math.random() * candidates.length)];
+    const t = room.teams[pickedToken];
+    payload.pickedTeam = { name: t.name, avatar: t.avatar || DEFAULT_AVATAR };
+    payload.schlucke = 2;
+  } else if (type === 'alletrinken') {
+    payload.schlucke = 1;
+  } else if (type === 'doublornix') {
+    room.doublornixActive = true;
+  }
+
+  room.specialData = payload;
+  io.to(code).emit('special:round', payload);
+  room.specialTimer = setTimeout(() => nextQuestion(code), SPECIAL_ROUND_TIME_MS);
+}
+
 function emitToTeam(team, event, payload) {
   if (team.socketId) io.to(team.socketId).emit(event, payload);
 }
@@ -111,6 +163,7 @@ function nextQuestion(code) {
   if (!room) return;
   clearTimeout(room.questionTimer);
   clearTimeout(room.revealTimer);
+  clearTimeout(room.specialTimer);
   room.questionIdx++;
   room.answers = {};
   room.revealed = false;
@@ -133,7 +186,8 @@ function nextQuestion(code) {
     total: room.gameQuestions.length,
     text: q.text,
     options: q.options,
-    deadline
+    deadline,
+    doublornix: !!room.doublornixActive
   });
   room.questionTimer = setTimeout(() => revealAnswer(code), QUESTION_TIME_MS + 300);
 }
@@ -157,19 +211,36 @@ function revealAnswer(code) {
   for (const token of Object.keys(room.teams)) {
     const team = room.teams[token];
     const ans = room.answers[token];
-    const answered = ans !== undefined;
+    const skipped = ans === 'skip';
+    const answered = ans !== undefined && !skipped;
     const correct = answered && ans === q.correct;
-    if (correct) team.score += 100;
-    const strafschluck = !correct ? maybeStrafschluck() : null;
+
+    let pointsDelta = 0;
+    if (correct) {
+      pointsDelta = 100;
+      if (team.pendingDoublepoints) pointsDelta += 100;
+      if (room.doublornixActive) pointsDelta += 100;
+    } else if (answered && room.doublornixActive) {
+      pointsDelta = -100;
+    }
+    team.score += pointsDelta;
+    team.pendingDoublepoints = false;
+
+    // Strafschluck nur bei aktiv falscher Antwort, nicht bei Skip oder Timeout.
+    const strafschluck = (answered && !correct) ? maybeStrafschluck() : null;
     const gif = correct ? pick(CORRECT_GIFS) : pick(WRONG_GIFS);
 
     room.lastReveal[token] = {
-      answered, correct,
+      answered: answered || skipped,
+      correct,
+      skipped,
+      pointsDelta,
       correctChoice: q.correct,
       correctText: q.options[q.correct],
       explanation: q.explanation,
       gif, strafschluck,
-      isLast
+      isLast,
+      doublornixActive: !!room.doublornixActive
     };
 
     emitToTeam(team, 'reveal', {
@@ -178,6 +249,8 @@ function revealAnswer(code) {
       nextDeadline
     });
   }
+  // Doppelornix-Modifier verbraucht
+  room.doublornixActive = false;
 
   const scores = teamList(room).sort((a, b) => b.score - a.score);
   room.lastScores = scores;
@@ -200,7 +273,7 @@ function revealAnswer(code) {
       room.milestoneDeadline = milestoneDeadline;
       room.phase = 'milestone';
       io.to(code).emit('milestone:scoreboard', room.milestoneData);
-      room.revealTimer = setTimeout(() => nextQuestion(code), MILESTONE_TIME_MS);
+      room.revealTimer = setTimeout(() => startSpecialRound(code), MILESTONE_TIME_MS);
     } else {
       nextQuestion(code);
     }
@@ -213,6 +286,11 @@ function sendCurrentState(socket, room, team) {
 
   if (room.phase === 'final') {
     socket.emit('game:over', room.finalScores || []);
+    return;
+  }
+
+  if (room.phase === 'special') {
+    socket.emit('special:round', room.specialData);
     return;
   }
 
@@ -243,7 +321,8 @@ function sendCurrentState(socket, room, team) {
       total: room.gameQuestions.length,
       text: q.text,
       options: q.options,
-      deadline: room.deadline
+      deadline: room.deadline,
+      doublornix: !!room.doublornixActive
     });
     if (room.answers[team.token] !== undefined) {
       socket.emit('answered');
@@ -274,7 +353,8 @@ io.on('connection', (socket) => {
     };
     rooms[code].teams[token] = {
       token, name, avatar: sanitizeAvatar(avatar), score: 0,
-      socketId: socket.id, offlineSince: null
+      socketId: socket.id, offlineSince: null,
+      jokers: freshJokers(), pendingDoublepoints: false
     };
     socket.join(code);
     socket.data.room = code;
@@ -282,7 +362,8 @@ io.on('connection', (socket) => {
     socket.emit('room:joined', {
       code, name, token,
       teams: teamList(rooms[code]),
-      questionCount: rooms[code].questionCount
+      questionCount: rooms[code].questionCount,
+      jokers: rooms[code].teams[token].jokers
     });
     broadcastLobby(code);
   });
@@ -303,7 +384,8 @@ io.on('connection', (socket) => {
     if (!token) token = genToken();
     room.teams[token] = {
       token, name, avatar: sanitizeAvatar(avatar), score: 0,
-      socketId: socket.id, offlineSince: null
+      socketId: socket.id, offlineSince: null,
+      jokers: freshJokers(), pendingDoublepoints: false
     };
     socket.join(code);
     socket.data.room = code;
@@ -311,7 +393,8 @@ io.on('connection', (socket) => {
     socket.emit('room:joined', {
       code, name, token,
       teams: teamList(room),
-      questionCount: room.questionCount
+      questionCount: room.questionCount,
+      jokers: room.teams[token].jokers
     });
     broadcastLobby(code);
   });
@@ -333,7 +416,9 @@ io.on('connection', (socket) => {
       name: team.name,
       token,
       teams: teamList(room),
-      questionCount: room.questionCount
+      questionCount: room.questionCount,
+      jokers: team.jokers,
+      pendingDoublepoints: !!team.pendingDoublepoints
     });
     broadcastLobby(code);
     sendCurrentState(socket, room, team);
@@ -376,6 +461,50 @@ io.on('connection', (socket) => {
     const answered = Object.keys(room.answers).length;
     io.to(code).emit('progress', { answered, total });
     if (answered >= total) revealAnswer(code);
+  });
+
+  socket.on('joker:use', ({ type }) => {
+    const code = socket.data.room;
+    const token = socket.data.token;
+    const room = rooms[code];
+    if (!room || !token || !room.teams[token]) return;
+    if (room.phase !== 'question' || room.revealed) return;
+    const team = room.teams[token];
+    if (!['fiftyfifty', 'skip', 'doublepoints'].includes(type)) return;
+    if (!team.jokers[type]) return;                       // schon verbraucht
+    if (room.answers[token] !== undefined) return;        // schon geantwortet
+
+    team.jokers[type] = false;
+
+    if (type === 'fiftyfifty') {
+      const q = room.gameQuestions[room.questionIdx];
+      const wrongIndices = [];
+      q.options.forEach((_, i) => { if (i !== q.correct) wrongIndices.push(i); });
+      for (let i = wrongIndices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [wrongIndices[i], wrongIndices[j]] = [wrongIndices[j], wrongIndices[i]];
+      }
+      const removedIndices = wrongIndices.slice(0, 2);
+      socket.emit('joker:applied', { type, removedIndices, jokers: team.jokers });
+      return;
+    }
+
+    if (type === 'skip') {
+      room.answers[token] = 'skip';
+      socket.emit('joker:applied', { type, jokers: team.jokers });
+      socket.emit('answered');
+      const total = Object.keys(room.teams).length;
+      const answered = Object.keys(room.answers).length;
+      io.to(code).emit('progress', { answered, total });
+      if (answered >= total) revealAnswer(code);
+      return;
+    }
+
+    if (type === 'doublepoints') {
+      team.pendingDoublepoints = true;
+      socket.emit('joker:applied', { type, jokers: team.jokers });
+      return;
+    }
   });
 
   socket.on('disconnect', () => {

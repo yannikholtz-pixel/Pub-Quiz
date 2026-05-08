@@ -71,6 +71,7 @@ const screens = {
   question: document.getElementById('screen-question'),
   reveal: document.getElementById('screen-reveal'),
   milestone: document.getElementById('screen-milestone'),
+  special: document.getElementById('screen-special'),
   final: document.getElementById('screen-final')
 };
 
@@ -89,6 +90,9 @@ let myCode = null;
 let questionTimerHandle = null;
 let revealTimerHandle = null;
 let milestoneTimerHandle = null;
+let specialTimerHandle = null;
+let myJokers = { fiftyfifty: true, skip: true, doublepoints: true };
+let pendingDoublepoints = false;
 
 const params = new URLSearchParams(location.search);
 if (params.get('room')) {
@@ -138,9 +142,11 @@ document.getElementById('btn-restart').addEventListener('click', () => {
 
 socket.on('errorMsg', showError);
 
-socket.on('room:joined', ({ code, name, token, teams, questionCount }) => {
+socket.on('room:joined', ({ code, name, token, teams, questionCount, jokers, pendingDoublepoints: pd }) => {
   myCode = code;
   if (token) saveToken(token);
+  if (jokers) myJokers = jokers;
+  pendingDoublepoints = !!pd;
   document.getElementById('room-code').textContent = code;
   renderQR(code);
   renderTeams(teams);
@@ -208,7 +214,7 @@ socket.on('game:start', () => {
   // brief countdown vor erster Frage – aber Server sendet "question" sowieso bald
 });
 
-socket.on('question', ({ idx, total, text, options, deadline }) => {
+socket.on('question', ({ idx, total, text, options, deadline, doublornix }) => {
   document.getElementById('q-idx').textContent = idx + 1;
   document.getElementById('q-total').textContent = total;
   document.getElementById('q-text').textContent = text;
@@ -216,14 +222,24 @@ socket.on('question', ({ idx, total, text, options, deadline }) => {
   document.getElementById('q-total2').textContent = '?';
   document.getElementById('q-status').classList.add('hidden');
 
+  // Doppelornix-Banner aus dem Server-Hinweis (per question payload optional)
+  document.getElementById('doublornix-banner').classList.toggle('hidden', !doublornix);
+
+  // Doppelpunkte-Anzeige je nach pendingDoublepoints
+  document.getElementById('doublepoints-active').classList.toggle('hidden', !pendingDoublepoints);
+
+  // Joker-Buttons rendern
+  renderJokers();
+
   const ul = document.getElementById('q-options');
   ul.innerHTML = '';
   options.forEach((opt, i) => {
     const li = document.createElement('li');
     li.dataset.letter = String.fromCharCode(65 + i);
+    li.dataset.idx = i;
     li.textContent = opt;
     li.addEventListener('click', () => {
-      if (li.classList.contains('disabled')) return;
+      if (li.classList.contains('disabled') || li.classList.contains('removed')) return;
       [...ul.children].forEach(c => c.classList.add('disabled'));
       li.classList.add('selected');
       socket.emit('answer', { choice: i });
@@ -234,6 +250,47 @@ socket.on('question', ({ idx, total, text, options, deadline }) => {
   startCountdown(deadline, document.getElementById('q-timer'), document.getElementById('timer-fill'));
   SoundFX.questionStart();
   show('question');
+});
+
+function renderJokers() {
+  document.querySelectorAll('.joker-btn').forEach(btn => {
+    const type = btn.dataset.joker;
+    btn.disabled = !myJokers[type];
+    btn.classList.toggle('used', !myJokers[type]);
+  });
+}
+
+document.querySelectorAll('.joker-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const type = btn.dataset.joker;
+    if (!myJokers[type]) return;
+    socket.emit('joker:use', { type });
+  });
+});
+
+socket.on('joker:applied', ({ type, removedIndices, jokers }) => {
+  if (jokers) myJokers = jokers;
+  renderJokers();
+
+  if (type === 'fiftyfifty' && Array.isArray(removedIndices)) {
+    const ul = document.getElementById('q-options');
+    if (ul) {
+      removedIndices.forEach(i => {
+        const li = ul.children[i];
+        if (li) {
+          li.classList.add('removed', 'disabled');
+        }
+      });
+    }
+  } else if (type === 'doublepoints') {
+    pendingDoublepoints = true;
+    document.getElementById('doublepoints-active').classList.remove('hidden');
+  } else if (type === 'skip') {
+    const ul = document.getElementById('q-options');
+    if (ul) [...ul.children].forEach(c => c.classList.add('disabled'));
+    document.getElementById('q-status').classList.remove('hidden');
+    document.getElementById('q-status').textContent = '⏭ Übersprungen.';
+  }
 });
 
 socket.on('progress', ({ answered, total }) => {
@@ -247,12 +304,15 @@ socket.on('answered', () => {
   document.getElementById('q-status').classList.remove('hidden');
 });
 
-socket.on('reveal', ({ answered, correct, correctChoice, correctText, explanation, gif, score, isLast, nextDeadline, strafschluck }) => {
+socket.on('reveal', ({ answered, correct, skipped, pointsDelta, correctChoice, correctText, explanation, gif, score, isLast, nextDeadline, strafschluck, doublornixActive }) => {
   clearInterval(questionTimerHandle);
+
+  // Doppelpunkte wurden mit dieser Frage verbraucht.
+  pendingDoublepoints = false;
 
   if (correct) SoundFX.correct(); else SoundFX.wrong();
   flashStage(correct ? 'correct' : 'wrong');
-  if (correct && answered) spawnConfetti();
+  if (correct && answered && !skipped) spawnConfetti();
 
   const strafBox = document.getElementById('r-strafschluck');
   if (strafschluck) {
@@ -265,7 +325,10 @@ socket.on('reveal', ({ answered, correct, correctChoice, correctText, explanatio
   }
 
   const headline = document.getElementById('r-headline');
-  if (!answered) {
+  if (skipped) {
+    headline.textContent = '⏭ Übersprungen';
+    headline.className = '';
+  } else if (!answered) {
     headline.textContent = '⏰ Zu spät!';
     headline.className = 'headline-wrong';
   } else if (correct) {
@@ -284,7 +347,18 @@ socket.on('reveal', ({ answered, correct, correctChoice, correctText, explanatio
   document.getElementById('r-correct').textContent =
     'Richtig: ' + String.fromCharCode(65 + correctChoice) + ') ' + correctText;
   document.getElementById('r-explanation').textContent = explanation || '';
-  document.getElementById('r-score').textContent = score;
+  const scoreEl = document.getElementById('r-score');
+  scoreEl.textContent = score;
+  // Punkte-Delta als kleiner Floater anzeigen
+  if (typeof pointsDelta === 'number' && pointsDelta !== 0) {
+    const sign = pointsDelta > 0 ? '+' : '';
+    scoreEl.dataset.delta = sign + pointsDelta;
+    scoreEl.classList.remove('delta-pos', 'delta-neg', 'delta-show');
+    void scoreEl.offsetWidth;
+    scoreEl.classList.add(pointsDelta > 0 ? 'delta-pos' : 'delta-neg', 'delta-show');
+  } else {
+    scoreEl.classList.remove('delta-show');
+  }
 
   startRevealCountdown(nextDeadline, isLast);
   show('reveal');
@@ -300,6 +374,87 @@ socket.on('reveal:scores', ({ scores }) => {
     ol.appendChild(li);
   }
 });
+
+socket.on('special:round', ({ type, pickedTeam, schlucke, teams, nextDeadline }) => {
+  clearInterval(milestoneTimerHandle);
+  clearInterval(specialTimerHandle);
+
+  const label = document.getElementById('special-label');
+  const title = document.getElementById('special-title');
+  const content = document.getElementById('special-content');
+
+  if (type === 'saufroulette') {
+    label.textContent = '🎰 Saufroulette';
+    title.textContent = '';
+    content.innerHTML = `
+      <div class="roulette-stage">
+        <div class="roulette-display"><span class="roulette-avatar">🎲</span></div>
+        <div class="roulette-result"></div>
+      </div>`;
+    flashStage('wrong');
+    spinSaufroulette(pickedTeam, schlucke, teams);
+  } else if (type === 'alletrinken') {
+    label.textContent = '🍺 Alle trinken';
+    title.textContent = '1 Schluck für jedes Team!';
+    content.innerHTML = `
+      <div class="all-drink">
+        ${(teams || []).map(t => `<span class="all-drink-avatar">${t.avatar}</span>`).join('')}
+      </div>
+      <p class="hint">Cheers! 🍻</p>`;
+    SoundFX.wrong();
+    flashStage('wrong');
+  } else if (type === 'doublornix') {
+    label.textContent = '💎 Doppelt oder Nix';
+    title.textContent = 'Die nächste Frage';
+    content.innerHTML = `
+      <div class="risk-grid">
+        <div class="risk-row good"><strong>✅ Richtig</strong><span>+200 Punkte</span></div>
+        <div class="risk-row bad"><strong>❌ Falsch</strong><span>−100 Punkte</span></div>
+      </div>`;
+    SoundFX.questionStart();
+    flashStage('correct');
+  }
+
+  startSpecialCountdown(nextDeadline);
+  show('special');
+});
+
+function spinSaufroulette(picked, schlucke, allTeams) {
+  const display = document.querySelector('.roulette-display');
+  const result = document.querySelector('.roulette-result');
+  if (!display || !result) return;
+  const pool = (allTeams && allTeams.length) ? allTeams : [picked];
+  let i = 0;
+  let speed = 70;
+  const tick = () => {
+    const team = pool[i % pool.length];
+    display.innerHTML = `<span class="roulette-avatar">${team.avatar}</span>`;
+    SoundFX.tick();
+    i++;
+    speed += 22;
+    if (speed > 600) {
+      display.innerHTML = `<span class="roulette-avatar locked">${picked.avatar}</span>`;
+      result.innerHTML = `<strong>${escapeHtml(picked.name)}</strong> muss <strong>${schlucke} Schlücke</strong> trinken!`;
+      result.classList.add('show');
+      SoundFX.wrong();
+      return;
+    }
+    setTimeout(tick, speed);
+  };
+  setTimeout(tick, 400);
+}
+
+function startSpecialCountdown(deadline) {
+  clearInterval(specialTimerHandle);
+  const labelEl = document.getElementById('special-countdown');
+  const update = () => {
+    const remaining = Math.max(0, deadline - Date.now());
+    if (labelEl) labelEl.textContent = Math.ceil(remaining / 1000);
+    if (remaining <= 0) clearInterval(specialTimerHandle);
+  };
+  update();
+  specialTimerHandle = setInterval(update, 250);
+}
 
 socket.on('milestone:scoreboard', ({ scores, completed, total, nextDeadline }) => {
   clearInterval(revealTimerHandle);

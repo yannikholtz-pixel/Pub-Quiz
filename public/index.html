@@ -73,10 +73,31 @@
         <span id="q-timer" class="timer">25</span>
       </div>
       <div class="timer-bar"><div id="timer-fill" class="timer-fill"></div></div>
+      <p id="doublornix-banner" class="doublornix-banner hidden">💎 Doppelt oder Nix – richtig +200 / falsch −100</p>
       <h1 id="q-text"></h1>
+      <div id="joker-bar" class="joker-bar">
+        <button class="joker-btn" type="button" data-joker="fiftyfifty">
+          <span class="joker-icon">⚖️</span><span class="joker-label">50:50</span>
+        </button>
+        <button class="joker-btn" type="button" data-joker="skip">
+          <span class="joker-icon">⏭</span><span class="joker-label">Skip</span>
+        </button>
+        <button class="joker-btn" type="button" data-joker="doublepoints">
+          <span class="joker-icon">×2</span><span class="joker-label">Doppelpunkte</span>
+        </button>
+      </div>
+      <p id="doublepoints-active" class="doublepoints-active hidden">🔥 Doppelpunkte für diese Frage aktiv</p>
       <ul id="q-options" class="options"></ul>
       <p id="q-status" class="hint hidden">⏳ Antwort gespeichert. Warte auf die anderen…</p>
       <p class="hint"><span id="q-answered">0</span> / <span id="q-total2">0</span> Teams haben geantwortet</p>
+    </section>
+
+    <!-- Spezialrunde alle 10 Fragen -->
+    <section id="screen-special" class="screen hidden">
+      <h2 class="special-label" id="special-label">Spezialrunde</h2>
+      <h1 id="special-title"></h1>
+      <div id="special-content"></div>
+      <p class="hint">Weiter geht's in <span id="special-countdown">9</span>…</p>
     </section>
 
     <!-- Auflösung -->
