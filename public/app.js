@@ -552,6 +552,14 @@ function startSpecialCountdown(deadline) {
 
 socket.on('milestone:scoreboard', ({ scores, completed, total, nextDeadline }) => {
   clearInterval(revealTimerHandle);
+
+  const labelEl = document.getElementById('m-label');
+  if (labelEl) {
+    if (completed * 2 === total)         labelEl.textContent = 'Halbzeit-Stand';
+    else if (total - completed <= 10)    labelEl.textContent = 'Endspurt-Stand';
+    else                                 labelEl.textContent = 'Zwischenstand';
+  }
+
   document.getElementById('m-progress').textContent =
     `Frage ${completed} / ${total} geschafft`;
   const ol = document.getElementById('m-scores');
