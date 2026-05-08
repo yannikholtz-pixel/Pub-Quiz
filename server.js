@@ -25,6 +25,19 @@ const ROOM_TTL_AFTER_FINISH_MS = 10 * 60 * 1000;
 const OFFLINE_TEAM_TTL_MS = 10 * 60 * 1000;       // 10 Min Reconnect-Fenster
 const OFFLINE_CLEANUP_INTERVAL_MS = 60 * 1000;
 
+const AVATARS = [
+  '🍺','🍻','🥂','🐙','🦄','🐸','🦖','🦥','🐢','🐺','🦊','🐼',
+  '🦁','🐬','🐝','🦔','🦅','🐯','🤖','👽','👻','🎃','🤡','🦸',
+  '🥷','🧙','😎','🤓','🥸','🤠','🍕','🌭','🍿','🚀','⚡','🔥',
+  '🏆','🎸'
+];
+const DEFAULT_AVATAR = '🎲';
+
+function sanitizeAvatar(av) {
+  if (typeof av !== 'string') return DEFAULT_AVATAR;
+  return AVATARS.includes(av) ? av : DEFAULT_AVATAR;
+}
+
 const STRAFSCHLUCK_MESSAGES = {
   1: ["Klein-Strafe – nur einer!", "Nicht so wild: 1 Schluck.", "Anwärmen für die nächste Runde!", "Ein kleiner Schluck zur Beruhigung."],
   2: ["Doppelte Strafe!", "Zwei Schlücke. Gönn dir.", "2 Schlücke – passt schon.", "Doppelt hält besser."],
@@ -70,6 +83,7 @@ function shuffleAndPick(arr, n) {
 function teamList(room) {
   return Object.values(room.teams).map(t => ({
     name: t.name,
+    avatar: t.avatar || DEFAULT_AVATAR,
     score: t.score,
     online: t.socketId !== null
   }));
@@ -241,7 +255,7 @@ function sendCurrentState(socket, room, team) {
 }
 
 io.on('connection', (socket) => {
-  socket.on('room:create', ({ name, token }) => {
+  socket.on('room:create', ({ name, token, avatar }) => {
     name = (name || '').trim().slice(0, 20);
     if (!name) return socket.emit('errorMsg', 'Bitte gib einen Teamnamen ein.');
     if (!token) token = genToken();
@@ -259,7 +273,7 @@ io.on('connection', (socket) => {
       phase: 'lobby'
     };
     rooms[code].teams[token] = {
-      token, name, score: 0,
+      token, name, avatar: sanitizeAvatar(avatar), score: 0,
       socketId: socket.id, offlineSince: null
     };
     socket.join(code);
@@ -273,7 +287,7 @@ io.on('connection', (socket) => {
     broadcastLobby(code);
   });
 
-  socket.on('room:join', ({ code, name, token }) => {
+  socket.on('room:join', ({ code, name, token, avatar }) => {
     code = (code || '').toUpperCase().trim();
     name = (name || '').trim().slice(0, 20);
     const room = rooms[code];
@@ -288,7 +302,7 @@ io.on('connection', (socket) => {
 
     if (!token) token = genToken();
     room.teams[token] = {
-      token, name, score: 0,
+      token, name, avatar: sanitizeAvatar(avatar), score: 0,
       socketId: socket.id, offlineSince: null
     };
     socket.join(code);

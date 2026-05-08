@@ -128,6 +128,72 @@ button.ghost:hover:not(:disabled) { border-color: var(--accent); color: var(--ac
   color: var(--muted);
   font-style: italic;
 }
+.team-list li.offline {
+  opacity: 0.5;
+}
+.team-list .team-avatar {
+  font-size: 1.2em;
+  margin-right: 0.35rem;
+}
+
+.avatar-card .selected-avatar {
+  font-size: 1.5em;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+.avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(44px, 1fr));
+  gap: 0.4rem;
+  max-width: 100%;
+}
+.avatar-btn {
+  background: rgba(255,255,255,0.08);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 0.4rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  aspect-ratio: 1;
+  cursor: pointer;
+  transition: all 0.12s;
+  font-weight: 400;
+  color: var(--text);
+}
+.avatar-btn:hover:not(:disabled) {
+  background: rgba(255,255,255,0.18);
+  transform: scale(1.05);
+}
+.avatar-btn.selected {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.08);
+}
+
+.score-avatar {
+  font-size: 1.4em;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+.scoreboard li {
+  gap: 0.25rem;
+}
+.scoreboard .score-name {
+  flex: 1;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.scoreboard li.offline {
+  opacity: 0.55;
+}
+.scoreboard li.offline .score-name::after {
+  content: " (offline)";
+  font-size: 0.75em;
+  font-weight: 400;
+  opacity: 0.7;
+}
 
 .qr-code {
   margin: 0.5rem auto 0;

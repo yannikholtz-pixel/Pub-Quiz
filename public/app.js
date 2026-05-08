@@ -16,6 +16,42 @@ socket.on('reconnect:fail', () => {
   saveToken(null);
 });
 
+const AVATARS = [
+  '🍺','🍻','🥂','🐙','🦄','🐸','🦖','🦥','🐢','🐺','🦊','🐼',
+  '🦁','🐬','🐝','🦔','🦅','🐯','🤖','👽','👻','🎃','🤡','🦸',
+  '🥷','🧙','😎','🤓','🥸','🤠','🍕','🌭','🍿','🚀','⚡','🔥',
+  '🏆','🎸'
+];
+const AVATAR_KEY = 'pubquiz-avatar';
+let selectedAvatar = localStorage.getItem(AVATAR_KEY);
+if (!selectedAvatar || !AVATARS.includes(selectedAvatar)) {
+  selectedAvatar = AVATARS[Math.floor(Math.random() * AVATARS.length)];
+}
+
+function renderAvatarGrid() {
+  const grid = document.getElementById('avatar-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  for (const av of AVATARS) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'avatar-btn' + (av === selectedAvatar ? ' selected' : '');
+    btn.textContent = av;
+    btn.setAttribute('aria-label', 'Avatar ' + av);
+    btn.addEventListener('click', () => {
+      selectedAvatar = av;
+      localStorage.setItem(AVATAR_KEY, av);
+      renderAvatarGrid();
+      const display = document.getElementById('selected-avatar');
+      if (display) display.textContent = av;
+    });
+    grid.appendChild(btn);
+  }
+  const display = document.getElementById('selected-avatar');
+  if (display) display.textContent = selectedAvatar;
+}
+renderAvatarGrid();
+
 document.addEventListener('click', () => SoundFX.init(), { once: true });
 
 const muteBtn = document.getElementById('mute-toggle');
@@ -63,7 +99,7 @@ document.getElementById('btn-create').addEventListener('click', () => {
   const name = document.getElementById('create-name').value.trim();
   if (!name) return showError('Bitte Teamnamen eingeben.');
   saveToken(null);  // frischer Token bei neuem Spiel
-  socket.emit('room:create', { name });
+  socket.emit('room:create', { name, avatar: selectedAvatar });
 });
 
 document.getElementById('btn-join').addEventListener('click', () => {
@@ -71,7 +107,7 @@ document.getElementById('btn-join').addEventListener('click', () => {
   const name = document.getElementById('join-name').value.trim();
   if (!code || !name) return showError('Bitte Raumcode und Teamname eingeben.');
   saveToken(null);
-  socket.emit('room:join', { code, name });
+  socket.emit('room:join', { code, name, avatar: selectedAvatar });
 });
 
 document.getElementById('join-code').addEventListener('input', (e) => {
@@ -152,7 +188,8 @@ function renderTeams(teams) {
   list.innerHTML = '';
   for (const t of teams) {
     const li = document.createElement('li');
-    li.textContent = t.name;
+    li.innerHTML = `<span class="team-avatar">${t.avatar || '🎲'}</span><span class="team-name">${escapeHtml(t.name)}</span>`;
+    if (t.online === false) li.classList.add('offline');
     list.appendChild(li);
   }
   const startBtn = document.getElementById('btn-start');
@@ -256,7 +293,8 @@ socket.on('reveal:scores', ({ scores }) => {
   ol.innerHTML = '';
   for (const s of scores) {
     const li = document.createElement('li');
-    li.innerHTML = `<span>${escapeHtml(s.name)}</span><span class="pts">${s.score} Pkt</span>`;
+    if (s.online === false) li.classList.add('offline');
+    li.innerHTML = `<span class="score-avatar">${s.avatar || '🎲'}</span><span class="score-name">${escapeHtml(s.name)}</span><span class="pts">${s.score} Pkt</span>`;
     ol.appendChild(li);
   }
 });
@@ -269,7 +307,8 @@ socket.on('milestone:scoreboard', ({ scores, completed, total, nextDeadline }) =
   ol.innerHTML = '';
   for (const s of scores) {
     const li = document.createElement('li');
-    li.innerHTML = `<span>${escapeHtml(s.name)}</span><span class="pts">${s.score} Pkt</span>`;
+    if (s.online === false) li.classList.add('offline');
+    li.innerHTML = `<span class="score-avatar">${s.avatar || '🎲'}</span><span class="score-name">${escapeHtml(s.name)}</span><span class="pts">${s.score} Pkt</span>`;
     ol.appendChild(li);
   }
   startMilestoneCountdown(nextDeadline);
@@ -297,7 +336,7 @@ socket.on('game:over', (scores) => {
   ol.innerHTML = '';
   for (const s of scores) {
     const li = document.createElement('li');
-    li.innerHTML = `<span>${escapeHtml(s.name)}</span><span class="pts">${s.score} Pkt</span>`;
+    li.innerHTML = `<span class="score-avatar">${s.avatar || '🎲'}</span><span class="score-name">${escapeHtml(s.name)}</span><span class="pts">${s.score} Pkt</span>`;
     ol.appendChild(li);
   }
   const winner = scores[0];
@@ -307,7 +346,7 @@ socket.on('game:over', (scores) => {
   } else if (scores.length > 1 && scores[0].score === scores[1].score) {
     comment.textContent = 'Unentschieden! Stichkampf an der Theke. 🍻';
   } else {
-    comment.textContent = `🏆 ${winner.name} gewinnt – die nächste Runde geht aufs Haus!`;
+    comment.textContent = `🏆 ${winner.avatar || ''} ${winner.name} gewinnt – die nächste Runde geht aufs Haus!`;
   }
   show('final');
 });
