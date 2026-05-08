@@ -38,6 +38,8 @@
     <section id="screen-lobby" class="screen hidden">
       <p class="sub">Raumcode</p>
       <h1><span id="room-code" class="code"></span></h1>
+      <div id="qr-code" class="qr-code" aria-label="QR-Code zum Beitreten"></div>
+      <p class="hint qr-hint">Scannen oder Code eintippen</p>
       <button id="btn-share" class="ghost">🔗 Link kopieren</button>
 
       <div class="card">
@@ -110,6 +112,7 @@
   </div>
 
   <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
   <script src="sounds.js"></script>
   <script src="app.js"></script>
 </body>

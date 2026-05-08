@@ -1,5 +1,21 @@
 const socket = io();
 
+const TOKEN_KEY = 'pubquiz-token';
+let myToken = localStorage.getItem(TOKEN_KEY);
+function saveToken(t) {
+  myToken = t || null;
+  if (t) localStorage.setItem(TOKEN_KEY, t);
+  else localStorage.removeItem(TOKEN_KEY);
+}
+
+socket.on('connect', () => {
+  if (myToken) socket.emit('room:reconnect', { token: myToken });
+});
+
+socket.on('reconnect:fail', () => {
+  saveToken(null);
+});
+
 document.addEventListener('click', () => SoundFX.init(), { once: true });
 
 const muteBtn = document.getElementById('mute-toggle');
@@ -46,6 +62,7 @@ if (params.get('room')) {
 document.getElementById('btn-create').addEventListener('click', () => {
   const name = document.getElementById('create-name').value.trim();
   if (!name) return showError('Bitte Teamnamen eingeben.');
+  saveToken(null);  // frischer Token bei neuem Spiel
   socket.emit('room:create', { name });
 });
 
@@ -53,6 +70,7 @@ document.getElementById('btn-join').addEventListener('click', () => {
   const code = document.getElementById('join-code').value.trim().toUpperCase();
   const name = document.getElementById('join-name').value.trim();
   if (!code || !name) return showError('Bitte Raumcode und Teamname eingeben.');
+  saveToken(null);
   socket.emit('room:join', { code, name });
 });
 
@@ -78,18 +96,35 @@ document.getElementById('btn-share').addEventListener('click', async () => {
 });
 
 document.getElementById('btn-restart').addEventListener('click', () => {
+  saveToken(null);
   location.href = location.pathname;
 });
 
 socket.on('errorMsg', showError);
 
-socket.on('room:joined', ({ code, name, teams, questionCount }) => {
+socket.on('room:joined', ({ code, name, token, teams, questionCount }) => {
   myCode = code;
+  if (token) saveToken(token);
   document.getElementById('room-code').textContent = code;
+  renderQR(code);
   renderTeams(teams);
   if (questionCount) setLengthButtons(questionCount);
   show('lobby');
 });
+
+function renderQR(code) {
+  const url = `${location.origin}${location.pathname}?room=${code}`;
+  const target = document.getElementById('qr-code');
+  if (!target || typeof qrcode === 'undefined') return;
+  try {
+    const qr = qrcode(0, 'M');
+    qr.addData(url);
+    qr.make();
+    target.innerHTML = qr.createImgTag(5, 8);
+  } catch (e) {
+    target.innerHTML = '';
+  }
+}
 
 socket.on('lobby:length', ({ count }) => {
   setLengthButtons(count);

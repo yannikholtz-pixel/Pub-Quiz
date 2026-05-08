@@ -129,6 +129,26 @@ button.ghost:hover:not(:disabled) { border-color: var(--accent); color: var(--ac
   font-style: italic;
 }
 
+.qr-code {
+  margin: 0.5rem auto 0;
+  padding: 0.75rem;
+  background: #fff;
+  border-radius: 12px;
+  width: max-content;
+  line-height: 0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+.qr-code img {
+  display: block;
+  width: 180px;
+  height: 180px;
+}
+.qr-hint {
+  margin-top: 0.4rem !important;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
 .length-buttons {
   display: flex;
   gap: 0.5rem;
