@@ -3200,5 +3200,29 @@ module.exports = [
     options: ["Grün", "Lila", "Orange", "Rot"],
     correct: 0,
     explanation: "Grün – einfache Subtraktiv-Mischung."
+  },
+  {
+    text: "Welcher deutsche Erfinder entwickelte den Buchdruck mit beweglichen Lettern?",
+    options: ["Johannes Gutenberg", "Werner von Siemens", "Konrad Zuse", "Otto von Guericke"],
+    correct: 0,
+    explanation: "Gutenberg, um 1450 in Mainz – ermöglichte die schnelle Verbreitung der Bibel."
+  },
+  {
+    text: "Welche US-Stadt liegt in zwei Bundesstaaten gleichzeitig (Missouri und Kansas)?",
+    options: ["St. Louis", "Kansas City", "Memphis", "Omaha"],
+    correct: 1,
+    explanation: "Kansas City – existiert tatsächlich auf beiden Seiten der Staatsgrenze, mit eigenen Bürgermeistern."
+  },
+  {
+    text: "Wie viele Jahre dauerte der „Hundertjährige Krieg“ tatsächlich?",
+    options: ["100", "112", "116", "Genau 99, mit Inflation gerechnet"],
+    correct: 2,
+    explanation: "116 Jahre – von 1337 bis 1453 zwischen England und Frankreich."
+  },
+  {
+    text: "Welches Tier hat die längste Lebenserwartung unter den Wirbeltieren?",
+    options: ["Schildkröte", "Grönlandhai", "Blauwal", "Riesenmuschel"],
+    correct: 1,
+    explanation: "Grönlandhai – kann über 400 Jahre alt werden, älter als die meisten europäischen Schlösser."
   }
 ];
