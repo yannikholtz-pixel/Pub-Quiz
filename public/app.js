@@ -251,6 +251,8 @@ socket.on('reveal', ({ answered, correct, correctChoice, correctText, explanatio
   clearInterval(questionTimerHandle);
 
   if (correct) SoundFX.correct(); else SoundFX.wrong();
+  flashStage(correct ? 'correct' : 'wrong');
+  if (correct && answered) spawnConfetti();
 
   const strafBox = document.getElementById('r-strafschluck');
   if (strafschluck) {
@@ -332,6 +334,7 @@ socket.on('game:over', (scores) => {
   clearInterval(revealTimerHandle);
   clearInterval(milestoneTimerHandle);
   SoundFX.finale();
+  spawnConfetti(120);
   const ol = document.getElementById('final-scores');
   ol.innerHTML = '';
   for (const s of scores) {
@@ -385,6 +388,33 @@ function startRevealCountdown(deadline, isLast) {
   };
   update();
   revealTimerHandle = setInterval(update, 250);
+}
+
+function flashStage(type) {
+  const flash = document.createElement('div');
+  flash.className = 'stage-flash ' + type;
+  document.body.appendChild(flash);
+  setTimeout(() => flash.remove(), 750);
+}
+
+const CONFETTI_COLORS = ['#ffd54a', '#ff9d3d', '#ff3d8b', '#34e3a4', '#3a8eff', '#fff3b0'];
+function spawnConfetti(count = 60) {
+  const container = document.createElement('div');
+  container.className = 'confetti';
+  for (let i = 0; i < count; i++) {
+    const piece = document.createElement('span');
+    const size = 6 + Math.random() * 8;
+    piece.style.left = (Math.random() * 100) + '%';
+    piece.style.width = size + 'px';
+    piece.style.height = (size * 1.5) + 'px';
+    piece.style.background = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
+    piece.style.animationDuration = (2.5 + Math.random() * 2) + 's';
+    piece.style.animationDelay = (Math.random() * 0.4) + 's';
+    piece.style.transform = `rotate(${Math.random() * 360}deg)`;
+    container.appendChild(piece);
+  }
+  document.body.appendChild(container);
+  setTimeout(() => container.remove(), 5000);
 }
 
 function escapeHtml(s) {
