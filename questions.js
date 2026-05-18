@@ -3224,5 +3224,319 @@ module.exports = [
     options: ["Schildkröte", "Grönlandhai", "Blauwal", "Riesenmuschel"],
     correct: 1,
     explanation: "Grönlandhai – kann über 400 Jahre alt werden, älter als die meisten europäischen Schlösser."
+  },
+
+  // === Kalender & Bräuche ===
+  {
+    text: "Welches Sternzeichen folgt im Tierkreis direkt auf den Widder?",
+    options: ["Stier", "Zwilling", "Krebs", "Löwe"],
+    correct: 0,
+    explanation: "Stier (21.4.–20.5.) – nach dem Widder, vor dem Zwilling."
+  },
+  {
+    text: "Welcher Monat hat in einem Schaltjahr 29 Tage?",
+    options: ["Januar", "Februar", "April", "Eigentlich alle nach 4 Bier"],
+    correct: 1,
+    explanation: "Februar – alle 4 Jahre kommt der 29. dazu."
+  },
+  {
+    text: "Welcher Tag ist offiziell der deutsche Tag der Deutschen Einheit?",
+    options: ["9. November", "3. Oktober", "17. Juni", "8. Mai"],
+    correct: 1,
+    explanation: "3. Oktober 1990 – die DDR trat der BRD bei. Seit 1991 Nationalfeiertag."
+  },
+  {
+    text: "Was feiert man traditionell am 1. Mai in Deutschland?",
+    options: ["Tag der Arbeit", "Tag der Liebe", "Tag der Mutter", "Tag des Maibocks"],
+    correct: 0,
+    explanation: "Tag der Arbeit – seit 1933 gesetzlicher Feiertag, mit langer Gewerkschafts-Geschichte."
+  },
+  {
+    text: "Wann findet auf der Nordhalbkugel die Sommer-Sonnenwende statt?",
+    options: ["20./21. März", "20./21. Juni", "22./23. September", "21./22. Dezember"],
+    correct: 1,
+    explanation: "20. oder 21. Juni – längster Tag des Jahres."
+  },
+
+  // === Regional / Bayern ===
+  {
+    text: "Welches Tier prangt traditionell im Wappen Bayerns (neben den Rauten)?",
+    options: ["Adler", "Löwe", "Bär", "Wildschwein"],
+    correct: 1,
+    explanation: "Der Löwe – seit den Wittelsbachern Wappentier."
+  },
+  {
+    text: "Welches Tier ist das Wappentier Berlins?",
+    options: ["Adler", "Bär", "Wolf", "Eichhörnchen"],
+    correct: 1,
+    explanation: "Der Berliner Bär – seit dem 13. Jahrhundert Wahrzeichen der Stadt."
+  },
+  {
+    text: "Aus welcher deutschen Stadt stammt traditionell die Weißwurst?",
+    options: ["Nürnberg", "München", "Augsburg", "Regensburg"],
+    correct: 1,
+    explanation: "München – angeblich 1857 vom Wirt Sepp Moser erfunden."
+  },
+  {
+    text: "Was bedeutet die bayerische Grußformel „Servus" wörtlich auf Lateinisch?",
+    options: ["„Hallo dir"", "„Ich bin dein Diener"", "„Gott segne dich"", "„Schenk nach"!"],
+    correct: 1,
+    explanation: "„Servus" = lateinisch „Diener" / „Sklave". Heute völlig ohne Demutsgehalt verwendet."
+  },
+  {
+    text: "Welche Großstadt ist Bayerns Landeshauptstadt?",
+    options: ["Nürnberg", "Augsburg", "München", "Regensburg"],
+    correct: 2,
+    explanation: "München – seit 1255 ununterbrochen Sitz der Wittelsbacher und heute Bayerns Hauptstadt."
+  },
+
+  // === Auto & Verkehr ===
+  {
+    text: "Wie viele Ringe hat das Audi-Logo?",
+    options: ["3", "4", "5", "Genau so viele wie der Audi-Fahrer Blinker benutzt"],
+    correct: 1,
+    explanation: "Vier – sie stehen für die Auto Union: Audi, DKW, Horch, Wanderer."
+  },
+  {
+    text: "Welche Auto-Marke baut den „Golf"?",
+    options: ["BMW", "Volkswagen", "Opel", "Mercedes-Benz"],
+    correct: 1,
+    explanation: "Volkswagen – seit 1974 in Wolfsburg gebaut, eines der meistverkauften Autos der Welt."
+  },
+  {
+    text: "Wofür steht die Auto-Abkürzung „ABS"?",
+    options: ["Antiblockiersystem", "Auto-Brems-Sicherung", "Antiblock-Sensor", "Auto Bleibt Stehen"],
+    correct: 0,
+    explanation: "Antiblockiersystem – verhindert das Blockieren der Räder beim Bremsen."
+  },
+  {
+    text: "In welcher deutschen Stadt sitzt das BMW-Stammwerk?",
+    options: ["München", "Stuttgart", "Wolfsburg", "Ingolstadt"],
+    correct: 0,
+    explanation: "München – seit 1916. Im Olympiapark steht der berühmte 4-Zylinder-Tower."
+  },
+  {
+    text: "Wie lang ist die offizielle Marathon-Distanz?",
+    options: ["40,000 km", "42,195 km", "45,500 km", "So weit, dass keiner hin will"],
+    correct: 1,
+    explanation: "42,195 km – seit 1908 standardisiert, abgeleitet aus dem Londoner Marathon."
+  },
+
+  // === Wetter & Klima ===
+  {
+    text: "Wie heißt der warme, trockene Fallwind, der typisch in den Alpen vorkommt?",
+    options: ["Mistral", "Föhn", "Bora", "Schirokko"],
+    correct: 1,
+    explanation: "Föhn – kann Temperaturen innerhalb weniger Stunden um 10–20 °C ansteigen lassen."
+  },
+  {
+    text: "Wie heißt ein tropischer Wirbelsturm im Nordatlantik?",
+    options: ["Taifun", "Hurrikan", "Zyklon", "Tornado"],
+    correct: 1,
+    explanation: "Hurrikan im Atlantik, Taifun im Westpazifik, Zyklon im Indischen Ozean – gleicher Sturmtyp, andere Namen."
+  },
+  {
+    text: "Welche Wolkenart bringt typischerweise heftige Gewitter?",
+    options: ["Cirrus", "Stratus", "Cumulonimbus", "Nimbostratus"],
+    correct: 2,
+    explanation: "Cumulonimbus – die mächtigen „Ambossfwolken", oft 10 km hoch."
+  },
+
+  // === Pop-Kultur ===
+  {
+    text: "Welcher Sänger landete 2017 mit „Despacito" einen Welthit (zusammen mit Daddy Yankee)?",
+    options: ["Enrique Iglesias", "Luis Fonsi", "Ricky Martin", "J Balvin"],
+    correct: 1,
+    explanation: "Luis Fonsi – mit Daddy Yankee und im Remix Justin Bieber."
+  },
+  {
+    text: "Welche Boygroup veröffentlichte 1999 den Hit „I Want It That Way"?",
+    options: ["NSYNC", "Backstreet Boys", "Boyzone", "Westlife"],
+    correct: 1,
+    explanation: "Backstreet Boys – ein definierender Song der 90er."
+  },
+  {
+    text: "Welche Rockband veröffentlichte 1971 „Stairway to Heaven"?",
+    options: ["The Rolling Stones", "Led Zeppelin", "Deep Purple", "Pink Floyd"],
+    correct: 1,
+    explanation: "Led Zeppelin – auf dem unbetitelten 4. Album („IV")."
+  },
+  {
+    text: "Welche deutsche Schlagersängerin sang 2013 den Mega-Hit „Atemlos durch die Nacht"?",
+    options: ["Andrea Berg", "Helene Fischer", "Vanessa Mai", "Beatrice Egli"],
+    correct: 1,
+    explanation: "Helene Fischer – Inbegriff modernen deutschen Schlagers."
+  },
+  {
+    text: "Welcher Sänger wurde als „King of Pop" weltberühmt?",
+    options: ["Elvis Presley", "Michael Jackson", "Prince", "Freddie Mercury"],
+    correct: 1,
+    explanation: "Michael Jackson – Titel etablierte sich in den 80ern, „Thriller" ist bis heute meistverkauftes Album."
+  },
+  {
+    text: "In welchem fiktiven Land spielt die „Herr der Ringe"-Trilogie?",
+    options: ["Westeros", "Narnia", "Mittelerde", "Hogwarts"],
+    correct: 2,
+    explanation: "Mittelerde – Tolkiens Mythologie. Westeros gehört zu „Game of Thrones"."
+  },
+
+  // === Sport II ===
+  {
+    text: "In welchem Sport stammt der Begriff „K. o." (Knockout) ursprünglich?",
+    options: ["Tennis", "Boxen", "Fußball", "Schach"],
+    correct: 1,
+    explanation: "Boxen – ein K. o.-Sieg gilt, wenn der Gegner nicht innerhalb 10 Sekunden aufstehen kann."
+  },
+  {
+    text: "Wie nennt man im US-amerikanischen Englisch die Sportart, die im Deutschen „Fußball" heißt?",
+    options: ["Football", "Soccer", "Kickball", "European-Ball"],
+    correct: 1,
+    explanation: "„Soccer" – kommt von „Association Football". „Football" ist in den USA American Football."
+  },
+  {
+    text: "Welcher US-Basketballspieler hatte die Initialen MJ und gewann sechs NBA-Titel mit den Chicago Bulls?",
+    options: ["Michael Jordan", "Magic Johnson", "Kareem Abdul-Jabbar", "LeBron James"],
+    correct: 0,
+    explanation: "Michael Jordan – Bulls-Titel 1991-93 und 1996-98, „The GOAT" für viele."
+  },
+  {
+    text: "Welcher Sport-Begriff bezeichnet drei Tore eines Spielers im selben Spiel?",
+    options: ["Doppelpack", "Hattrick", "Trippelpack", "Quadrupel"],
+    correct: 1,
+    explanation: "Hattrick – ursprünglich aus dem Cricket, heute vor allem im Fußball."
+  },
+  {
+    text: "Bei welchem Sport wechselt der Ball zwischen zwei Mannschaften über ein Netz, ohne dass er den Boden berührt?",
+    options: ["Handball", "Volleyball", "Basketball", "Tischtennis"],
+    correct: 1,
+    explanation: "Volleyball – Ball muss durchgehend in der Luft bleiben."
+  },
+
+  // === Brettspiele & Spiele ===
+  {
+    text: "Welches deutsche Klassiker-Brettspiel hat „Ärgere dich nicht" im Titel?",
+    options: ["Risiko", "Mensch ärgere dich nicht", "Monopoly", "Siedler von Catan"],
+    correct: 1,
+    explanation: "„Mensch ärgere dich nicht" – seit 1908, über 70 Millionen verkaufte Exemplare."
+  },
+  {
+    text: "Wie viele gleiche Würfel braucht man für einen „Kniffel" im gleichnamigen Spiel?",
+    options: ["3", "4", "5", "6"],
+    correct: 2,
+    explanation: "5 gleiche Würfel – wertvoll mit 50 Punkten."
+  },
+  {
+    text: "In welchem Spiel ziehen die Spieler über die Felder „Schlossallee" und „Badstraße"?",
+    options: ["Risiko", "Monopoly", "Trivial Pursuit", "DKT"],
+    correct: 1,
+    explanation: "Monopoly – Schlossallee ist die teuerste Straße im klassischen deutschen Brett."
+  },
+  {
+    text: "In welchem Land wurde das Computerspiel „Tetris" 1984 entwickelt?",
+    options: ["Japan", "USA", "Sowjetunion", "Deutschland"],
+    correct: 2,
+    explanation: "Sowjetunion – von Alexei Paschitnow am Moskauer Computer-Zentrum."
+  },
+  {
+    text: "Welche Firma brachte 1989 den „Game Boy" auf den Markt?",
+    options: ["Nintendo", "Sega", "Atari", "Sony"],
+    correct: 0,
+    explanation: "Nintendo – über 100 Millionen verkaufte Exemplare weltweit."
+  },
+
+  // === Trinken II ===
+  {
+    text: "Aus welchen Beeren wird der Wacholderschnaps Gin hauptsächlich aromatisiert?",
+    options: ["Schlehe", "Wacholder", "Holunder", "Heidelbeere"],
+    correct: 1,
+    explanation: "Wacholderbeeren – „Gin" leitet sich aus dem niederländischen „Genever" für Wacholder ab."
+  },
+  {
+    text: "Welcher Cocktail wird klassisch aus Wodka, Tomatensaft, Zitrone und Tabasco gemischt?",
+    options: ["Bloody Mary", "Mojito", "Caipirinha", "Cosmopolitan"],
+    correct: 0,
+    explanation: "Bloody Mary – beliebter Brunch-Drink, erfunden in den 1920ern in Paris."
+  },
+  {
+    text: "Aus welchem Land stammt der gelbe Likör Limoncello?",
+    options: ["Spanien", "Italien", "Griechenland", "Portugal"],
+    correct: 1,
+    explanation: "Italien – aus Süditalien, klassisch von der Amalfi-Küste und Sorrent."
+  },
+  {
+    text: "Welcher klassische deutsche Schnaps wird traditionell aus Roggen oder Weizen gebrannt?",
+    options: ["Schnaps allgemein", "Korn", "Obstler", "Doppelkorn"],
+    correct: 1,
+    explanation: "Korn – mindestens 32 % Alkohol, „Doppelkorn" ab 38 %."
+  },
+  {
+    text: "Welcher Cocktail enthält Rum, Limette, Minze, Soda und Zucker?",
+    options: ["Caipirinha", "Mojito", "Sex on the Beach", "Daiquiri"],
+    correct: 1,
+    explanation: "Mojito – kubanischer Klassiker, Hemingway-Lieblingsdrink."
+  },
+
+  // === Geschichte & Aktuelles ===
+  {
+    text: "Welche Bezeichnung erhielt die ideologische Trennlinie zwischen Ost- und Westeuropa im Kalten Krieg?",
+    options: ["Berliner Mauer", "Eiserner Vorhang", "Roter Streifen", "Stahl-Gardine"],
+    correct: 1,
+    explanation: "Eiserner Vorhang – Begriff geprägt von Winston Churchill 1946."
+  },
+  {
+    text: "In welchem Jahr trat das Vereinigte Königreich offiziell aus der EU aus („Brexit")?",
+    options: ["2016", "2019", "2020", "2022"],
+    correct: 2,
+    explanation: "2020 – Austritt am 31. Januar nach 47 Jahren EU-Mitgliedschaft."
+  },
+  {
+    text: "Welche Krankheit erklärte die WHO im März 2020 zur Pandemie?",
+    options: ["Ebola", "COVID-19", "Schweinegrippe", "MERS"],
+    correct: 1,
+    explanation: "COVID-19 – ausgelöst durch das Coronavirus SARS-CoV-2."
+  },
+  {
+    text: "Welches Unternehmen veröffentlichte im November 2022 den Chatbot „ChatGPT"?",
+    options: ["Google", "Microsoft", "OpenAI", "Meta"],
+    correct: 2,
+    explanation: "OpenAI – ChatGPT erreichte in nur 2 Monaten 100 Mio. aktive Nutzer."
+  },
+  {
+    text: "Welches berühmte Gemälde wurde 1911 aus dem Louvre gestohlen und erst 2 Jahre später wiedergefunden?",
+    options: ["Mona Lisa", "Die Sternennacht", "Das Mädchen mit dem Perlenohrring", "Der Schrei"],
+    correct: 0,
+    explanation: "Mona Lisa – der Diebstahl machte das Bild erst zur Weltikone."
+  },
+
+  // === Geographie III ===
+  {
+    text: "Welche Berge bilden traditionell die Grenze zwischen Spanien und Frankreich?",
+    options: ["Pyrenäen", "Alpen", "Karpaten", "Ardennen"],
+    correct: 0,
+    explanation: "Pyrenäen – knapp 430 km lang, höchster Punkt Aneto (3.404 m)."
+  },
+  {
+    text: "Wie heißt Florenz im italienischen Original?",
+    options: ["Firenze", "Fiorenza", "Florenza", "Florencia"],
+    correct: 0,
+    explanation: "Firenze – Geburtsstätte der Renaissance, Heimat der Medici."
+  },
+  {
+    text: "Welcher deutsche Schauspieler gewann Oscars für „Inglourious Basterds" und „Django Unchained"?",
+    options: ["Til Schweiger", "Christoph Waltz", "Daniel Brühl", "Moritz Bleibtreu"],
+    correct: 1,
+    explanation: "Christoph Waltz – Österreicher, zwei Nebenrollen-Oscars bei Tarantino-Filmen."
+  },
+  {
+    text: "Welcher Film gewann den Oscar 2024 als bester Film?",
+    options: ["Barbie", "Oppenheimer", "Killers of the Flower Moon", "Poor Things"],
+    correct: 1,
+    explanation: "Oppenheimer – Christopher Nolans Atomphysiker-Biografie, 7 Oscars insgesamt."
+  },
+  {
+    text: "Welche Geste ist in der Dating-App „Tinder" zentral, um Interesse zu signalisieren?",
+    options: ["Tippen", "Wischen nach rechts", "Doppelklick", "Daumen hoch"],
+    correct: 1,
+    explanation: "Wischen nach rechts („Swipe right") – nach links bedeutet „nicht interessiert"."
   }
 ];
