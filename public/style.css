@@ -754,6 +754,143 @@ button.ghost:hover:not(:disabled) {
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
+/* ---------- Glücks-Multiplikator-Badge ---------- */
+.multiplier-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0.65rem 1.2rem;
+  border-radius: 18px;
+  margin: 0.3rem auto 0.45rem;
+  font-weight: 700;
+  text-align: center;
+  border: 2px solid;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  width: max-content;
+  max-width: 95%;
+  animation: multSpin 0.9s cubic-bezier(0.2, 1.4, 0.3, 1);
+}
+.multiplier-badge .mult-label {
+  font-family: var(--font-show);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 400;
+  opacity: 0.85;
+}
+.multiplier-badge .mult-value {
+  font-family: var(--font-show);
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.multiplier-badge .mult-sub {
+  font-size: 0.78rem;
+  font-style: italic;
+  font-weight: 500;
+  opacity: 0.9;
+}
+.mult-good   {
+  background: linear-gradient(135deg, var(--good), #1ab98a);
+  color: #08102e;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+.mult-great  {
+  background: linear-gradient(135deg, var(--gold), var(--hot));
+  color: #08102e;
+  border-color: rgba(255, 255, 255, 0.5);
+  animation: multSpin 0.9s cubic-bezier(0.2, 1.4, 0.3, 1), multPulse 1.6s ease-in-out infinite 1s;
+}
+.mult-risk   {
+  background: linear-gradient(135deg, #c97a00, #6b2400);
+  color: #fff;
+  border-color: rgba(255, 213, 74, 0.5);
+}
+.mult-zero   {
+  background: linear-gradient(135deg, #555, #1c1c1c);
+  color: #b9b9b9;
+  border-color: rgba(255, 255, 255, 0.15);
+  opacity: 0.85;
+}
+@keyframes multSpin {
+  0%   { transform: rotate(-540deg) scale(0.2); opacity: 0; }
+  60%  { transform: rotate(20deg) scale(1.15); opacity: 1; }
+  100% { transform: rotate(0) scale(1); opacity: 1; }
+}
+@keyframes multPulse {
+  0%, 100% { box-shadow: 0 10px 28px rgba(255, 92, 141, 0.35); }
+  50%      { box-shadow: 0 10px 40px rgba(255, 213, 74, 0.65); }
+}
+
+/* ---------- Punkte-Klau Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 8, 22, 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.modal-content {
+  background: linear-gradient(160deg, #1a2563, #0c1538);
+  border: 1px solid var(--gold);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 213, 74, 0.18);
+  text-align: center;
+}
+.modal-content h2 {
+  font-family: var(--font);
+  text-transform: none;
+  color: var(--gold);
+  letter-spacing: -0.005em;
+  font-size: 1.1rem;
+  margin: 0 0 0.9rem;
+}
+.klau-target-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin: 0.5rem 0 1rem;
+}
+.klau-target {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(155deg, rgba(58, 142, 255, 0.30), rgba(15, 25, 70, 0.55));
+  border: 1px solid var(--stroke-blue);
+  border-radius: var(--radius-md);
+  padding: 0.7rem 0.9rem;
+  color: var(--text);
+  font-weight: 700;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: 0;
+  box-shadow: none;
+  font-size: 1rem;
+}
+.klau-target:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--gold), var(--gold-2));
+  color: #08102e;
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-1px);
+}
+.klau-target .klau-avatar { font-size: 1.5em; }
+.klau-target .klau-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* ---------- Joker-Bar ---------- */
 .joker-bar {
   display: flex;

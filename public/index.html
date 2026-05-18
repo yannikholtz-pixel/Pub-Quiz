@@ -19,6 +19,16 @@
 </head>
 <body>
   <button id="mute-toggle" class="mute-btn" title="Sound an/aus" aria-label="Sound an/aus">🔊</button>
+
+  <!-- Modal für Punkte-Klau-Joker -->
+  <div id="klau-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <h2>Wem klaust du 100 Punkte?</h2>
+      <div id="klau-target-list" class="klau-target-list"></div>
+      <button id="klau-cancel" class="ghost">Abbrechen</button>
+    </div>
+  </div>
+
   <div id="app">
 
     <!-- Startbildschirm -->
@@ -94,7 +104,11 @@
         <button class="joker-btn" type="button" data-joker="doublepoints">
           <span class="joker-icon">×2</span><span class="joker-label">Doppelpunkte</span>
         </button>
+        <button class="joker-btn" type="button" data-joker="klau">
+          <span class="joker-icon">💰</span><span class="joker-label">Klauen</span>
+        </button>
       </div>
+      <div id="q-multiplier" class="multiplier-badge hidden"></div>
       <p id="doublepoints-active" class="doublepoints-active hidden">🔥 Doppelpunkte für diese Frage aktiv</p>
       <ul id="q-options" class="options"></ul>
       <p id="q-status" class="hint hidden">⏳ Antwort gespeichert. Warte auf die anderen…</p>

@@ -95,8 +95,10 @@ let questionTimerHandle = null;
 let revealTimerHandle = null;
 let milestoneTimerHandle = null;
 let specialTimerHandle = null;
-let myJokers = { fiftyfifty: true, skip: true, doublepoints: true };
+let myJokers = { fiftyfifty: true, skip: true, doublepoints: true, klau: true };
 let pendingDoublepoints = false;
+let cachedTeams = [];
+let myName = null;
 
 const params = new URLSearchParams(location.search);
 if (params.get('room')) {
@@ -221,7 +223,7 @@ socket.on('game:start', () => {
   // brief countdown vor erster Frage – aber Server sendet "question" sowieso bald
 });
 
-socket.on('question', ({ idx, total, text, options, deadline, doublornix, hard }) => {
+socket.on('question', ({ idx, total, text, options, deadline, doublornix, hard, multiplier }) => {
   document.getElementById('q-idx').textContent = idx + 1;
   document.getElementById('q-total').textContent = total;
   document.getElementById('q-text').textContent = text;
@@ -236,6 +238,9 @@ socket.on('question', ({ idx, total, text, options, deadline, doublornix, hard }
   if (qmBubble) qmBubble.classList.add('hidden');
   const distBox = document.getElementById('r-distribution');
   if (distBox) distBox.classList.add('hidden');
+
+  // Glücks-Multiplikator-Anzeige
+  renderMultiplier(multiplier);
 
   // Doppelornix-Banner aus dem Server-Hinweis (per question payload optional)
   document.getElementById('doublornix-banner').classList.toggle('hidden', !doublornix);
@@ -283,9 +288,67 @@ document.querySelectorAll('.joker-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const type = btn.dataset.joker;
     if (!myJokers[type]) return;
+    if (type === 'klau') {
+      openKlauModal();
+      return;
+    }
     socket.emit('joker:use', { type });
   });
 });
+
+function openKlauModal() {
+  const modal = document.getElementById('klau-modal');
+  const list = document.getElementById('klau-target-list');
+  if (!modal || !list) return;
+  list.innerHTML = '';
+  const others = (cachedTeams || []).filter(t => t.name !== myName);
+  if (others.length === 0) {
+    list.innerHTML = '<p class="hint">Keine anderen Teams zum Beklauen da.</p>';
+  } else {
+    for (const t of others) {
+      const btn = document.createElement('button');
+      btn.className = 'klau-target';
+      btn.innerHTML = `<span class="klau-avatar">${t.avatar || '🎲'}</span><span class="klau-name">${escapeHtml(t.name)}</span>`;
+      btn.addEventListener('click', () => {
+        // Wir kennen den Token nicht – Server löst per Namen auf.
+        socket.emit('joker:use', { type: 'klau', targetName: t.name });
+        modal.classList.add('hidden');
+      });
+      list.appendChild(btn);
+    }
+  }
+  modal.classList.remove('hidden');
+}
+
+document.getElementById('klau-cancel').addEventListener('click', () => {
+  document.getElementById('klau-modal').classList.add('hidden');
+});
+document.getElementById('klau-modal').addEventListener('click', (e) => {
+  if (e.target.id === 'klau-modal') {
+    e.target.classList.add('hidden');
+  }
+});
+
+function renderMultiplier(multiplier) {
+  const el = document.getElementById('q-multiplier');
+  if (!el) return;
+  if (!multiplier) {
+    el.classList.add('hidden');
+    el.innerHTML = '';
+    return;
+  }
+  const labels = {
+    x2:      { text: '×2', sub: 'Doppelt!', cls: 'mult-good' },
+    x3:      { text: '×3', sub: 'Dreifach!', cls: 'mult-great' },
+    minus50: { text: '½ / −50', sub: 'Risiko: halbe Punkte oder −50', cls: 'mult-risk' },
+    zero:    { text: '0', sub: 'Diese Frage zählt nichts', cls: 'mult-zero' }
+  };
+  const m = labels[multiplier];
+  if (!m) { el.classList.add('hidden'); return; }
+  el.className = 'multiplier-badge ' + m.cls;
+  el.innerHTML = `<span class="mult-label">🎰 Glücksrad</span><span class="mult-value">${m.text}</span><span class="mult-sub">${m.sub}</span>`;
+  el.classList.remove('hidden');
+}
 
 socket.on('sabotage:cast', ({ source, target }) => {
   showSabotageBanner(source, target);
@@ -489,6 +552,11 @@ socket.on('reveal', ({ answered, correct, skipped, pointsDelta, correctChoice, c
 
   startRevealCountdown(nextDeadline, isLast);
   show('reveal');
+});
+
+socket.on('joker:klauApplied', ({ source, target }) => {
+  showToast(`💰 ${source.avatar} ${source.name} klaut 100 Pkt von ${target.avatar} ${target.name}!`);
+  SoundFX.wrong();
 });
 
 socket.on('quizmaster:comment', ({ text }) => {

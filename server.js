@@ -168,7 +168,38 @@ function teamList(room) {
 }
 
 function freshJokers() {
-  return { fiftyfifty: true, skip: true, doublepoints: true };
+  return { fiftyfifty: true, skip: true, doublepoints: true, klau: true };
+}
+
+// Glücks-Multiplikator: pro Frage und Team eine kleine Chance, einen
+// zufälligen Punktemodifier zu kriegen.
+const MULTIPLIER_CHANCE = 0.08;
+const MULTIPLIER_OPTIONS = [
+  { type: 'x2',      weight: 50 },
+  { type: 'x3',      weight: 25 },
+  { type: 'minus50', weight: 15 },
+  { type: 'zero',    weight: 10 }
+];
+
+function pickMultiplier() {
+  if (Math.random() > MULTIPLIER_CHANCE) return null;
+  const total = MULTIPLIER_OPTIONS.reduce((s, m) => s + m.weight, 0);
+  let r = Math.random() * total;
+  for (const m of MULTIPLIER_OPTIONS) {
+    if (r < m.weight) return m.type;
+    r -= m.weight;
+  }
+  return null;
+}
+
+function multiplierScore(type, correct, answered) {
+  switch (type) {
+    case 'x2':      return correct ? 200 : 0;
+    case 'x3':      return correct ? 300 : 0;
+    case 'minus50': return correct ? 50 : (answered ? -50 : 0);
+    case 'zero':    return 0;
+    default:        return null;
+  }
 }
 
 function pickSpecialRound(room) {
@@ -291,6 +322,7 @@ function nextQuestion(code) {
     }
     team.currentQuestion = q;
     team.currentQuestionHard = isHard;
+    team.questionMultiplier = pickMultiplier();
     emitToTeam(team, 'question', {
       idx: room.questionIdx,
       total: room.gameQuestions.length,
@@ -298,7 +330,8 @@ function nextQuestion(code) {
       options: q.options,
       deadline,
       doublornix: !!room.doublornixActive,
-      hard: isHard
+      hard: isHard,
+      multiplier: team.questionMultiplier
     });
   }
   io.to(code).emit('progress', progressPayload(room));
@@ -358,7 +391,10 @@ function revealAnswer(code) {
     const correct = answered && ans === q.correct;
 
     let pointsDelta = 0;
-    if (correct) {
+    if (team.questionMultiplier) {
+      // Glücks-Multiplikator überschreibt die normale Punktelogik
+      pointsDelta = multiplierScore(team.questionMultiplier, correct, answered) || 0;
+    } else if (correct) {
       pointsDelta = 100;
       if (team.pendingDoublepoints) pointsDelta += 100;
       if (room.doublornixActive) pointsDelta += 100;
@@ -367,6 +403,8 @@ function revealAnswer(code) {
     }
     team.score += pointsDelta;
     team.pendingDoublepoints = false;
+    const usedMultiplier = team.questionMultiplier;
+    team.questionMultiplier = null;
 
     // Streak-Tracking: bei richtiger Antwort hochzählen, sonst zurücksetzen.
     // Skip und Timeout brechen den Streak nicht (zumindest beim Skip nicht).
@@ -425,7 +463,8 @@ function revealAnswer(code) {
       hard: !!team.currentQuestionHard,
       streak: team.streak,
       canSabotage,
-      distribution: teamDistribution
+      distribution: teamDistribution,
+      multiplier: usedMultiplier
     };
 
     emitToTeam(team, 'reveal', {
@@ -728,15 +767,40 @@ io.on('connection', (socket) => {
     emitToTeam(source, 'sabotage:used', { streak: 0 });
   });
 
-  socket.on('joker:use', ({ type }) => {
+  socket.on('joker:use', ({ type, targetToken, targetName }) => {
     const code = socket.data.room;
     const token = socket.data.token;
     const room = rooms[code];
     if (!room || !token || !room.teams[token]) return;
-    if (room.phase !== 'question' || room.revealed) return;
     const team = room.teams[token];
-    if (!['fiftyfifty', 'skip', 'doublepoints'].includes(type)) return;
+    if (!['fiftyfifty', 'skip', 'doublepoints', 'klau'].includes(type)) return;
     if (!team.jokers[type]) return;                       // schon verbraucht
+
+    // Klau-Joker hat eigene Bedingungen (nicht Phase-/Antwort-gebunden).
+    if (type === 'klau') {
+      // Ziel per Token oder Namen auflösen.
+      let targetTok = targetToken;
+      if (!targetTok && targetName) {
+        const found = Object.values(room.teams).find(t => t.name === targetName);
+        if (found) targetTok = found.token;
+      }
+      if (!targetTok || !room.teams[targetTok]) return;
+      if (targetTok === token) return;
+      const target = room.teams[targetTok];
+      team.jokers.klau = false;
+      team.stats.jokersUsed.push('klau');
+      team.score += 100;
+      target.score -= 100;
+      io.to(code).emit('joker:klauApplied', {
+        source: { name: team.name, avatar: team.avatar || DEFAULT_AVATAR },
+        target: { name: target.name, avatar: target.avatar || DEFAULT_AVATAR }
+      });
+      socket.emit('joker:applied', { type: 'klau', jokers: team.jokers });
+      return;
+    }
+
+    // Die anderen drei Joker setzen Frage-Phase voraus.
+    if (room.phase !== 'question' || room.revealed) return;
     if (room.answers[token] !== undefined) return;        // schon geantwortet
 
     team.jokers[type] = false;
