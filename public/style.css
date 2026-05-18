@@ -603,6 +603,104 @@ button.ghost:hover:not(:disabled) {
   100% { transform: translateY(110vh) rotate(720deg); opacity: 0.3; }
 }
 
+/* ---------- Antwort-Verteilung (Reveal) ---------- */
+.distribution {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0.5rem auto;
+  width: 100%;
+  max-width: 420px;
+  text-align: left;
+}
+.dist-header {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.2rem;
+}
+.dist-row {
+  display: grid;
+  grid-template-columns: 1.8rem 1fr 2.6rem;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+}
+.dist-letter {
+  font-family: var(--font-show);
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: var(--muted);
+  text-align: center;
+}
+.dist-bar {
+  height: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.dist-fill {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(58, 142, 255, 0.55), rgba(58, 142, 255, 0.85));
+  transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  border-radius: 999px;
+}
+.dist-row.correct .dist-fill {
+  background: linear-gradient(90deg, var(--good), #5ff0bd);
+  box-shadow: 0 0 12px rgba(52, 227, 164, 0.5);
+}
+.dist-row.correct .dist-letter {
+  color: var(--good);
+  font-weight: 700;
+}
+.dist-pct {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-align: right;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.dist-row.correct .dist-pct { color: var(--good); }
+.dist-meta {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 0.15rem;
+}
+
+/* ---------- Match-Statistik (Endstand) ---------- */
+.scoreboard.final li {
+  flex-wrap: wrap;
+  row-gap: 0.4rem;
+}
+.team-stats {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.65rem;
+  margin-left: 2.2rem;
+  font-size: 0.78rem;
+  opacity: 0.88;
+}
+.team-stats span {
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.18);
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-weight: 600;
+}
+.scoreboard.final li:nth-child(1) .team-stats { color: #08102e; opacity: 0.95; }
+.scoreboard.final li:nth-child(1) .team-stats span {
+  background: rgba(8, 16, 46, 0.18);
+  border-color: rgba(8, 16, 46, 0.25);
+}
+
 /* ---------- Quizmaster-Sprechblase ---------- */
 .quizmaster-bubble {
   background: linear-gradient(135deg, rgba(58, 142, 255, 0.30), rgba(15, 25, 70, 0.55));

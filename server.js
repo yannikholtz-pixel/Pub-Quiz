@@ -247,7 +247,13 @@ function nextQuestion(code) {
 
   if (room.questionIdx >= room.gameQuestions.length) {
     room.phase = 'final';
-    const finalScores = teamList(room).sort((a, b) => b.score - a.score);
+    const finalScores = Object.values(room.teams).map(t => ({
+      name: t.name,
+      avatar: t.avatar || DEFAULT_AVATAR,
+      score: t.score,
+      online: t.socketId !== null,
+      stats: t.stats
+    })).sort((a, b) => b.score - a.score);
     room.finalScores = finalScores;
     io.to(code).emit('game:over', finalScores);
     setTimeout(() => { delete rooms[code]; }, ROOM_TTL_AFTER_FINISH_MS);
@@ -257,6 +263,7 @@ function nextQuestion(code) {
   const baseQuestion = room.gameQuestions[room.questionIdx];
   const deadline = Date.now() + QUESTION_TIME_MS;
   room.deadline = deadline;
+  room.questionStartTime = Date.now();
   room.phase = 'question';
   room.baseQuestion = baseQuestion;
 
@@ -300,6 +307,34 @@ function revealAnswer(code) {
   room.lastReveal = {};
   const otherTeamsCount = Math.max(0, Object.keys(room.teams).length - 1);
 
+  // Antwort-Verteilung für die Standard-Frage (nicht Sabotage-Fragen).
+  const baseQ = room.baseQuestion;
+  const baseDistribution = baseQ ? new Array(baseQ.options.length).fill(0) : [];
+  let baseDistTotal = 0;
+  let baseDistSkipped = 0;
+  let baseDistTimeout = 0;
+  if (baseQ) {
+    for (const t of Object.values(room.teams)) {
+      if (t.currentQuestion !== baseQ) continue;
+      baseDistTotal++;
+      const ans = room.answers[t.token];
+      if (ans === 'skip') {
+        baseDistSkipped++;
+      } else if (typeof ans === 'number' && ans >= 0 && ans < baseDistribution.length) {
+        baseDistribution[ans]++;
+      } else {
+        baseDistTimeout++;
+      }
+    }
+  }
+  const distribution = {
+    counts: baseDistribution,
+    total: baseDistTotal,
+    skipped: baseDistSkipped,
+    timeout: baseDistTimeout
+  };
+  room.lastDistribution = distribution;
+
   for (const token of Object.keys(room.teams)) {
     const team = room.teams[token];
     const q = team.currentQuestion || room.baseQuestion;
@@ -338,7 +373,29 @@ function revealAnswer(code) {
     // Strafschluck nur bei aktiv falscher Antwort, nicht bei Skip oder Timeout.
     const strafschluck = (answered && !correct) ? maybeStrafschluck() : null;
     if (strafschluck) team.justGotStrafschluck = true;
+
+    // === Match-Statistiken updaten ===
+    if (correct) {
+      team.stats.correct++;
+      if (team.streak > team.stats.longestStreak) team.stats.longestStreak = team.streak;
+      if (typeof team.lastAnswerTimeMs === 'number') {
+        if (team.stats.fastestCorrectMs === null ||
+            team.lastAnswerTimeMs < team.stats.fastestCorrectMs) {
+          team.stats.fastestCorrectMs = team.lastAnswerTimeMs;
+        }
+      }
+    } else if (skipped) {
+      team.stats.skipped++;
+    } else if (answered) {
+      team.stats.wrong++;
+    }
+    if (strafschluck) team.stats.strafschluecke += strafschluck.count;
+    if (team.currentQuestionHard) team.stats.sabotagesReceived++;
+    team.lastAnswerTimeMs = null;
     const gif = correct ? pick(CORRECT_GIFS) : pick(WRONG_GIFS);
+
+    // Verteilung nur an Teams schicken, die die gleiche (Basis-)Frage hatten.
+    const teamDistribution = (team.currentQuestion === baseQ) ? distribution : null;
 
     room.lastReveal[token] = {
       answered: answered || skipped,
@@ -353,7 +410,8 @@ function revealAnswer(code) {
       doublornixActive: !!room.doublornixActive,
       hard: !!team.currentQuestionHard,
       streak: team.streak,
-      canSabotage
+      canSabotage,
+      distribution: teamDistribution
     };
 
     emitToTeam(team, 'reveal', {
@@ -484,7 +542,16 @@ io.on('connection', (socket) => {
       lastStreakWasBroken: false,
       justSurvivedSabotage: false,
       justFailedSabotage: false,
-      justGotStrafschluck: false
+      justGotStrafschluck: false,
+      lastAnswerTimeMs: null,
+      stats: {
+        correct: 0, wrong: 0, skipped: 0,
+        longestStreak: 0,
+        strafschluecke: 0,
+        jokersUsed: [],
+        sabotagesCast: 0, sabotagesReceived: 0,
+        fastestCorrectMs: null
+      }
     };
     socket.join(code);
     socket.data.room = code;
@@ -520,7 +587,16 @@ io.on('connection', (socket) => {
       lastStreakWasBroken: false,
       justSurvivedSabotage: false,
       justFailedSabotage: false,
-      justGotStrafschluck: false
+      justGotStrafschluck: false,
+      lastAnswerTimeMs: null,
+      stats: {
+        correct: 0, wrong: 0, skipped: 0,
+        longestStreak: 0,
+        strafschluecke: 0,
+        jokersUsed: [],
+        sabotagesCast: 0, sabotagesReceived: 0,
+        fastestCorrectMs: null
+      }
     };
     socket.join(code);
     socket.data.room = code;
@@ -594,6 +670,9 @@ io.on('connection', (socket) => {
     if (!q) return;
     if (typeof choice !== 'number' || choice < 0 || choice >= q.options.length) return;
     room.answers[token] = choice;
+    if (room.questionStartTime) {
+      team.lastAnswerTimeMs = Date.now() - room.questionStartTime;
+    }
     socket.emit('answered');
     const total = Object.keys(room.teams).length;
     const answered = Object.keys(room.answers).length;
@@ -622,6 +701,7 @@ io.on('connection', (socket) => {
 
     target.pendingHardQuestion = true;
     source.streak = 0;
+    source.stats.sabotagesCast++;
 
     io.to(code).emit('sabotage:cast', {
       source: { name: source.name, avatar: source.avatar || DEFAULT_AVATAR },
@@ -643,6 +723,7 @@ io.on('connection', (socket) => {
     if (room.answers[token] !== undefined) return;        // schon geantwortet
 
     team.jokers[type] = false;
+    team.stats.jokersUsed.push(type);
 
     if (type === 'fiftyfifty') {
       const q = team.currentQuestion;

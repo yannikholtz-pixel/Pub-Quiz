@@ -229,9 +229,11 @@ socket.on('question', ({ idx, total, text, options, deadline, doublornix, hard }
   document.getElementById('q-total2').textContent = '?';
   document.getElementById('q-status').classList.add('hidden');
 
-  // Quizmaster-Sprechblase fürs nächste Reveal zurücksetzen
+  // Quizmaster-Sprechblase und Antwort-Verteilung fürs nächste Reveal zurücksetzen
   const qmBubble = document.getElementById('r-quizmaster');
   if (qmBubble) qmBubble.classList.add('hidden');
+  const distBox = document.getElementById('r-distribution');
+  if (distBox) distBox.classList.add('hidden');
 
   // Doppelornix-Banner aus dem Server-Hinweis (per question payload optional)
   document.getElementById('doublornix-banner').classList.toggle('hidden', !doublornix);
@@ -385,7 +387,7 @@ socket.on('answered', () => {
   document.getElementById('q-status').classList.remove('hidden');
 });
 
-socket.on('reveal', ({ answered, correct, skipped, pointsDelta, correctChoice, correctText, explanation, gif, score, isLast, nextDeadline, strafschluck, doublornixActive, streak, canSabotage: cs }) => {
+socket.on('reveal', ({ answered, correct, skipped, pointsDelta, correctChoice, correctText, explanation, gif, score, isLast, nextDeadline, strafschluck, doublornixActive, streak, canSabotage: cs, distribution }) => {
   clearInterval(questionTimerHandle);
 
   // Doppelpunkte wurden mit dieser Frage verbraucht.
@@ -434,6 +436,9 @@ socket.on('reveal', ({ answered, correct, skipped, pointsDelta, correctChoice, c
   document.getElementById('r-correct').textContent =
     'Richtig: ' + String.fromCharCode(65 + correctChoice) + ') ' + correctText;
   document.getElementById('r-explanation').textContent = explanation || '';
+
+  // Antwort-Verteilung
+  renderDistribution(distribution, correctChoice);
   const scoreEl = document.getElementById('r-score');
   scoreEl.textContent = score;
   // Punkte-Delta als kleiner Floater anzeigen
@@ -596,7 +601,7 @@ socket.on('game:over', (scores) => {
   ol.innerHTML = '';
   for (const s of scores) {
     const li = document.createElement('li');
-    li.innerHTML = `<span class="score-avatar">${s.avatar || '🎲'}</span><span class="score-name">${escapeHtml(s.name)}</span><span class="pts">${s.score} Pkt</span>`;
+    li.innerHTML = `<span class="score-avatar">${s.avatar || '🎲'}</span><span class="score-name">${escapeHtml(s.name)}</span><span class="pts">${s.score} Pkt</span>${renderTeamStats(s.stats)}`;
     ol.appendChild(li);
   }
   const winner = scores[0];
@@ -645,6 +650,66 @@ function startRevealCountdown(deadline, isLast) {
   };
   update();
   revealTimerHandle = setInterval(update, 250);
+}
+
+function renderTeamStats(stats) {
+  if (!stats) return '';
+  const parts = [];
+  parts.push(`<span>✅ ${stats.correct}</span>`);
+  if (stats.wrong > 0) parts.push(`<span>❌ ${stats.wrong}</span>`);
+  if (stats.skipped > 0) parts.push(`<span>⏭ ${stats.skipped}</span>`);
+  if ((stats.longestStreak || 0) >= 2) parts.push(`<span>🔥 ${stats.longestStreak}er-Serie</span>`);
+  if (stats.strafschluecke > 0) {
+    parts.push(`<span>🍺 ${stats.strafschluecke} Schluck${stats.strafschluecke === 1 ? '' : (stats.strafschluecke < 5 ? ' Schlücke' : ' Schlücke')}</span>`);
+  }
+  if (typeof stats.fastestCorrectMs === 'number' && stats.fastestCorrectMs > 0) {
+    parts.push(`<span>⚡ ${(stats.fastestCorrectMs / 1000).toFixed(1)} s schnellste</span>`);
+  }
+  if (stats.sabotagesCast > 0) parts.push(`<span>🎯 ${stats.sabotagesCast}× sabotiert</span>`);
+  if (stats.sabotagesReceived > 0) parts.push(`<span>☠️ ${stats.sabotagesReceived}× erwischt</span>`);
+  if (Array.isArray(stats.jokersUsed) && stats.jokersUsed.length > 0) {
+    const icons = stats.jokersUsed.map(j => j === 'fiftyfifty' ? '⚖️' : j === 'skip' ? '⏭' : j === 'doublepoints' ? '×2' : '?').join(' ');
+    parts.push(`<span>🃏 ${icons}</span>`);
+  }
+  return `<div class="team-stats">${parts.join('')}</div>`;
+}
+
+function renderDistribution(distribution, correctChoice) {
+  const distEl = document.getElementById('r-distribution');
+  if (!distEl) return;
+  if (!distribution || !Array.isArray(distribution.counts) || distribution.counts.length === 0 || distribution.total <= 0) {
+    distEl.classList.add('hidden');
+    distEl.innerHTML = '';
+    return;
+  }
+  distEl.innerHTML = '';
+  const header = document.createElement('div');
+  header.className = 'dist-header';
+  header.textContent = 'So haben die Teams geantwortet';
+  distEl.appendChild(header);
+  for (let i = 0; i < distribution.counts.length; i++) {
+    const count = distribution.counts[i];
+    const pct = Math.round((count / distribution.total) * 100);
+    const isCorrect = i === correctChoice;
+    const row = document.createElement('div');
+    row.className = 'dist-row' + (isCorrect ? ' correct' : '');
+    row.innerHTML = `
+      <span class="dist-letter">${String.fromCharCode(65 + i)}</span>
+      <div class="dist-bar"><div class="dist-fill" style="width: ${pct}%"></div></div>
+      <span class="dist-pct">${pct}%</span>
+    `;
+    distEl.appendChild(row);
+  }
+  const extras = [];
+  if (distribution.skipped > 0) extras.push(`${distribution.skipped}× Skip`);
+  if (distribution.timeout > 0) extras.push(`${distribution.timeout}× keine Antwort`);
+  if (extras.length > 0) {
+    const meta = document.createElement('div');
+    meta.className = 'dist-meta';
+    meta.textContent = extras.join(' · ');
+    distEl.appendChild(meta);
+  }
+  distEl.classList.remove('hidden');
 }
 
 function flashStage(type) {
