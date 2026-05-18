@@ -3538,5 +3538,350 @@ module.exports = [
     options: ["Tippen", "Wischen nach rechts", "Doppelklick", "Daumen hoch"],
     correct: 1,
     explanation: "Wischen nach rechts („Swipe right") – nach links bedeutet „nicht interessiert"."
+  },
+
+  // === TV-Serien ===
+  {
+    text: "In welchem Café spielt der Großteil der Sitcom „Friends"?",
+    options: ["Central Perk", "Hollywood Cafe", "The Coffee House", "Bei Aldi an der Kaffeetheke"],
+    correct: 0,
+    explanation: "Central Perk – das orange Sofa ist Kult."
+  },
+  {
+    text: "Wie heißt der Chemielehrer-Hauptcharakter in „Breaking Bad"?",
+    options: ["Saul Goodman", "Walter White", "Jesse Pinkman", "Hank Schrader"],
+    correct: 1,
+    explanation: "Walter White – Spitzname „Heisenberg"."
+  },
+  {
+    text: "Welche Schauspielerin spielt die Kolumnistin Carrie Bradshaw in „Sex and the City"?",
+    options: ["Kim Cattrall", "Sarah Jessica Parker", "Cynthia Nixon", "Kristin Davis"],
+    correct: 1,
+    explanation: "Sarah Jessica Parker – seit 1998 in der Rolle."
+  },
+  {
+    text: "In welchem Bürohaus spielt die US-Serie „The Office"?",
+    options: ["Dunder Mifflin", "Initech", "Vandelay Industries", "Aldi-Filiale 207"],
+    correct: 0,
+    explanation: "Dunder Mifflin Paper Company in Scranton, Pennsylvania."
+  },
+  {
+    text: "In welcher US-Krankenhausserie ist Meredith Grey die Hauptfigur?",
+    options: ["House M.D.", "ER", "Grey's Anatomy", "Scrubs"],
+    correct: 2,
+    explanation: "Grey's Anatomy – seit 2005 auf Sendung, eine der langlebigsten US-Serien."
+  },
+
+  // === Erfindungen ===
+  {
+    text: "Wer ließ sich 1876 offiziell das Telefon patentieren?",
+    options: ["Thomas Edison", "Alexander Graham Bell", "Nikola Tesla", "Werner von Siemens"],
+    correct: 1,
+    explanation: "Alexander Graham Bell – allerdings hatte Elisha Gray fast gleichzeitig eingereicht."
+  },
+  {
+    text: "Welcher US-Erfinder wird gemeinhin als „Vater der Glühbirne" bezeichnet?",
+    options: ["Thomas Edison", "Nikola Tesla", "Benjamin Franklin", "Henry Ford"],
+    correct: 0,
+    explanation: "Thomas Edison – baute 1879 die erste kommerziell brauchbare Kohlefaden-Glühlampe."
+  },
+  {
+    text: "Welcher deutsche Ingenieur erhielt 1886 das Patent auf das erste Automobil mit Verbrennungsmotor?",
+    options: ["Gottlieb Daimler", "Carl Benz", "Rudolf Diesel", "Wilhelm Maybach"],
+    correct: 1,
+    explanation: "Carl Benz – Patent-Motorwagen Nummer 1."
+  },
+  {
+    text: "In welchem Land wurde Schießpulver erfunden?",
+    options: ["Indien", "China", "Persien", "Im Auto vom Onkel"],
+    correct: 1,
+    explanation: "China – im 9. Jahrhundert von Alchemisten, eigentlich auf der Suche nach dem Elixier des ewigen Lebens."
+  },
+  {
+    text: "Wer entwickelte 1893 den Vorläufer des modernen Reißverschlusses?",
+    options: ["Levi Strauss", "Whitcomb Judson", "Gideon Sundback", "Albert Einstein"],
+    correct: 1,
+    explanation: "Whitcomb Judson – 1893. Gideon Sundback verbesserte ihn 1913 zur heutigen Form."
+  },
+
+  // === Sprichwörter ===
+  {
+    text: "Was bedeutet das englische Sprichwort „It's raining cats and dogs"?",
+    options: ["Es regnet leicht", "Es regnet sehr stark", "Es ist windig", "Tiere fallen vom Himmel"],
+    correct: 1,
+    explanation: "Es regnet in Strömen – also wie aus Eimern."
+  },
+  {
+    text: "Was bedeutet „den Stier bei den Hörnern packen"?",
+    options: [
+      "Sich vor einer Aufgabe drücken",
+      "Eine schwierige Sache mutig angehen",
+      "Auf einem Reiterhof arbeiten",
+      "Vorsichtig sein bei Rindviechern"
+    ],
+    correct: 1,
+    explanation: "Eine schwierige Sache mutig und direkt anpacken."
+  },
+  {
+    text: "Was bedeutet „die Katze aus dem Sack lassen"?",
+    options: [
+      "Heimlich entwischen",
+      "Ein Geheimnis preisgeben",
+      "Eine Lüge erfinden",
+      "Auf der Couch entspannen"
+    ],
+    correct: 1,
+    explanation: "Ein Geheimnis offenbaren – aus mittelalterlichen Märkten, wo angeblich Katzen statt Ferkeln verkauft wurden."
+  },
+  {
+    text: "Was bedeutet die Redensart „Schwein gehabt"?",
+    options: [
+      "Glück gehabt",
+      "Pech gehabt",
+      "Etwas Schmutziges erlebt",
+      "Hunger gehabt"
+    ],
+    correct: 0,
+    explanation: "Glück gehabt – stammt aus dem Mittelalter, als Schweine bei Wettkämpfen Trostpreise waren."
+  },
+  {
+    text: "Was bedeutet „auf dem Holzweg sein"?",
+    options: ["Im Wald spazieren", "Sich irren / falsch liegen", "Pleite sein", "Eine Mission verfolgen"],
+    correct: 1,
+    explanation: "Sich täuschen – kommt aus der Forstwirtschaft, wo Holzwege oft im Nichts enden."
+  },
+
+  // === Comedians ===
+  {
+    text: "Welcher deutsche Komiker wurde mit der Sketchshow „Mensch Markus" bekannt?",
+    options: ["Bastian Pastewka", "Markus Maria Profitlich", "Atze Schröder", "Mario Barth"],
+    correct: 1,
+    explanation: "Markus Maria Profitlich – auch bekannt durch „Ladykracher" und „Quatsch Comedy Club"."
+  },
+  {
+    text: "Welcher Komiker erschuf die Figur „Borat"?",
+    options: ["Steve Carell", "Sacha Baron Cohen", "Will Ferrell", "Mr. Bean"],
+    correct: 1,
+    explanation: "Sacha Baron Cohen – Brite, auch verantwortlich für „Ali G" und „Brüno"."
+  },
+  {
+    text: "Welcher deutsche Entertainer moderierte von 1999 bis 2015 „TV total"?",
+    options: ["Joko Winterscheidt", "Stefan Raab", "Klaas Heufer-Umlauf", "Harald Schmidt"],
+    correct: 1,
+    explanation: "Stefan Raab – 2024 mit eigener Show bei RTL+ zurückgekehrt."
+  },
+  {
+    text: "Welcher US-Late-Night-Host moderiert seit 2003 „Jimmy Kimmel Live!"?",
+    options: ["Jimmy Fallon", "Jimmy Kimmel", "Conan O'Brien", "James Corden"],
+    correct: 1,
+    explanation: "Jimmy Kimmel – hat den Oscar gleich mehrfach moderiert."
+  },
+  {
+    text: "Welcher US-Schauspieler spielte die Hauptrolle in „The 40-Year-Old Virgin" (2005)?",
+    options: ["Will Ferrell", "Adam Sandler", "Steve Carell", "Jack Black"],
+    correct: 2,
+    explanation: "Steve Carell – sein Durchbruch als Filmstar, parallel zu „The Office"."
+  },
+
+  // === Marvel & DC ===
+  {
+    text: "Aus welchem Material besteht der Schild von Captain America?",
+    options: ["Adamantium", "Vibranium", "Titan", "Stahl mit US-Lackierung"],
+    correct: 1,
+    explanation: "Vibranium – das gleiche Material, aus dem Wakanda besteht."
+  },
+  {
+    text: "Von welchem Planeten stammt Superman?",
+    options: ["Mars", "Krypton", "Asgard", "Tatooine"],
+    correct: 1,
+    explanation: "Krypton – wurde zerstört, kurz nachdem sein Vater Kal-El zur Erde schickte."
+  },
+  {
+    text: "Wie heißt die Marvel-Heldin „Black Widow" mit bürgerlichem Namen?",
+    options: ["Wanda Maximoff", "Natasha Romanoff", "Carol Danvers", "Hope van Dyne"],
+    correct: 1,
+    explanation: "Natasha Romanoff – Spionin russischer Herkunft, Mitglied der Avengers."
+  },
+  {
+    text: "Wie heißt der treue Butler von Bruce Wayne (Batman)?",
+    options: ["Alfred", "Lucius", "Reginald", "Onkel Eduard"],
+    correct: 0,
+    explanation: "Alfred Pennyworth – Bruces väterlicher Freund seit Kindesalter."
+  },
+  {
+    text: "In welcher fiktiven Stadt lebt Batman?",
+    options: ["Metropolis", "Gotham City", "Star City", "New York"],
+    correct: 1,
+    explanation: "Gotham City – dunkle Schwesterstadt von Metropolis, die Superman beschützt."
+  },
+
+  // === Internet & Trends ===
+  {
+    text: "Aus welcher App ging „TikTok" 2018 durch eine Fusion hervor?",
+    options: ["Vine", "Musical.ly", "Snapchat", "Periscope"],
+    correct: 1,
+    explanation: "Musical.ly – wurde von ByteDance aufgekauft und mit Douyin/TikTok verschmolzen."
+  },
+  {
+    text: "Wofür steht die Abkürzung „FOMO"?",
+    options: ["Fear Of Missing Out", "For Our Many Options", "Friends Only Mode On", "Fang Online Mit Optimismus"],
+    correct: 0,
+    explanation: "„Angst, etwas zu verpassen" – Wort des Jahres 2013 im Oxford Dictionary."
+  },
+  {
+    text: "Was beschreibt der englische Begriff „Doomscrolling"?",
+    options: [
+      "Schnelles Durchscrollen auf der Suche nach Memes",
+      "Endloses Konsumieren negativer Nachrichten im Feed",
+      "Browser-Verlauf löschen",
+      "Einen Code debuggen"
+    ],
+    correct: 1,
+    explanation: "Endloses Scrollen durch beunruhigende Nachrichten – Anglizismus, der seit 2020 viral ging."
+  },
+  {
+    text: "Was bedeutet das Wort „cringe" im deutschen Internet-Slang?",
+    options: ["Mega cool", "Peinlich / fremdschämen", "Lustig", "Schnell"],
+    correct: 1,
+    explanation: "Fremdschämen – „Cringe" wurde 2021 von Langenscheidt zum Jugendwort des Jahres gekürt."
+  },
+
+  // === Berühmte Zitate & Reden ===
+  {
+    text: "Wer sagte in der berühmten Rede 1963 in Washington „I have a dream"?",
+    options: ["John F. Kennedy", "Martin Luther King Jr.", "Malcolm X", "Barack Obama"],
+    correct: 1,
+    explanation: "Martin Luther King Jr. – 28. August 1963 vor dem Lincoln Memorial."
+  },
+  {
+    text: "Welcher US-Präsident sagte in seiner Antrittsrede 1961 „Frage nicht, was dein Land für dich tun kann …"?",
+    options: ["Dwight D. Eisenhower", "John F. Kennedy", "Lyndon B. Johnson", "Richard Nixon"],
+    correct: 1,
+    explanation: "Kennedy – „…sondern was du für dein Land tun kannst."."
+  },
+  {
+    text: "Welches berühmte (vermutlich apokryphe) Zitat wird Galileo Galilei zugeschrieben?",
+    options: [
+      "„Eureka!"",
+      "„Und sie bewegt sich doch" (Eppur si muove)",
+      "„Veni, vidi, vici"",
+      "„Ich denke, also bin ich""
+    ],
+    correct: 1,
+    explanation: "„Eppur si muove" – nach seiner Verurteilung 1633 gemurmelt, vermutlich Legende."
+  },
+  {
+    text: "Welcher römische Feldherr verfasste die berühmte Siegesmeldung „Veni, vidi, vici"?",
+    options: ["Augustus", "Julius Caesar", "Marc Aurel", "Nero"],
+    correct: 1,
+    explanation: "Julius Caesar – nach der Schlacht von Zela 47 v. Chr. an den Senat in Rom."
+  },
+  {
+    text: "Welcher Königin wird (fälschlich) der Spruch „Sollen sie doch Kuchen essen" zugeschrieben?",
+    options: ["Elisabeth I.", "Marie Antoinette", "Victoria", "Katharina die Große"],
+    correct: 1,
+    explanation: "Marie Antoinette – die historische Quelle dafür fehlt allerdings völlig."
+  },
+
+  // === Bauwerke & Wahrzeichen ===
+  {
+    text: "In welcher Stadt steht der höchste Wolkenkratzer der Welt, der Burj Khalifa?",
+    options: ["Doha", "Dubai", "Riad", "Abu Dhabi"],
+    correct: 1,
+    explanation: "Dubai – 828 m hoch, fertiggestellt 2010."
+  },
+  {
+    text: "Für welches Großereignis wurde der Eiffelturm 1889 errichtet?",
+    options: ["Olympische Spiele", "Weltausstellung", "Weltmeisterschaft im Schach", "Krönungsfeier"],
+    correct: 1,
+    explanation: "Weltausstellung 1889 – ursprünglich nur für 20 Jahre geplant."
+  },
+  {
+    text: "Welche berühmte US-Brücke verbindet San Francisco mit Marin County?",
+    options: ["Brooklyn Bridge", "Golden Gate Bridge", "Bay Bridge", "Manhattan Bridge"],
+    correct: 1,
+    explanation: "Golden Gate Bridge – ihre Farbe heißt offiziell „International Orange"."
+  },
+  {
+    text: "Welches berühmte Schloss steht im Zentrum Sankt Petersburgs?",
+    options: ["Schloss Schönbrunn", "Winterpalast", "Kreml", "Neuschwanstein"],
+    correct: 1,
+    explanation: "Winterpalast – Residenz der Zaren, heute Teil der Eremitage."
+  },
+  {
+    text: "Wie heißt die berühmte Moskauer Kirche mit den bunten Zwiebeltürmen?",
+    options: ["Christ-Erlöser-Kathedrale", "Basilius-Kathedrale", "Erzengel-Michael-Kathedrale", "Sankt-Petersburger-Kirche"],
+    correct: 1,
+    explanation: "Basilius-Kathedrale – auf dem Roten Platz, fertiggestellt 1561 unter Iwan dem Schrecklichen."
+  },
+  {
+    text: "Wie heißt der höchste Wolkenkratzer der USA (Stand 2024)?",
+    options: ["Empire State Building", "Willis Tower (Chicago)", "One World Trade Center", "Trump Tower"],
+    correct: 2,
+    explanation: "One World Trade Center in NYC – 541 m (1.776 Fuß als Anspielung auf die US-Unabhängigkeit)."
+  },
+
+  // === Wissenschaft & Erfindungen II ===
+  {
+    text: "Welche japanische Firma brachte 1979 den ersten tragbaren Kassettenspieler „Walkman" auf den Markt?",
+    options: ["Panasonic", "Sony", "Sharp", "Toshiba"],
+    correct: 1,
+    explanation: "Sony – revolutionierte die Musikkultur, über 200 Millionen verkaufte Geräte."
+  },
+  {
+    text: "Welche Firma stellte 2010 das erste „iPad" vor?",
+    options: ["Microsoft", "Apple", "Samsung", "Google"],
+    correct: 1,
+    explanation: "Apple – Steve Jobs persönlich auf der Bühne in San Francisco."
+  },
+  {
+    text: "Welche Frau gilt heute als erste Programmiererin der Geschichte (Mitte 19. Jh.)?",
+    options: ["Marie Curie", "Ada Lovelace", "Hedy Lamarr", "Grace Hopper"],
+    correct: 1,
+    explanation: "Ada Lovelace – schrieb 1843 Programme für Charles Babbages „Analytische Maschine"."
+  },
+  {
+    text: "Wer machte mit dem „Model T" (1908) das Automobil zum Massenprodukt?",
+    options: ["Carl Benz", "Henry Ford", "Walter Chrysler", "Ferdinand Porsche"],
+    correct: 1,
+    explanation: "Henry Ford – über 15 Millionen Model T gebaut, dank Fließband-Produktion."
+  },
+  {
+    text: "Welcher Frauenname ist mit der Entdeckung des Polonium und Radium verbunden?",
+    options: ["Lise Meitner", "Marie Curie", "Rosalind Franklin", "Hedy Lamarr"],
+    correct: 1,
+    explanation: "Marie Curie – 1898 entdeckte sie mit ihrem Mann Pierre beide Elemente."
+  },
+
+  // === Verschiedenes ===
+  {
+    text: "Welcher ägyptische Gott hat den Kopf eines Schakals und führt die Toten ins Jenseits?",
+    options: ["Ra", "Anubis", "Horus", "Set"],
+    correct: 1,
+    explanation: "Anubis – Wächter der Mumifizierung und Beschützer der Gräber."
+  },
+  {
+    text: "In welchem Land liegt die antike Felsenstadt Petra?",
+    options: ["Ägypten", "Jordanien", "Syrien", "Hinter dem berühmten roten Vorhang"],
+    correct: 1,
+    explanation: "Jordanien – im 1. Jh. v. Chr. von den Nabatäern aus dem Sandstein gemeißelt."
+  },
+  {
+    text: "Welche Sprache verwendet als Schriftsystem das Kyrillische Alphabet?",
+    options: ["Polnisch", "Russisch", "Ungarisch", "Türkisch"],
+    correct: 1,
+    explanation: "Russisch – auch Bulgarisch, Serbisch, Mongolisch und einige weitere."
+  },
+  {
+    text: "In welcher Stadt steht die Akropolis mit dem Parthenon-Tempel?",
+    options: ["Rom", "Athen", "Istanbul", "Sparta"],
+    correct: 1,
+    explanation: "Athen – die Akropolis thront seit der Antike über der Stadt."
+  },
+  {
+    text: "Welches Land brachte 1969 die ersten Menschen auf den Mond?",
+    options: ["Sowjetunion", "USA", "Großbritannien", "China"],
+    correct: 1,
+    explanation: "USA – Apollo 11 mit Neil Armstrong, Buzz Aldrin und Michael Collins."
   }
 ];
