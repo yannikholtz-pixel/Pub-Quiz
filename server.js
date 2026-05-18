@@ -228,6 +228,19 @@ function broadcastLobby(code) {
   io.to(code).emit('lobby:teams', teamList(room));
 }
 
+function progressPayload(room) {
+  const teams = Object.values(room.teams).map(t => ({
+    name: t.name,
+    avatar: t.avatar || DEFAULT_AVATAR,
+    answered: room.answers[t.token] !== undefined
+  }));
+  return {
+    answered: teams.filter(t => t.answered).length,
+    total: teams.length,
+    teams
+  };
+}
+
 function findRoomByToken(token) {
   for (const [code, room] of Object.entries(rooms)) {
     if (room.teams[token]) return { code, room, team: room.teams[token] };
@@ -288,6 +301,7 @@ function nextQuestion(code) {
       hard: isHard
     });
   }
+  io.to(code).emit('progress', progressPayload(room));
   room.questionTimer = setTimeout(() => revealAnswer(code), QUESTION_TIME_MS + 300);
 }
 
@@ -510,9 +524,7 @@ function sendCurrentState(socket, room, team) {
     if (room.answers[team.token] !== undefined) {
       socket.emit('answered');
     }
-    const total = Object.keys(room.teams).length;
-    const answered = Object.keys(room.answers).length;
-    socket.emit('progress', { answered, total });
+    socket.emit('progress', progressPayload(room));
   }
 }
 
@@ -608,6 +620,11 @@ io.on('connection', (socket) => {
       jokers: room.teams[token].jokers
     });
     broadcastLobby(code);
+    // Toast für alle ANDEREN im Raum
+    socket.to(code).emit('lobby:teamJoined', {
+      name: room.teams[token].name,
+      avatar: room.teams[token].avatar || DEFAULT_AVATAR
+    });
   });
 
   socket.on('room:reconnect', ({ token }) => {
@@ -676,7 +693,7 @@ io.on('connection', (socket) => {
     socket.emit('answered');
     const total = Object.keys(room.teams).length;
     const answered = Object.keys(room.answers).length;
-    io.to(code).emit('progress', { answered, total });
+    io.to(code).emit('progress', progressPayload(room));
     if (answered >= total) revealAnswer(code);
   });
 
@@ -748,7 +765,7 @@ io.on('connection', (socket) => {
       socket.emit('answered');
       const total = Object.keys(room.teams).length;
       const answered = Object.keys(room.answers).length;
-      io.to(code).emit('progress', { answered, total });
+      io.to(code).emit('progress', progressPayload(room));
       if (answered >= total) revealAnswer(code);
       return;
     }

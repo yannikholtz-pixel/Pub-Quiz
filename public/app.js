@@ -228,6 +228,8 @@ socket.on('question', ({ idx, total, text, options, deadline, doublornix, hard }
   document.getElementById('q-answered').textContent = '0';
   document.getElementById('q-total2').textContent = '?';
   document.getElementById('q-status').classList.add('hidden');
+  const tsRow = document.getElementById('q-team-status');
+  if (tsRow) tsRow.innerHTML = '';
 
   // Quizmaster-Sprechblase und Antwort-Verteilung fürs nächste Reveal zurücksetzen
   const qmBubble = document.getElementById('r-quizmaster');
@@ -376,12 +378,45 @@ socket.on('joker:applied', ({ type, removedIndices, jokers }) => {
   }
 });
 
-socket.on('progress', ({ answered, total }) => {
+socket.on('progress', ({ answered, total, teams }) => {
   const a = document.getElementById('q-answered');
   const t = document.getElementById('q-total2');
   if (a) a.textContent = answered;
   if (t) t.textContent = total;
+  renderTeamStatus(teams);
 });
+
+function renderTeamStatus(teams) {
+  const el = document.getElementById('q-team-status');
+  if (!el) return;
+  if (!Array.isArray(teams) || teams.length === 0) {
+    el.innerHTML = '';
+    return;
+  }
+  el.innerHTML = '';
+  for (const t of teams) {
+    const span = document.createElement('span');
+    span.className = 'ts-team' + (t.answered ? ' answered' : '');
+    const safeName = escapeHtml(t.name);
+    span.innerHTML = `<span class="ts-avatar">${t.avatar || '🎲'}</span><span class="ts-name">${safeName}</span><span class="ts-check">✓</span>`;
+    el.appendChild(span);
+  }
+}
+
+socket.on('lobby:teamJoined', ({ name, avatar }) => {
+  showToast(`${avatar || '🎲'} ${name} ist dabei!`);
+});
+
+function showToast(text) {
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = text;
+  document.body.appendChild(toast);
+  // requestAnimationFrame, damit der initiale Stil greift bevor wir 'show' setzen
+  requestAnimationFrame(() => requestAnimationFrame(() => toast.classList.add('show')));
+  setTimeout(() => toast.classList.remove('show'), 3200);
+  setTimeout(() => toast.remove(), 3800);
+}
 
 socket.on('answered', () => {
   document.getElementById('q-status').classList.remove('hidden');
@@ -595,15 +630,16 @@ function startMilestoneCountdown(deadline) {
 socket.on('game:over', (scores) => {
   clearInterval(revealTimerHandle);
   clearInterval(milestoneTimerHandle);
-  SoundFX.finale();
-  spawnConfetti(120);
+
   const ol = document.getElementById('final-scores');
   ol.innerHTML = '';
   for (const s of scores) {
     const li = document.createElement('li');
+    li.className = 'crescendo-hidden';
     li.innerHTML = `<span class="score-avatar">${s.avatar || '🎲'}</span><span class="score-name">${escapeHtml(s.name)}</span><span class="pts">${s.score} Pkt</span>${renderTeamStats(s.stats)}`;
     ol.appendChild(li);
   }
+
   const winner = scores[0];
   const comment = document.getElementById('final-comment');
   if (!winner) {
@@ -613,7 +649,31 @@ socket.on('game:over', (scores) => {
   } else {
     comment.textContent = `🏆 ${winner.avatar || ''} ${winner.name} gewinnt – die nächste Runde geht aufs Haus!`;
   }
+  comment.classList.add('crescendo-hidden');
+
   show('final');
+
+  // Crescendo: von hinten nach vorne aufdecken, Platz 1 mit Drama.
+  const rowsTopToBottom = [...ol.children];
+  const rowsBottomToTop = rowsTopToBottom.slice().reverse();
+  const step = 700;
+  const winnerExtraPause = 800;
+  let totalDelay = 600;
+  rowsBottomToTop.forEach((row, i) => {
+    const isWinner = i === rowsBottomToTop.length - 1;
+    if (isWinner) totalDelay += winnerExtraPause;
+    setTimeout(() => {
+      row.classList.remove('crescendo-hidden');
+      if (isWinner) {
+        SoundFX.finale();
+        spawnConfetti(140);
+        comment.classList.remove('crescendo-hidden');
+      } else {
+        SoundFX.tick();
+      }
+    }, totalDelay);
+    totalDelay += step;
+  });
 });
 
 function startCountdown(deadline, labelEl, fillEl) {
