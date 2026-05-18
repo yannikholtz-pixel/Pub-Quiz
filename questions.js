@@ -3278,10 +3278,10 @@ module.exports = [
     explanation: "München – angeblich 1857 vom Wirt Sepp Moser erfunden."
   },
   {
-    text: "Was bedeutet die bayerische Grußformel „Servus" wörtlich auf Lateinisch?",
-    options: ["„Hallo dir"", "„Ich bin dein Diener"", "„Gott segne dich"", "„Schenk nach"!"],
+    text: "Was bedeutet die bayerische Grußformel „Servus“ wörtlich auf Lateinisch?",
+    options: ["„Hallo dir“", "„Ich bin dein Diener“", "„Gott segne dich“", "„Schenk nach“!"],
     correct: 1,
-    explanation: "„Servus" = lateinisch „Diener" / „Sklave". Heute völlig ohne Demutsgehalt verwendet."
+    explanation: "„Servus“ = lateinisch „Diener“ / „Sklave“. Heute völlig ohne Demutsgehalt verwendet."
   },
   {
     text: "Welche Großstadt ist Bayerns Landeshauptstadt?",
@@ -3298,13 +3298,13 @@ module.exports = [
     explanation: "Vier – sie stehen für die Auto Union: Audi, DKW, Horch, Wanderer."
   },
   {
-    text: "Welche Auto-Marke baut den „Golf"?",
+    text: "Welche Auto-Marke baut den „Golf“?",
     options: ["BMW", "Volkswagen", "Opel", "Mercedes-Benz"],
     correct: 1,
     explanation: "Volkswagen – seit 1974 in Wolfsburg gebaut, eines der meistverkauften Autos der Welt."
   },
   {
-    text: "Wofür steht die Auto-Abkürzung „ABS"?",
+    text: "Wofür steht die Auto-Abkürzung „ABS“?",
     options: ["Antiblockiersystem", "Auto-Brems-Sicherung", "Antiblock-Sensor", "Auto Bleibt Stehen"],
     correct: 0,
     explanation: "Antiblockiersystem – verhindert das Blockieren der Räder beim Bremsen."
@@ -3339,65 +3339,65 @@ module.exports = [
     text: "Welche Wolkenart bringt typischerweise heftige Gewitter?",
     options: ["Cirrus", "Stratus", "Cumulonimbus", "Nimbostratus"],
     correct: 2,
-    explanation: "Cumulonimbus – die mächtigen „Ambossfwolken", oft 10 km hoch."
+    explanation: "Cumulonimbus – die mächtigen „Ambossfwolken“, oft 10 km hoch."
   },
 
   // === Pop-Kultur ===
   {
-    text: "Welcher Sänger landete 2017 mit „Despacito" einen Welthit (zusammen mit Daddy Yankee)?",
+    text: "Welcher Sänger landete 2017 mit „Despacito“ einen Welthit (zusammen mit Daddy Yankee)?",
     options: ["Enrique Iglesias", "Luis Fonsi", "Ricky Martin", "J Balvin"],
     correct: 1,
     explanation: "Luis Fonsi – mit Daddy Yankee und im Remix Justin Bieber."
   },
   {
-    text: "Welche Boygroup veröffentlichte 1999 den Hit „I Want It That Way"?",
+    text: "Welche Boygroup veröffentlichte 1999 den Hit „I Want It That Way“?",
     options: ["NSYNC", "Backstreet Boys", "Boyzone", "Westlife"],
     correct: 1,
     explanation: "Backstreet Boys – ein definierender Song der 90er."
   },
   {
-    text: "Welche Rockband veröffentlichte 1971 „Stairway to Heaven"?",
+    text: "Welche Rockband veröffentlichte 1971 „Stairway to Heaven“?",
     options: ["The Rolling Stones", "Led Zeppelin", "Deep Purple", "Pink Floyd"],
     correct: 1,
-    explanation: "Led Zeppelin – auf dem unbetitelten 4. Album („IV")."
+    explanation: "Led Zeppelin – auf dem unbetitelten 4. Album („IV“)."
   },
   {
-    text: "Welche deutsche Schlagersängerin sang 2013 den Mega-Hit „Atemlos durch die Nacht"?",
+    text: "Welche deutsche Schlagersängerin sang 2013 den Mega-Hit „Atemlos durch die Nacht“?",
     options: ["Andrea Berg", "Helene Fischer", "Vanessa Mai", "Beatrice Egli"],
     correct: 1,
     explanation: "Helene Fischer – Inbegriff modernen deutschen Schlagers."
   },
   {
-    text: "Welcher Sänger wurde als „King of Pop" weltberühmt?",
+    text: "Welcher Sänger wurde als „King of Pop“ weltberühmt?",
     options: ["Elvis Presley", "Michael Jackson", "Prince", "Freddie Mercury"],
     correct: 1,
-    explanation: "Michael Jackson – Titel etablierte sich in den 80ern, „Thriller" ist bis heute meistverkauftes Album."
+    explanation: "Michael Jackson – Titel etablierte sich in den 80ern, „Thriller“ ist bis heute meistverkauftes Album."
   },
   {
-    text: "In welchem fiktiven Land spielt die „Herr der Ringe"-Trilogie?",
+    text: "In welchem fiktiven Land spielt die „Herr der Ringe“-Trilogie?",
     options: ["Westeros", "Narnia", "Mittelerde", "Hogwarts"],
     correct: 2,
-    explanation: "Mittelerde – Tolkiens Mythologie. Westeros gehört zu „Game of Thrones"."
+    explanation: "Mittelerde – Tolkiens Mythologie. Westeros gehört zu „Game of Thrones“."
   },
 
   // === Sport II ===
   {
-    text: "In welchem Sport stammt der Begriff „K. o." (Knockout) ursprünglich?",
+    text: "In welchem Sport stammt der Begriff „K. o.“ (Knockout) ursprünglich?",
     options: ["Tennis", "Boxen", "Fußball", "Schach"],
     correct: 1,
     explanation: "Boxen – ein K. o.-Sieg gilt, wenn der Gegner nicht innerhalb 10 Sekunden aufstehen kann."
   },
   {
-    text: "Wie nennt man im US-amerikanischen Englisch die Sportart, die im Deutschen „Fußball" heißt?",
+    text: "Wie nennt man im US-amerikanischen Englisch die Sportart, die im Deutschen „Fußball“ heißt?",
     options: ["Football", "Soccer", "Kickball", "European-Ball"],
     correct: 1,
-    explanation: "„Soccer" – kommt von „Association Football". „Football" ist in den USA American Football."
+    explanation: "„Soccer“ – kommt von „Association Football“. „Football“ ist in den USA American Football."
   },
   {
     text: "Welcher US-Basketballspieler hatte die Initialen MJ und gewann sechs NBA-Titel mit den Chicago Bulls?",
     options: ["Michael Jordan", "Magic Johnson", "Kareem Abdul-Jabbar", "LeBron James"],
     correct: 0,
-    explanation: "Michael Jordan – Bulls-Titel 1991-93 und 1996-98, „The GOAT" für viele."
+    explanation: "Michael Jordan – Bulls-Titel 1991-93 und 1996-98, „The GOAT“ für viele."
   },
   {
     text: "Welcher Sport-Begriff bezeichnet drei Tore eines Spielers im selben Spiel?",
@@ -3414,31 +3414,31 @@ module.exports = [
 
   // === Brettspiele & Spiele ===
   {
-    text: "Welches deutsche Klassiker-Brettspiel hat „Ärgere dich nicht" im Titel?",
+    text: "Welches deutsche Klassiker-Brettspiel hat „Ärgere dich nicht“ im Titel?",
     options: ["Risiko", "Mensch ärgere dich nicht", "Monopoly", "Siedler von Catan"],
     correct: 1,
-    explanation: "„Mensch ärgere dich nicht" – seit 1908, über 70 Millionen verkaufte Exemplare."
+    explanation: "„Mensch ärgere dich nicht“ – seit 1908, über 70 Millionen verkaufte Exemplare."
   },
   {
-    text: "Wie viele gleiche Würfel braucht man für einen „Kniffel" im gleichnamigen Spiel?",
+    text: "Wie viele gleiche Würfel braucht man für einen „Kniffel“ im gleichnamigen Spiel?",
     options: ["3", "4", "5", "6"],
     correct: 2,
     explanation: "5 gleiche Würfel – wertvoll mit 50 Punkten."
   },
   {
-    text: "In welchem Spiel ziehen die Spieler über die Felder „Schlossallee" und „Badstraße"?",
+    text: "In welchem Spiel ziehen die Spieler über die Felder „Schlossallee“ und „Badstraße“?",
     options: ["Risiko", "Monopoly", "Trivial Pursuit", "DKT"],
     correct: 1,
     explanation: "Monopoly – Schlossallee ist die teuerste Straße im klassischen deutschen Brett."
   },
   {
-    text: "In welchem Land wurde das Computerspiel „Tetris" 1984 entwickelt?",
+    text: "In welchem Land wurde das Computerspiel „Tetris“ 1984 entwickelt?",
     options: ["Japan", "USA", "Sowjetunion", "Deutschland"],
     correct: 2,
     explanation: "Sowjetunion – von Alexei Paschitnow am Moskauer Computer-Zentrum."
   },
   {
-    text: "Welche Firma brachte 1989 den „Game Boy" auf den Markt?",
+    text: "Welche Firma brachte 1989 den „Game Boy“ auf den Markt?",
     options: ["Nintendo", "Sega", "Atari", "Sony"],
     correct: 0,
     explanation: "Nintendo – über 100 Millionen verkaufte Exemplare weltweit."
@@ -3449,7 +3449,7 @@ module.exports = [
     text: "Aus welchen Beeren wird der Wacholderschnaps Gin hauptsächlich aromatisiert?",
     options: ["Schlehe", "Wacholder", "Holunder", "Heidelbeere"],
     correct: 1,
-    explanation: "Wacholderbeeren – „Gin" leitet sich aus dem niederländischen „Genever" für Wacholder ab."
+    explanation: "Wacholderbeeren – „Gin“ leitet sich aus dem niederländischen „Genever“ für Wacholder ab."
   },
   {
     text: "Welcher Cocktail wird klassisch aus Wodka, Tomatensaft, Zitrone und Tabasco gemischt?",
@@ -3467,7 +3467,7 @@ module.exports = [
     text: "Welcher klassische deutsche Schnaps wird traditionell aus Roggen oder Weizen gebrannt?",
     options: ["Schnaps allgemein", "Korn", "Obstler", "Doppelkorn"],
     correct: 1,
-    explanation: "Korn – mindestens 32 % Alkohol, „Doppelkorn" ab 38 %."
+    explanation: "Korn – mindestens 32 % Alkohol, „Doppelkorn“ ab 38 %."
   },
   {
     text: "Welcher Cocktail enthält Rum, Limette, Minze, Soda und Zucker?",
@@ -3484,7 +3484,7 @@ module.exports = [
     explanation: "Eiserner Vorhang – Begriff geprägt von Winston Churchill 1946."
   },
   {
-    text: "In welchem Jahr trat das Vereinigte Königreich offiziell aus der EU aus („Brexit")?",
+    text: "In welchem Jahr trat das Vereinigte Königreich offiziell aus der EU aus („Brexit“)?",
     options: ["2016", "2019", "2020", "2022"],
     correct: 2,
     explanation: "2020 – Austritt am 31. Januar nach 47 Jahren EU-Mitgliedschaft."
@@ -3496,7 +3496,7 @@ module.exports = [
     explanation: "COVID-19 – ausgelöst durch das Coronavirus SARS-CoV-2."
   },
   {
-    text: "Welches Unternehmen veröffentlichte im November 2022 den Chatbot „ChatGPT"?",
+    text: "Welches Unternehmen veröffentlichte im November 2022 den Chatbot „ChatGPT“?",
     options: ["Google", "Microsoft", "OpenAI", "Meta"],
     correct: 2,
     explanation: "OpenAI – ChatGPT erreichte in nur 2 Monaten 100 Mio. aktive Nutzer."
@@ -3522,7 +3522,7 @@ module.exports = [
     explanation: "Firenze – Geburtsstätte der Renaissance, Heimat der Medici."
   },
   {
-    text: "Welcher deutsche Schauspieler gewann Oscars für „Inglourious Basterds" und „Django Unchained"?",
+    text: "Welcher deutsche Schauspieler gewann Oscars für „Inglourious Basterds“ und „Django Unchained“?",
     options: ["Til Schweiger", "Christoph Waltz", "Daniel Brühl", "Moritz Bleibtreu"],
     correct: 1,
     explanation: "Christoph Waltz – Österreicher, zwei Nebenrollen-Oscars bei Tarantino-Filmen."
@@ -3534,33 +3534,33 @@ module.exports = [
     explanation: "Oppenheimer – Christopher Nolans Atomphysiker-Biografie, 7 Oscars insgesamt."
   },
   {
-    text: "Welche Geste ist in der Dating-App „Tinder" zentral, um Interesse zu signalisieren?",
+    text: "Welche Geste ist in der Dating-App „Tinder“ zentral, um Interesse zu signalisieren?",
     options: ["Tippen", "Wischen nach rechts", "Doppelklick", "Daumen hoch"],
     correct: 1,
-    explanation: "Wischen nach rechts („Swipe right") – nach links bedeutet „nicht interessiert"."
+    explanation: "Wischen nach rechts („Swipe right“) – nach links bedeutet „nicht interessiert“."
   },
 
   // === TV-Serien ===
   {
-    text: "In welchem Café spielt der Großteil der Sitcom „Friends"?",
+    text: "In welchem Café spielt der Großteil der Sitcom „Friends“?",
     options: ["Central Perk", "Hollywood Cafe", "The Coffee House", "Bei Aldi an der Kaffeetheke"],
     correct: 0,
     explanation: "Central Perk – das orange Sofa ist Kult."
   },
   {
-    text: "Wie heißt der Chemielehrer-Hauptcharakter in „Breaking Bad"?",
+    text: "Wie heißt der Chemielehrer-Hauptcharakter in „Breaking Bad“?",
     options: ["Saul Goodman", "Walter White", "Jesse Pinkman", "Hank Schrader"],
     correct: 1,
-    explanation: "Walter White – Spitzname „Heisenberg"."
+    explanation: "Walter White – Spitzname „Heisenberg“."
   },
   {
-    text: "Welche Schauspielerin spielt die Kolumnistin Carrie Bradshaw in „Sex and the City"?",
+    text: "Welche Schauspielerin spielt die Kolumnistin Carrie Bradshaw in „Sex and the City“?",
     options: ["Kim Cattrall", "Sarah Jessica Parker", "Cynthia Nixon", "Kristin Davis"],
     correct: 1,
     explanation: "Sarah Jessica Parker – seit 1998 in der Rolle."
   },
   {
-    text: "In welchem Bürohaus spielt die US-Serie „The Office"?",
+    text: "In welchem Bürohaus spielt die US-Serie „The Office“?",
     options: ["Dunder Mifflin", "Initech", "Vandelay Industries", "Aldi-Filiale 207"],
     correct: 0,
     explanation: "Dunder Mifflin Paper Company in Scranton, Pennsylvania."
@@ -3580,7 +3580,7 @@ module.exports = [
     explanation: "Alexander Graham Bell – allerdings hatte Elisha Gray fast gleichzeitig eingereicht."
   },
   {
-    text: "Welcher US-Erfinder wird gemeinhin als „Vater der Glühbirne" bezeichnet?",
+    text: "Welcher US-Erfinder wird gemeinhin als „Vater der Glühbirne“ bezeichnet?",
     options: ["Thomas Edison", "Nikola Tesla", "Benjamin Franklin", "Henry Ford"],
     correct: 0,
     explanation: "Thomas Edison – baute 1879 die erste kommerziell brauchbare Kohlefaden-Glühlampe."
@@ -3606,13 +3606,13 @@ module.exports = [
 
   // === Sprichwörter ===
   {
-    text: "Was bedeutet das englische Sprichwort „It's raining cats and dogs"?",
+    text: "Was bedeutet das englische Sprichwort „It's raining cats and dogs“?",
     options: ["Es regnet leicht", "Es regnet sehr stark", "Es ist windig", "Tiere fallen vom Himmel"],
     correct: 1,
     explanation: "Es regnet in Strömen – also wie aus Eimern."
   },
   {
-    text: "Was bedeutet „den Stier bei den Hörnern packen"?",
+    text: "Was bedeutet „den Stier bei den Hörnern packen“?",
     options: [
       "Sich vor einer Aufgabe drücken",
       "Eine schwierige Sache mutig angehen",
@@ -3623,7 +3623,7 @@ module.exports = [
     explanation: "Eine schwierige Sache mutig und direkt anpacken."
   },
   {
-    text: "Was bedeutet „die Katze aus dem Sack lassen"?",
+    text: "Was bedeutet „die Katze aus dem Sack lassen“?",
     options: [
       "Heimlich entwischen",
       "Ein Geheimnis preisgeben",
@@ -3634,7 +3634,7 @@ module.exports = [
     explanation: "Ein Geheimnis offenbaren – aus mittelalterlichen Märkten, wo angeblich Katzen statt Ferkeln verkauft wurden."
   },
   {
-    text: "Was bedeutet die Redensart „Schwein gehabt"?",
+    text: "Was bedeutet die Redensart „Schwein gehabt“?",
     options: [
       "Glück gehabt",
       "Pech gehabt",
@@ -3645,7 +3645,7 @@ module.exports = [
     explanation: "Glück gehabt – stammt aus dem Mittelalter, als Schweine bei Wettkämpfen Trostpreise waren."
   },
   {
-    text: "Was bedeutet „auf dem Holzweg sein"?",
+    text: "Was bedeutet „auf dem Holzweg sein“?",
     options: ["Im Wald spazieren", "Sich irren / falsch liegen", "Pleite sein", "Eine Mission verfolgen"],
     correct: 1,
     explanation: "Sich täuschen – kommt aus der Forstwirtschaft, wo Holzwege oft im Nichts enden."
@@ -3653,34 +3653,34 @@ module.exports = [
 
   // === Comedians ===
   {
-    text: "Welcher deutsche Komiker wurde mit der Sketchshow „Mensch Markus" bekannt?",
+    text: "Welcher deutsche Komiker wurde mit der Sketchshow „Mensch Markus“ bekannt?",
     options: ["Bastian Pastewka", "Markus Maria Profitlich", "Atze Schröder", "Mario Barth"],
     correct: 1,
-    explanation: "Markus Maria Profitlich – auch bekannt durch „Ladykracher" und „Quatsch Comedy Club"."
+    explanation: "Markus Maria Profitlich – auch bekannt durch „Ladykracher“ und „Quatsch Comedy Club“."
   },
   {
-    text: "Welcher Komiker erschuf die Figur „Borat"?",
+    text: "Welcher Komiker erschuf die Figur „Borat“?",
     options: ["Steve Carell", "Sacha Baron Cohen", "Will Ferrell", "Mr. Bean"],
     correct: 1,
-    explanation: "Sacha Baron Cohen – Brite, auch verantwortlich für „Ali G" und „Brüno"."
+    explanation: "Sacha Baron Cohen – Brite, auch verantwortlich für „Ali G“ und „Brüno“."
   },
   {
-    text: "Welcher deutsche Entertainer moderierte von 1999 bis 2015 „TV total"?",
+    text: "Welcher deutsche Entertainer moderierte von 1999 bis 2015 „TV total“?",
     options: ["Joko Winterscheidt", "Stefan Raab", "Klaas Heufer-Umlauf", "Harald Schmidt"],
     correct: 1,
     explanation: "Stefan Raab – 2024 mit eigener Show bei RTL+ zurückgekehrt."
   },
   {
-    text: "Welcher US-Late-Night-Host moderiert seit 2003 „Jimmy Kimmel Live!"?",
+    text: "Welcher US-Late-Night-Host moderiert seit 2003 „Jimmy Kimmel Live!“?",
     options: ["Jimmy Fallon", "Jimmy Kimmel", "Conan O'Brien", "James Corden"],
     correct: 1,
     explanation: "Jimmy Kimmel – hat den Oscar gleich mehrfach moderiert."
   },
   {
-    text: "Welcher US-Schauspieler spielte die Hauptrolle in „The 40-Year-Old Virgin" (2005)?",
+    text: "Welcher US-Schauspieler spielte die Hauptrolle in „The 40-Year-Old Virgin“ (2005)?",
     options: ["Will Ferrell", "Adam Sandler", "Steve Carell", "Jack Black"],
     correct: 2,
-    explanation: "Steve Carell – sein Durchbruch als Filmstar, parallel zu „The Office"."
+    explanation: "Steve Carell – sein Durchbruch als Filmstar, parallel zu „The Office“."
   },
 
   // === Marvel & DC ===
@@ -3697,7 +3697,7 @@ module.exports = [
     explanation: "Krypton – wurde zerstört, kurz nachdem sein Vater Kal-El zur Erde schickte."
   },
   {
-    text: "Wie heißt die Marvel-Heldin „Black Widow" mit bürgerlichem Namen?",
+    text: "Wie heißt die Marvel-Heldin „Black Widow“ mit bürgerlichem Namen?",
     options: ["Wanda Maximoff", "Natasha Romanoff", "Carol Danvers", "Hope van Dyne"],
     correct: 1,
     explanation: "Natasha Romanoff – Spionin russischer Herkunft, Mitglied der Avengers."
@@ -3717,19 +3717,19 @@ module.exports = [
 
   // === Internet & Trends ===
   {
-    text: "Aus welcher App ging „TikTok" 2018 durch eine Fusion hervor?",
+    text: "Aus welcher App ging „TikTok“ 2018 durch eine Fusion hervor?",
     options: ["Vine", "Musical.ly", "Snapchat", "Periscope"],
     correct: 1,
     explanation: "Musical.ly – wurde von ByteDance aufgekauft und mit Douyin/TikTok verschmolzen."
   },
   {
-    text: "Wofür steht die Abkürzung „FOMO"?",
+    text: "Wofür steht die Abkürzung „FOMO“?",
     options: ["Fear Of Missing Out", "For Our Many Options", "Friends Only Mode On", "Fang Online Mit Optimismus"],
     correct: 0,
-    explanation: "„Angst, etwas zu verpassen" – Wort des Jahres 2013 im Oxford Dictionary."
+    explanation: "„Angst, etwas zu verpassen“ – Wort des Jahres 2013 im Oxford Dictionary."
   },
   {
-    text: "Was beschreibt der englische Begriff „Doomscrolling"?",
+    text: "Was beschreibt der englische Begriff „Doomscrolling“?",
     options: [
       "Schnelles Durchscrollen auf der Suche nach Memes",
       "Endloses Konsumieren negativer Nachrichten im Feed",
@@ -3740,44 +3740,44 @@ module.exports = [
     explanation: "Endloses Scrollen durch beunruhigende Nachrichten – Anglizismus, der seit 2020 viral ging."
   },
   {
-    text: "Was bedeutet das Wort „cringe" im deutschen Internet-Slang?",
+    text: "Was bedeutet das Wort „cringe“ im deutschen Internet-Slang?",
     options: ["Mega cool", "Peinlich / fremdschämen", "Lustig", "Schnell"],
     correct: 1,
-    explanation: "Fremdschämen – „Cringe" wurde 2021 von Langenscheidt zum Jugendwort des Jahres gekürt."
+    explanation: "Fremdschämen – „Cringe“ wurde 2021 von Langenscheidt zum Jugendwort des Jahres gekürt."
   },
 
   // === Berühmte Zitate & Reden ===
   {
-    text: "Wer sagte in der berühmten Rede 1963 in Washington „I have a dream"?",
+    text: "Wer sagte in der berühmten Rede 1963 in Washington „I have a dream“?",
     options: ["John F. Kennedy", "Martin Luther King Jr.", "Malcolm X", "Barack Obama"],
     correct: 1,
     explanation: "Martin Luther King Jr. – 28. August 1963 vor dem Lincoln Memorial."
   },
   {
-    text: "Welcher US-Präsident sagte in seiner Antrittsrede 1961 „Frage nicht, was dein Land für dich tun kann …"?",
+    text: "Welcher US-Präsident sagte in seiner Antrittsrede 1961 „Frage nicht, was dein Land für dich tun kann …“?",
     options: ["Dwight D. Eisenhower", "John F. Kennedy", "Lyndon B. Johnson", "Richard Nixon"],
     correct: 1,
-    explanation: "Kennedy – „…sondern was du für dein Land tun kannst."."
+    explanation: "Kennedy – „…sondern was du für dein Land tun kannst.“."
   },
   {
     text: "Welches berühmte (vermutlich apokryphe) Zitat wird Galileo Galilei zugeschrieben?",
     options: [
-      "„Eureka!"",
-      "„Und sie bewegt sich doch" (Eppur si muove)",
-      "„Veni, vidi, vici"",
-      "„Ich denke, also bin ich""
+      "„Eureka!“",
+      "„Und sie bewegt sich doch“ (Eppur si muove)",
+      "„Veni, vidi, vici“",
+      "„Ich denke, also bin ich“"
     ],
     correct: 1,
-    explanation: "„Eppur si muove" – nach seiner Verurteilung 1633 gemurmelt, vermutlich Legende."
+    explanation: "„Eppur si muove“ – nach seiner Verurteilung 1633 gemurmelt, vermutlich Legende."
   },
   {
-    text: "Welcher römische Feldherr verfasste die berühmte Siegesmeldung „Veni, vidi, vici"?",
+    text: "Welcher römische Feldherr verfasste die berühmte Siegesmeldung „Veni, vidi, vici“?",
     options: ["Augustus", "Julius Caesar", "Marc Aurel", "Nero"],
     correct: 1,
     explanation: "Julius Caesar – nach der Schlacht von Zela 47 v. Chr. an den Senat in Rom."
   },
   {
-    text: "Welcher Königin wird (fälschlich) der Spruch „Sollen sie doch Kuchen essen" zugeschrieben?",
+    text: "Welcher Königin wird (fälschlich) der Spruch „Sollen sie doch Kuchen essen“ zugeschrieben?",
     options: ["Elisabeth I.", "Marie Antoinette", "Victoria", "Katharina die Große"],
     correct: 1,
     explanation: "Marie Antoinette – die historische Quelle dafür fehlt allerdings völlig."
@@ -3800,7 +3800,7 @@ module.exports = [
     text: "Welche berühmte US-Brücke verbindet San Francisco mit Marin County?",
     options: ["Brooklyn Bridge", "Golden Gate Bridge", "Bay Bridge", "Manhattan Bridge"],
     correct: 1,
-    explanation: "Golden Gate Bridge – ihre Farbe heißt offiziell „International Orange"."
+    explanation: "Golden Gate Bridge – ihre Farbe heißt offiziell „International Orange“."
   },
   {
     text: "Welches berühmte Schloss steht im Zentrum Sankt Petersburgs?",
@@ -3823,13 +3823,13 @@ module.exports = [
 
   // === Wissenschaft & Erfindungen II ===
   {
-    text: "Welche japanische Firma brachte 1979 den ersten tragbaren Kassettenspieler „Walkman" auf den Markt?",
+    text: "Welche japanische Firma brachte 1979 den ersten tragbaren Kassettenspieler „Walkman“ auf den Markt?",
     options: ["Panasonic", "Sony", "Sharp", "Toshiba"],
     correct: 1,
     explanation: "Sony – revolutionierte die Musikkultur, über 200 Millionen verkaufte Geräte."
   },
   {
-    text: "Welche Firma stellte 2010 das erste „iPad" vor?",
+    text: "Welche Firma stellte 2010 das erste „iPad“ vor?",
     options: ["Microsoft", "Apple", "Samsung", "Google"],
     correct: 1,
     explanation: "Apple – Steve Jobs persönlich auf der Bühne in San Francisco."
@@ -3838,10 +3838,10 @@ module.exports = [
     text: "Welche Frau gilt heute als erste Programmiererin der Geschichte (Mitte 19. Jh.)?",
     options: ["Marie Curie", "Ada Lovelace", "Hedy Lamarr", "Grace Hopper"],
     correct: 1,
-    explanation: "Ada Lovelace – schrieb 1843 Programme für Charles Babbages „Analytische Maschine"."
+    explanation: "Ada Lovelace – schrieb 1843 Programme für Charles Babbages „Analytische Maschine“."
   },
   {
-    text: "Wer machte mit dem „Model T" (1908) das Automobil zum Massenprodukt?",
+    text: "Wer machte mit dem „Model T“ (1908) das Automobil zum Massenprodukt?",
     options: ["Carl Benz", "Henry Ford", "Walter Chrysler", "Ferdinand Porsche"],
     correct: 1,
     explanation: "Henry Ford – über 15 Millionen Model T gebaut, dank Fließband-Produktion."
